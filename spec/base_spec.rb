@@ -189,4 +189,29 @@ RSpec.describe ActiveActions::Base do
       expect(run).to be_a(ProcessOrder::Result)
     end
   end
+
+  context 'when an action class declares no `returns` or `fails_with`' do
+    before do
+      stub_const('ApplicationAction', Class.new(ActiveActions::Base))
+      stub_const('User', Class.new(ActiveRecord::Base))
+      stub_const('PrintUserEmail', Class.new(ApplicationAction))
+
+      PrintUserEmail.class_eval do
+        requires :user, User do
+          validates :email, presence: true
+        end
+
+        def execute
+          puts("The user's email is #{user.email}.")
+        end
+      end
+    end
+
+    let(:action_instance) { PrintUserEmail.new(user: user) }
+
+    it 'does not error when running the action' do
+      expect(action_instance).to receive(:puts).with("The user's email is davidjrunger@gmail.com.")
+      expect { action_instance.run }.not_to raise_error
+    end
+  end
 end

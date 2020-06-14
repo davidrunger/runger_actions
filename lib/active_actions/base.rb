@@ -90,7 +90,7 @@ class ActiveActions::Base
 
   memoize \
   def result
-    self.class::Result.new
+    self.class.result_klass.new
   end
 
   private

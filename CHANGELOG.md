@@ -1,3 +1,7 @@
+## Unreleased
+### Fixed
+- Allow #result to return a result even w/o any returns or fails_with
+
 ## 0.1.2 - 2020-06-14
 ### Fixed
 - Create reader methods on `Result` object for `returns`ed values
