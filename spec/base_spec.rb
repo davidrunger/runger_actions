@@ -34,47 +34,64 @@ RSpec.describe ActiveActions::Base do
       action_klass.new(params)
     end
 
-    context 'when a required param is not provided when initializing the action' do
-      let(:params) { { this_key_is_not_user: true, number_of_widgets: 2 } }
+    describe 'validating inputs' do
+      context 'when a required param is not provided when initializing the action' do
+        let(:params) { { this_key_is_not_user: true, number_of_widgets: 2 } }
 
-      it 'raises an error' do
-        expect { initialize_action(params) }.to raise_error(ActiveActions::MissingParam)
+        it 'raises an error' do
+          expect { initialize_action(params) }.to raise_error(ActiveActions::MissingParam)
+        end
+      end
+
+      context 'when a required param is provided when initializing the action' do
+        context "when the param's class is something other than the required class" do
+          let(:params) { { user: 'This is not a `User`', number_of_widgets: 20 } }
+
+          it 'raises an error' do
+            expect { initialize_action(params) }.to raise_error(ActiveActions::TypeMismatch)
+          end
+        end
+
+        context "when the param's class is of the required class" do
+          let(:params) { { user: user, number_of_widgets: 10 } }
+          let(:user) { User.new(email: 'davidjrunger@gmail.com') }
+
+          context 'when the param has a custom validation block' do
+            context 'when the provided ActiveRecord instance does not meet those validations' do
+              before { expect(user.phone).to be_blank }
+
+              it 'raises an ActiveModel::StrictValidationFailed error' do
+                expect { initialize_action(params) }.to raise_error(
+                  ActiveModel::StrictValidationFailed,
+                  "Phone can't be blank",
+                )
+              end
+            end
+
+            context 'when the provided ActiveRecord instance does meet those validations' do
+              before { user.phone = "1#{Array.new(10) { rand(10).to_s }.join('')}" }
+
+              it 'does not raise an error' do
+                expect { initialize_action(params) }.not_to raise_error
+              end
+            end
+          end
+        end
       end
     end
 
-    context 'when a required param is provided when initializing the action' do
-      context "when the param's class is something other than the required class" do
-        let(:params) { { user: 'This is not a `User`', number_of_widgets: 20 } }
-
-        it 'raises an error' do
-          expect { initialize_action(params) }.to raise_error(ActiveActions::TypeMismatch)
-        end
+    describe 'setting up reader methods' do
+      let(:action_instance) { action_klass.new(params) }
+      let(:params) do
+        {
+          number_of_widgets: 100,
+          user: User.new(email: 'davidjrunger@gmail.com', phone: '15551239876'),
+        }
       end
 
-      context "when the param's class is of the required class" do
-        let(:params) { { user: user, number_of_widgets: 10 } }
-        let(:user) { User.new(email: 'davidjrunger@gmail.com') }
-
-        context 'when the param has a custom validation block' do
-          context 'when the provided ActiveRecord instance does not meet those validations' do
-            before { expect(user.phone).to be_blank }
-
-            it 'raises an ActiveModel::StrictValidationFailed error' do
-              expect { initialize_action(params) }.to raise_error(
-                ActiveModel::StrictValidationFailed,
-                "Phone can't be blank",
-              )
-            end
-          end
-
-          context 'when the provided ActiveRecord instance does meet those validations' do
-            before { user.phone = "1#{Array.new(10) { rand(10).to_s }.join('')}" }
-
-            it 'does not raise an error' do
-              expect { initialize_action(params) }.not_to raise_error
-            end
-          end
-        end
+      it 'creates a reader method for each required param that returns the param value' do
+        expect(action_instance.number_of_widgets).to eq(params[:number_of_widgets])
+        expect(action_instance.user).to eq(params[:user])
       end
     end
   end
@@ -84,6 +101,23 @@ RSpec.describe ActiveActions::Base do
       expect(ProcessOrder.promised_values).to include(total_cost: Float)
       expect(ProcessOrder.promised_values).to include(incremented_phone_number: String)
       expect(ProcessOrder.promised_values).to include(uppercased_email: String)
+    end
+  end
+
+  describe '#run' do
+    subject(:run) { action_instance.run }
+
+    let(:action_instance) { ProcessOrder.new(params) }
+    let(:params) { { user: user, number_of_widgets: 32 } }
+    let(:user) { User.new(email: 'davidjrunger@gmail.com', phone: '15551239876') }
+
+    it 'invokes the #execute method' do
+      expect(action_instance).to receive(:execute).and_call_original
+      run
+    end
+
+    it 'returns an instance of ProcessOrder::Result' do
+      expect(run).to be_a(ProcessOrder::Result)
     end
   end
 end
