@@ -1,39 +1,76 @@
 # ActiveActions
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/active_actions`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Organize and validate the business logic of your Rails application with this combined form object /
+command object.
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Add the gem to the `test` group of your application's `Gemfile`. Because the gem is not released via
+RubyGems, you will need to install it from GitHub.
 
 ```ruby
-gem 'active_actions'
+gem 'active_actions', git: 'https://github.com/davidrunger/active_actions.git'
 ```
 
 And then execute:
 
     $ bundle install
 
-Or install it yourself as:
-
-    $ gem install active_actions
-
 ## Usage
 
-TODO: Write usage instructions here
+Create a new subdirectory within the `app/` directory in your Rails app: `app/actions/`.
+
+Create an `app/actions/application_action.rb` file with this content:
+```rb
+class ApplicationAction < ActiveActions::Base
+end
+```
+
+Then, you can start creating actions. Here's an example:
+```rb
+# app/actions/sms_records/send_message.rb
+
+class SmsRecords::SendMessage < ApplicationAction
+  requires :message_body, String
+  requires :user, User do
+    validates :phone, presence: true
+  end
+
+  fails_with :nexmo_request_failed
+
+  def execute
+    if ENV['NEXMO_API_KEY'].present?
+      send_via_nexmo!
+    else
+      log_message
+    end
+  end
+
+  private
+
+  def send_via_nexmo!
+    nexmo_response = NexmoClient.send_text!(number: user.phone, message: message_body)
+    if nexmo_response.success?
+      save_sms_record(nexmo_response)
+    else
+      result.nexmo_request_failed!
+    end
+  end
+
+  # [...]
+end
+```
 
 ## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+After checking out the repo, run `bin/setup` to install dependencies. Then, run `bin/rspec` to run
+the tests. You can also run `bin/console` for an interactive prompt that will allow you to
+experiment.
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/active_actions.
-
+To install this gem onto your local machine, run `bundle exec rake install`. To release a new
+version, update the version number in `version.rb`, `bundle install`, update `CHANGELOG.md`, commit
+the changes with a message like `Prepare to release v0.1.1`, and then run `bin/release`, which will
+create a git tag for the version and push git commits and tags.
 
 ## License
 
