@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ['David Runger']
   spec.email         = ['davidjrunger@gmail.com']
 
-  spec.summary       = 'TODO: Write a short summary, because RubyGems requires one.'
-  spec.description   = 'TODO: Write a longer description or delete this line.'
+  spec.summary       = 'Organize (and validate) the business logic of your Rails application.'
+  spec.description   = 'Organize (and validate) the business logic of your Rails application.'
   spec.homepage      = 'https://github.com/davidrunger/active_actions'
   spec.license       = 'MIT'
   spec.required_ruby_version = Gem::Requirement.new('>= 2.3.0')
