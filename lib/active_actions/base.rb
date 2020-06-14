@@ -41,10 +41,11 @@ class ActiveActions::Base
 
     memoize \
     def result_klass
-      const_set('Result', Class.new).tap do |klass|
+      const_set('Result', Class.new(ActiveActions::Result)).tap do |klass|
         klass.class_eval do
           def initialize
             @values = {}
+            super
           end
         end
       end
