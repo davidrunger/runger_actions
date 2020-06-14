@@ -1,3 +1,7 @@
+## Unreleased
+### Fixed
+- Create reader methods on `Result` object for `returns`ed values
+
 ## 0.1.1 - 2020-06-14
 ### Docs
 - Add usage instructions (including code example) to README.md and make other tweaks to README.md.

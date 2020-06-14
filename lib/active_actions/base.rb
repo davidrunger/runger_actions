@@ -33,9 +33,7 @@ class ActiveActions::Base
     def returns(param_name, param_klass)
       promised_values[param_name] = param_klass
       result_klass.class_eval do
-        define_method("#{param_name}=") do |value|
-          @values[param_name] = value
-        end
+        attr_accessor param_name
       end
     end
 
@@ -53,14 +51,7 @@ class ActiveActions::Base
 
     memoize \
     def result_klass
-      const_set('Result', Class.new(ActiveActions::Result)).tap do |klass|
-        klass.class_eval do
-          def initialize
-            @values = {}
-            super
-          end
-        end
-      end
+      const_set('Result', Class.new(ActiveActions::Result))
     end
 
     memoize \

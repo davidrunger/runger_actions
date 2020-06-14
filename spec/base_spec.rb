@@ -5,10 +5,9 @@ RSpec.describe ActiveActions::Base do
     stub_const('ApplicationAction', Class.new(ActiveActions::Base))
     stub_const('User', Class.new(ActiveRecord::Base))
     stub_const('ProcessOrder', Class.new(ApplicationAction))
+    stub_const('COST_PER_WIDGET', 1.5)
 
     ProcessOrder.class_eval do
-      COST_PER_WIDGET ||= 1.5
-
       requires :number_of_widgets, Integer # numericality: { greater_than: 0 }
       requires :user, User do
         validates :email, presence: true, format: { with: /[a-z]+@[a-z]+\.[a-z]+/ }
@@ -137,6 +136,16 @@ RSpec.describe ActiveActions::Base do
       expect(ProcessOrder.promised_values).to include(total_cost: Float)
       expect(ProcessOrder.promised_values).to include(incremented_phone_number: String)
       expect(ProcessOrder.promised_values).to include(uppercased_email: String)
+    end
+
+    describe 'Result reader methods' do
+      context 'when #execute completes successfully and assigns one or more values to the result' do
+        let(:result) { action_instance.run }
+
+        it 'has reader methods on the returned Result to access those values' do
+          expect(result.total_cost).to eq(COST_PER_WIDGET * params[:number_of_widgets])
+        end
+      end
     end
   end
 
