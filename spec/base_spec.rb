@@ -84,6 +84,22 @@ RSpec.describe ActiveActions::Base do
                 action = initialize_action(params)
                 expect(action.valid?).to eq(false)
               end
+
+              describe '#errors' do
+                let(:action) { initialize_action(params) }
+
+                it 'initially returns an empty hash' do
+                  expect(action.errors).to eq({})
+                end
+
+                context 'after #valid? has been called' do
+                  before { action.valid? }
+
+                  it 'populates #errors with details about the validation failures' do
+                    expect(action.errors).to eq({ phone: ["can't be blank", 'is invalid'] })
+                  end
+                end
+              end
             end
 
             context 'when the provided ActiveRecord instance does meet those validations' do

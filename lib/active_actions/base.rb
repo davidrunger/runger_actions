@@ -79,7 +79,7 @@ class ActiveActions::Base
     end
   end
 
-  # attr_reader :errors
+  attr_reader :errors
 
   def initialize(params)
     @errors = {}
