@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
+if [[ "$BRANCH" != "master" ]]; then
+  echo "Aborting release! Not on master. Current branch is '$BRANCH'.";
+  exit 1;
+fi
+
+COMMIT_MESSAGE=$(git log --format=%B -n 1)
+if ! [[ $COMMIT_MESSAGE =~ ^Prepare[[:space:]]to[[:space:]]release[[:space:]]v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+  echo "Aborting release! Commit message is improperly formatted. Commit message is '$COMMIT_MESSAGE'.";
+  exit 1;
+fi
+
+bundle exec rake build release:guard_clean release:source_control_push
