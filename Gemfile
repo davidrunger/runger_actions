@@ -5,6 +5,7 @@ source 'https://rubygems.org'
 # Specify your gem's dependencies in active_actions.gemspec
 gemspec
 
+gem 'amazing_print'
 gem 'pry-byebug'
 gem 'rake', '~> 12.0'
 gem 'rubocop'
