@@ -79,14 +79,22 @@ class ActiveActions::Base
     end
   end
 
+  # attr_reader :errors
+
   def initialize(params)
+    @errors = {}
     @params = params
-    validate_params!
+    validate_required_params!
   end
 
   def run
     execute
     result
+  end
+
+  def valid?
+    run_custom_validations
+    @errors.blank?
   end
 
   memoize \
@@ -96,23 +104,17 @@ class ActiveActions::Base
 
   private
 
-  def run_custom_validations!
+  def run_custom_validations
     self.class.required_params.each_key do |param_name|
       validator_klass = self.class.validators[param_name]
       next if validator_klass.nil?
 
-      instance = @params[param_name]
-      validator_instance = validator_klass.new(instance.attributes)
+      model_instance = @params[param_name]
+      validator_instance = validator_klass.new(model_instance.attributes)
       if !validator_instance.valid?
-        attribute, messages = validator_instance.errors.to_hash.first
-        validator_instance.errors.add(attribute, :invalid, strict: true, message: messages.first)
+        @errors = validator_instance.errors.to_hash
       end
     end
-  end
-
-  def validate_params!
-    validate_required_params!
-    run_custom_validations!
   end
 
   def validate_required_params!

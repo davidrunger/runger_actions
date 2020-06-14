@@ -80,19 +80,18 @@ RSpec.describe ActiveActions::Base do
             context 'when the provided ActiveRecord instance does not meet those validations' do
               before { expect(user.phone).to be_blank }
 
-              it 'raises an ActiveModel::StrictValidationFailed error' do
-                expect { initialize_action(params) }.to raise_error(
-                  ActiveModel::StrictValidationFailed,
-                  "Phone can't be blank",
-                )
+              it 'causes action#valid? to return false' do
+                action = initialize_action(params)
+                expect(action.valid?).to eq(false)
               end
             end
 
             context 'when the provided ActiveRecord instance does meet those validations' do
               before { user.phone = "1#{Array.new(10) { rand(10).to_s }.join('')}" }
 
-              it 'does not raise an error' do
-                expect { initialize_action(params) }.not_to raise_error
+              it 'causes action#valid? to return true' do
+                action = initialize_action(params)
+                expect(action.valid?).to eq(true)
               end
             end
           end
