@@ -1,4 +1,4 @@
-## Unreleased
+## 0.1.2 - 2020-06-14
 ### Fixed
 - Create reader methods on `Result` object for `returns`ed values
 
