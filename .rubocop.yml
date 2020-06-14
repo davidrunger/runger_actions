@@ -131,10 +131,11 @@ Style/Lambda:
   Enabled: false
 Style/MethodCallWithArgsParentheses:
   IgnoredMethods:
+    - add_runtime_dependency
     - desc
-    - gem
     - fail
     - file
+    - gem
     - head
     - include
     - integer
