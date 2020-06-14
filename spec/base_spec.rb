@@ -88,15 +88,16 @@ RSpec.describe ActiveActions::Base do
               describe '#errors' do
                 let(:action) { initialize_action(params) }
 
-                it 'initially returns an empty hash' do
-                  expect(action.errors).to eq({})
+                it 'initially returns an empty ActiveModel::Errors instance' do
+                  expect(action.errors).to be_a(ActiveModel::Errors)
+                  expect(action.errors.any?).to eq(false)
                 end
 
                 context 'after #valid? has been called' do
                   before { action.valid? }
 
                   it 'populates #errors with details about the validation failures' do
-                    expect(action.errors).to eq({ phone: ["can't be blank", 'is invalid'] })
+                    expect(action.errors.to_hash).to eq({ phone: ["can't be blank", 'is invalid'] })
                   end
                 end
               end

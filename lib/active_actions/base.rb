@@ -82,7 +82,7 @@ class ActiveActions::Base
   attr_reader :errors
 
   def initialize(params)
-    @errors = {}
+    @errors = ActiveModel::Errors.new(self)
     @params = params
     validate_required_params!
   end
@@ -112,7 +112,7 @@ class ActiveActions::Base
       model_instance = @params[param_name]
       validator_instance = validator_klass.new(model_instance.attributes)
       if !validator_instance.valid?
-        @errors = validator_instance.errors.to_hash
+        @errors = validator_instance.errors
       end
     end
   end
