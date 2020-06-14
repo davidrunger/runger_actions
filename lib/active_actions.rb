@@ -1,4 +1,6 @@
-require "active_actions/version"
+# frozen_string_literal: true
+
+require 'active_actions/version'
 
 module ActiveActions
   class Error < StandardError; end
