@@ -1,7 +1,3 @@
-require:
-  - rubocop-performance
-  - rubocop-rails
-  - rubocop-rspec
 AllCops:
   EnabledByDefault: true
   Exclude:
@@ -14,9 +10,6 @@ AllCops:
   TargetRubyVersion: 2.7
 Bundler/GemComment:
   Enabled: false
-FactoryBot/AttributeDefinedStatically:
-  Exclude:
-    - spec/support/fixture_builder.rb # false positives get raised in this file
 Layout/ArgumentAlignment:
   EnforcedStyle: with_fixed_indentation
 Layout/ClassStructure:
@@ -59,45 +52,6 @@ Metrics/ClassLength:
 Metrics/MethodLength:
   Max: 30
 Naming/RescuedExceptionsVariableName:
-  Enabled: false
-Performance/ChainArrayAllocation:
-  Enabled: false
-Rails:
-  Enabled: true
-Rails/Output:
-  Enabled: false
-Rails/RakeEnvironment:
-  Enabled: false
-RSpec/AlignLeftLetBrace:
-  Enabled: false
-RSpec/AlignRightLetBrace:
-  Enabled: false
-RSpec/DescribeClass:
-  Exclude:
-    # feature specs describe a scenario/flow rather than a single class
-    - spec/features/**/*
-RSpec/DescribedClass:
-  Enabled: false
-RSpec/ExampleLength:
-  Max: 8
-  Exclude:
-    # for spec performance reasons, it's often a good idea to make feature specs check multiple
-    # things in a single example
-    - spec/features/**/*
-RSpec/ExpectChange:
-  EnforcedStyle: block
-RSpec/ExpectInHook:
-  Enabled: false
-RSpec/MessageExpectation:
-  Enabled: false
-RSpec/MessageSpies:
-  Enabled: false
-RSpec/MultipleExpectations:
-  Exclude:
-    # for spec performance reasons, it's often a good idea to make feature specs check multiple
-    # things in a single example
-    - spec/features/**/*
-RSpec/NestedGroups:
   Enabled: false
 Style/BlockDelimiters:
   Enabled: false
