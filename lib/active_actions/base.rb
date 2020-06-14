@@ -16,8 +16,17 @@ class ActiveActions::Base
       end
     end
 
+    def returns(param_name, param_klass)
+      promised_values[param_name] = param_klass
+    end
+
     memoize \
     def required_params
+      {}
+    end
+
+    memoize \
+    def promised_values
       {}
     end
 
