@@ -82,8 +82,8 @@ class ActiveActions::Base
   attr_reader :errors
 
   def initialize(params)
-    @errors = ActiveModel::Errors.new(self)
     @params = params
+    @errors = ActiveModel::Errors.new(self)
     validate_required_params!
   end
 
