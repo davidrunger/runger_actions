@@ -1,4 +1,4 @@
-## Unreleased
+## 0.1.3 - 2020-06-14
 ### Fixed
 - Allow #result to return a result even w/o any returns or fails_with
 
