@@ -1,14 +1,17 @@
 # frozen_string_literal: true
 
 RSpec.describe ActiveActions::Base do
-  class self::ApplicationAction < ActiveActions::Base
+  class module_parent::ApplicationAction < ActiveActions::Base
   end
 
-  class self::SomeAction < ApplicationAction
+  class module_parent::SomeAction < module_parent::ApplicationAction
   end
 
-  describe '::required_params' do
-    subject(:required_params) { SomeAction.send(:required_params) }
+  klass = module_parent::SomeAction
+  let(:action_klass) { klass }
+
+  describe '::required_parameters' do
+    subject(:required_params) { action_klass.send(:required_params) }
 
     it 'returns a hash' do
       expect(required_params).to be_a(Hash)

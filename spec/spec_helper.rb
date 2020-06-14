@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
+require 'active_support/core_ext/module/introspection'
 require 'bundler/setup'
+
 require 'active_actions'
 
 RSpec.configure do |config|
