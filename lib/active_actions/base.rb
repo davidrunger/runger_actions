@@ -39,6 +39,18 @@ class ActiveActions::Base
       end
     end
 
+    def fails_with(error_type)
+      result_klass.class_eval do
+        define_method("#{error_type}!") do
+          @failure = error_type
+        end
+
+        define_method("#{error_type}?") do
+          @failure == error_type
+        end
+      end
+    end
+
     memoize \
     def result_klass
       const_set('Result', Class.new(ActiveActions::Result)).tap do |klass|

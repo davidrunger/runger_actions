@@ -18,16 +18,36 @@ RSpec.describe ActiveActions::Base do
       returns :total_cost, Float # numericality: { greater_than: 0 }
       returns :incremented_phone_number, String # format: { with: /[[:digit]]{11}/ }
       returns :uppercased_email, String # format: { with: /[A-Z]+@[A-Z]+\.[A-Z]+/ }
+      returns :is_real_phone, [true, false]
+
+      fails_with :bad_response_from_api
 
       def execute
         result.total_cost = number_of_widgets * COST_PER_WIDGET
         result.incremented_phone_number = (Integer(user.phone) + 1).to_s
         result.uppercased_email = user.email.upcase
+
+        response_from_api = make_external_api_call
+        if response_from_api.success?
+          result.is_real_phone = response_from_api.data[:is_real]
+        else
+          result.bad_response_from_api!
+        end
+      end
+
+      private
+
+      def make_external_api_call
+        # ... PhoneNumberVerificationService.post('/verify', data: { phone: user.phone }) ...
+        OpenStruct.new(success?: true, data: { is_real: true })
       end
     end
   end
 
   let(:action_klass) { ProcessOrder }
+  let(:action_instance) { ProcessOrder.new(params) }
+  let(:params) { { user: user, number_of_widgets: 32 } }
+  let(:user) { User.new(email: 'davidjrunger@gmail.com', phone: '15551239876') }
 
   describe '::requires' do
     def initialize_action(params)
@@ -104,12 +124,36 @@ RSpec.describe ActiveActions::Base do
     end
   end
 
+  describe '::fails_with' do
+    context 'when something goes wrong while executing the action' do
+      before do
+        expect(action_instance).to receive(:make_external_api_call).and_return(
+          OpenStruct.new(success?: false, data: { errors: ['Our servers are down right now'] }),
+        )
+      end
+
+      it 'can invoke a failure-bang method on the result object' do
+        expect(action_instance.result).to receive(:bad_response_from_api!).and_call_original
+        action_instance.execute
+      end
+
+      context 'when a failure-bang method has been invoked' do
+        def execute_with_failure
+          expect(action_instance.result).to receive(:bad_response_from_api!).and_call_original
+          action_instance.execute
+        end
+
+        it 'causes the failure predicate method to return true' do
+          expect { execute_with_failure }.
+            to change { action_instance.result.bad_response_from_api? }.
+            from(false).to(true)
+        end
+      end
+    end
+  end
+
   describe '#run' do
     subject(:run) { action_instance.run }
-
-    let(:action_instance) { ProcessOrder.new(params) }
-    let(:params) { { user: user, number_of_widgets: 32 } }
-    let(:user) { User.new(email: 'davidjrunger@gmail.com', phone: '15551239876') }
 
     it 'invokes the #execute method' do
       expect(action_instance).to receive(:execute).and_call_original
