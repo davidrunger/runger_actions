@@ -1,4 +1,4 @@
-## Unreleased
+## 0.5.1 - 2020-06-16
 ### Docs
 - Mention in README.md that `shaped` needs to be installed explicitly/manually as a dependency in the user's own
   `Gemfile`.
