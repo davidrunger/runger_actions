@@ -6,6 +6,9 @@
 
 ### Maintenance
 - Only send Travis notifications when builds fail (not when they pass)
+- Specify Ruby 2.7.0 (not 2.7.1)
+- Specify `os: linux` for Travis
+- Specify `dist: bionic` for Travis
 
 ## 0.1.3 - 2020-06-14
 ### Fixed
