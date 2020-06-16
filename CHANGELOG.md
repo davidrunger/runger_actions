@@ -1,4 +1,4 @@
-## Unreleased
+## 0.3.1 - 2020-06-16
 ### Fixed
 - Don't raise an error when running an action that doesn't have any `requires` / input params
 
