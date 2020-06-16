@@ -4,8 +4,19 @@ RSpec.describe ActiveActions::Base do
   before do
     stub_const('ApplicationAction', Class.new(ActiveActions::Base))
     stub_const('User', Class.new(ActiveRecord::Base))
-    stub_const('ProcessOrder', Class.new(ApplicationAction))
     stub_const('COST_PER_WIDGET', 1.5)
+    stub_const('DoubleNumber', Class.new(ApplicationAction))
+    stub_const('ProcessOrder', Class.new(ApplicationAction))
+
+    DoubleNumber.class_eval do
+      requires :number, Numeric
+
+      returns :number_doubled, Numeric
+
+      def execute
+        result.number_doubled = number * 2
+      end
+    end
 
     ProcessOrder.class_eval do
       requires :number_of_widgets, [Integer, BigDecimal] # numericality: { greater_than: 0 }
@@ -271,6 +282,23 @@ RSpec.describe ActiveActions::Base do
             AccidentallyDoNothing fails to do so.
           ERROR
       end
+    end
+  end
+
+  context 'when an attempt is made to mutate a `result` outside of #execute' do
+    def run_action_and_attempt_to_mutate_result
+      result = DoubleNumber.new(number: 4).run
+      result.number_doubled = 10
+    end
+
+    it 'raises an error' do
+      expect { run_action_and_attempt_to_mutate_result }.to raise_error(
+        ActiveActions::MutatingLockedResult,
+        <<~ERROR.squish)
+          You are attempting to assign a value to an instance of DoubleNumber::Result outside of the
+          DoubleNumber#execute method. This is not allowed; you may only assign values to the
+          `result` within the #execute method.
+        ERROR
     end
   end
 end

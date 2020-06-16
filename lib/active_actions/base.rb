@@ -38,6 +38,14 @@ class ActiveActions::Base
         attr_reader param_name
 
         define_method("#{param_name}=") do |value|
+          if locked?
+            raise(ActiveActions::MutatingLockedResult, <<~ERROR.squish)
+              You are attempting to assign a value to an instance of #{self.class} outside of the
+              #{self.class.module_parent}#execute method. This is not allowed; you may only assign
+              values to the `result` within the #execute method.
+            ERROR
+          end
+
           if param_klasses.none? { value.is_a?(_1) }
             raise(ActiveActions::TypeMismatch, <<~ERROR.squish)
               Attemted to assign `#{value.is_a?(String) ? value.inspect : value}` for
@@ -94,13 +102,14 @@ class ActiveActions::Base
 
   def run
     if !respond_to?(:execute)
-      raise(ActiveActions::ExecuteNotImplemented.new(<<~ERROR.squish))
+      raise(ActiveActions::ExecuteNotImplemented, <<~ERROR.squish)
         All ActiveActions classes must implement an #execute instance method, but #{self.class}
         fails to do so.
       ERROR
     end
 
     execute
+    result.lock!
     result
   end
 
