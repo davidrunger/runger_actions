@@ -1,4 +1,4 @@
-## Unreleased
+## 0.2.2 - 2020-06-15
 ### Added
 - Prevent mutating a returned `result` from outside of the action
 
