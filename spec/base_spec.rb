@@ -233,6 +233,57 @@ RSpec.describe ActiveActions::Base do
     it 'returns an instance of ProcessOrder::Result' do
       expect(run).to be_a(ProcessOrder::Result)
     end
+
+    context 'when a param that is an ActiveRecord instance does not meet the validation rules' do
+      before do
+        user.update!(email: '')
+        expect(action_instance).not_to be_valid
+      end
+
+      it 'does not raise an error' do
+        expect { run }.not_to raise_error
+      end
+    end
+  end
+
+  describe '#run!' do
+    subject(:run!) { action_instance.run! }
+
+    context 'when the provided ActiveRecord params are all valid' do
+      before { expect(action_instance).to be_valid }
+
+      it 'invokes the #run method' do
+        expect(action_instance).to receive(:run).and_call_original
+        run!
+      end
+
+      it 'returns an instance of ProcessOrder::Result' do
+        expect(run!).to be_a(ProcessOrder::Result)
+      end
+    end
+
+    context 'when a param that is an ActiveRecord instance does not meet the validation rules' do
+      before do
+        user.update!(email: '')
+        user.update!(phone: '')
+        expect(action_instance).not_to be_valid
+      end
+
+      it 'raises an error' do
+        expect { run! }.to raise_error(
+          ActiveActions::InvalidParam,
+          <<~ERROR.squish)
+            Email can't be blank, Email is invalid, Phone can't be blank, Phone is invalid
+          ERROR
+      end
+
+      it "does not execute #run or the action's #execute method" do
+        expect(action_instance).not_to receive(:execute)
+        expect(action_instance).not_to receive(:run)
+
+        expect { run! }.to raise_error(ActiveActions::InvalidParam)
+      end
+    end
   end
 
   context 'when an action class declares no `returns` or `fails_with`' do
