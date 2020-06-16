@@ -1,4 +1,4 @@
-## Unreleased
+## 0.2.0 - 2020-06-15
 ### Added
 - Add stricter type validations and better error messages for type validation failures
 - Add support for arrays of allowed classes (rather than only allowing a single allowed class type
