@@ -1,3 +1,8 @@
+## Unreleased
+### Added
+- Use [`shaped`](https://github.com/davidrunger/shaped/) gem to describe the shape of Hahes and
+  Arrays
+
 ## 0.4.0 - 2020-06-16
 ### Added
 - Raise an `ActiveActions::MissingResultValue` error if a promised return value (as declared via the

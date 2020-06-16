@@ -114,6 +114,8 @@ Style/MethodCalledOnDoEndBlock:
   Enabled: false
 Style/NumericPredicate:
   Enabled: false
+Style/ParenthesesAroundCondition:
+  Enabled: false
 Style/RescueModifier:
   Enabled: false
 Style/RescueStandardError:

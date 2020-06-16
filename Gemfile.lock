@@ -7,12 +7,19 @@ GIT
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
 
+GIT
+  remote: https://github.com/davidrunger/shaped.git
+  revision: 7ae27ac95304602dc960e6e5d398ba4c386c30b0
+  specs:
+    shaped (0.2.1)
+
 PATH
   remote: .
   specs:
     active_actions (0.4.0)
       memoist (~> 0.16)
       rails (~> 6.0)
+      shaped (~> 0.2)
 
 GEM
   remote: https://rubygems.org/
@@ -221,6 +228,7 @@ DEPENDENCIES
   rake (~> 12.0)
   rspec (~> 3.0)
   rubocop
+  shaped!
   sqlite3
 
 BUNDLED WITH
