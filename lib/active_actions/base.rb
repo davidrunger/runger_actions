@@ -35,7 +35,9 @@ class ActiveActions::Base
       param_klasses = Array(param_klasses)
       promised_values[param_name] = param_klasses
       result_klass.class_eval do
-        attr_reader param_name
+        define_method(param_name) do
+          @return_values[param_name]
+        end
 
         define_method("#{param_name}=") do |value|
           if locked?
@@ -54,7 +56,7 @@ class ActiveActions::Base
             ERROR
           end
 
-          instance_variable_set(:"@#{param_name}", value)
+          @return_values[param_name] = value
         end
       end
     end
@@ -115,6 +117,7 @@ class ActiveActions::Base
 
     execute
     result.lock!
+    verify_promised_return_values!
     result
   end
 
@@ -137,6 +140,23 @@ class ActiveActions::Base
   end
 
   private
+
+  def verify_promised_return_values!
+    missing_return_values = self.class.promised_values.keys - result.return_values.keys
+    if missing_return_values.any?
+      violation_messages =
+        missing_return_values.map do |missing_return_value|
+          expected_klasses = self.class.promised_values[missing_return_value]
+          expected_klasses_string = expected_klasses.map(&:name).join(' or ')
+          "`#{missing_return_value}` (should be a #{expected_klasses_string})"
+        end
+
+      raise(ActiveActions::MissingResultValue, <<~ERROR.squish)
+        #{self.class.name} failed to set all promised return values on its `result`. The
+        following were missing on the `result`: #{violation_messages.join(', ')}.
+      ERROR
+    end
+  end
 
   def run_custom_validations
     self.class.required_params.each_key do |param_name|
