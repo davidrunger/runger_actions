@@ -1,4 +1,4 @@
-## Unreleased
+## 0.5.0 - 2020-06-16
 ### Added
 - Use [`shaped`](https://github.com/davidrunger/shaped/) gem to describe the shape of Hahes and
   Arrays
