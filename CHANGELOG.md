@@ -1,3 +1,9 @@
+## Unreleased
+### Added
+- Add stricter type validations and better error messages for type validation failures
+- Add support for arrays of allowed classes (rather than only allowing a single allowed class type
+  to be specified)
+
 ## 0.1.3 - 2020-06-14
 ### Fixed
 - Allow #result to return a result even w/o any returns or fails_with
