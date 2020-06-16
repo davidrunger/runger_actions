@@ -5,6 +5,14 @@ class ActiveActions::Result
     @failure = nil
   end
 
+  def lock!
+    @locked = true
+  end
+
+  def locked?
+    @locked == true
+  end
+
   def success?
     @failure.nil?
   end
