@@ -1,3 +1,8 @@
+## Unreleased
+### Docs
+- Mention in README.md that `shaped` needs to be installed explicitly/manually as a dependency in the user's own
+  `Gemfile`.
+
 ## 0.5.0 - 2020-06-16
 ### Added
 - Use [`shaped`](https://github.com/davidrunger/shaped/) gem to describe the shape of Hahes and
