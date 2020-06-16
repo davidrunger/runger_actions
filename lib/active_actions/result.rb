@@ -1,7 +1,10 @@
 # frozen_string_literal: true
 
 class ActiveActions::Result
+  attr_reader :return_values
+
   def initialize
+    @return_values = {}
     @failure = nil
   end
 

@@ -1,3 +1,8 @@
+## Unreleased
+### Added
+- Raise an `ActiveActions::MissingResultValue` error if a promised return value (as declared via the
+  `returns` class method on the action) has not been set by the action's `#execute` method.
+
 ## 0.3.1 - 2020-06-16
 ### Fixed
 - Don't raise an error when running an action that doesn't have any `requires` / input params

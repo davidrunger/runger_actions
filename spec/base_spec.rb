@@ -166,7 +166,7 @@ RSpec.describe ActiveActions::Base do
         expect {
           result.incremented_phone_number = new_phone_number
         }.to change {
-          result.instance_variable_get(:@incremented_phone_number)
+          result.return_values[:incremented_phone_number]
         }.from(nil).to(new_phone_number)
       end
 
@@ -190,6 +190,39 @@ RSpec.describe ActiveActions::Base do
         it 'has reader methods on the returned Result to access those values' do
           expect(result.total_cost).to eq(COST_PER_WIDGET * params[:number_of_widgets])
         end
+      end
+    end
+
+    context 'when #execute fails to set all promised `returns` values' do
+      before do
+        stub_const('BrokenMultiplyNumber', Class.new(ApplicationAction))
+
+        BrokenMultiplyNumber.class_eval do
+          requires :number, Numeric
+
+          returns :number_tripled, Numeric
+          returns :number_quadrupled, [Float, Integer]
+          returns :number_quintupled, Numeric
+
+          def execute
+            result.number_tripled = number * 3
+            # [because the lines below are commented out, it fails to assign the promised `returns`]
+            # result.number_quadrupled = number * 4
+            # result.number_quintupled = number * 5
+          end
+        end
+      end
+
+      let(:action_instance) { BrokenMultiplyNumber.new(number: 101) }
+
+      it 'raises an error' do
+        expect { action_instance.run }.to raise_error(
+          ActiveActions::MissingResultValue,
+          <<~ERROR.squish)
+            BrokenMultiplyNumber failed to set all promised return values on its `result`. The
+            following were missing on the `result`: `number_quadrupled` (should be a Float or
+            Integer), `number_quintupled` (should be a Numeric).
+          ERROR
       end
     end
   end
