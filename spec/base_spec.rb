@@ -226,8 +226,6 @@ RSpec.describe ActiveActions::Base do
 
   context 'when an action class declares no `returns` or `fails_with`' do
     before do
-      stub_const('ApplicationAction', Class.new(ActiveActions::Base))
-      stub_const('User', Class.new(ActiveRecord::Base))
       stub_const('PrintUserEmail', Class.new(ApplicationAction))
 
       PrintUserEmail.class_eval do
@@ -246,6 +244,33 @@ RSpec.describe ActiveActions::Base do
     it 'does not error when running the action' do
       expect(action_instance).to receive(:puts).with("The user's email is davidjrunger@gmail.com.")
       expect { action_instance.run }.not_to raise_error
+    end
+  end
+
+  context 'when an action fails to implement #execute' do
+    before do
+      stub_const('AccidentallyDoNothing', Class.new(ApplicationAction))
+
+      AccidentallyDoNothing.class_eval do
+        requires :count, Integer
+
+        # [this class fails to implement an #execute instance method]
+      end
+    end
+
+    context 'when #run is called on an instance of the action' do
+      def run_action
+        AccidentallyDoNothing.new(count: 2).run
+      end
+
+      it 'raises an error about the failure to implement #execute' do
+        expect { run_action }.to raise_error(
+          ActiveActions::ExecuteNotImplemented,
+          <<~ERROR.squish)
+            All ActiveActions classes must implement an #execute instance method, but
+            AccidentallyDoNothing fails to do so.
+          ERROR
+      end
     end
   end
 end
