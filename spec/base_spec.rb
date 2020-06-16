@@ -131,6 +131,78 @@ RSpec.describe ActiveActions::Base do
             end
           end
         end
+
+        context 'when a required param is a Shaped::Hash' do
+          before do
+            stub_const('ActionWithShapedHashParam', Class.new(ApplicationAction))
+
+            ActionWithShapedHashParam.class_eval do
+              requires :message_params, Shaped::Hash('store_id' => Integer)
+            end
+          end
+
+          def initialize_action(params)
+            ActionWithShapedHashParam.new(params)
+          end
+
+          context 'when the action is initialized with a hash having the required shape' do
+            let(:params) { { message_params: { 'store_id' => 20 } } }
+
+            it 'does not raise an error' do
+              expect { initialize_action(params) }.not_to raise_error
+            end
+          end
+
+          context 'when the action is initialized with a hash not having the required shape' do
+            # store_id is supposed to be a String, not a Symbol, according to the shape definition
+            let(:params) { { message_params: { store_id: 20 } } }
+
+            it 'raises an error' do
+              expect { initialize_action(params) }.to raise_error(
+                ActiveActions::TypeMismatch,
+                <<~ERROR.squish)
+                  One or more required params are of the wrong type: `message_params` is expected to
+                  be a Hash shaped like { "store_id" => Integer }, but was `{:store_id=>20}`.
+                ERROR
+            end
+          end
+        end
+
+        context 'when a required param is a Shaped::Array' do
+          before do
+            stub_const('ActionWithShapedArrayParam', Class.new(ApplicationAction))
+
+            ActionWithShapedArrayParam.class_eval do
+              requires :numbers, Shaped::Array([Numeric])
+            end
+          end
+
+          def initialize_action(params)
+            ActionWithShapedArrayParam.new(params)
+          end
+
+          context 'when the action is initialized with an array having the required shape' do
+            let(:params) { { numbers: [2, 4, 8] } }
+
+            it 'does not raise an error' do
+              expect { initialize_action(params) }.not_to raise_error
+            end
+          end
+
+          context 'when the action is initialized with an array not having the required shape' do
+            # numbers is supposed to be an array of `Numeric`s, not `String`s
+            let(:params) { { numbers: %w[two four eight] } }
+
+            it 'raises an error' do
+              expect { initialize_action(params) }.to raise_error(
+                ActiveActions::TypeMismatch,
+                <<~ERROR.squish)
+                  One or more required params are of the wrong type: `numbers` is expected to be a
+                  Array shaped like [Numeric], but was `["two", "four", "eight"]`.
+                ERROR
+            end
+          end
+        end
       end
     end
 
