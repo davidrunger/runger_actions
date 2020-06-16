@@ -94,11 +94,16 @@ class ActiveActions::Base
 
   attr_reader :errors
 
-  def initialize(params)
+  # We can't specify keyword arguments for this method because we don't know which keywords/params
+  # the method will need to accept; that's defined by the user.
+  #
+  # rubocop:disable Style/OptionHash
+  def initialize(params = {})
     @params = params
     @errors = ActiveModel::Errors.new(self)
     validate_required_params!
   end
+  # rubocop:enable Style/OptionHash
 
   def run
     if !respond_to?(:execute)
