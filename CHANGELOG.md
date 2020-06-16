@@ -1,3 +1,7 @@
+## Unreleased
+### Fixed
+- Don't raise an error when running an action that doesn't have any `requires` / input params
+
 ## 0.3.0 - 2020-06-15
 ### Added
 - Add `ActiveActions::Base#run!` method that will raise `ActiveActions::InvalidParam` if there are

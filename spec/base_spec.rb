@@ -336,6 +336,40 @@ RSpec.describe ActiveActions::Base do
     end
   end
 
+  context 'when an action does not require any input params' do
+    before do
+      stub_const('PrintCurrentTime', Class.new(ApplicationAction))
+
+      PrintCurrentTime.class_eval do
+        # [note that this action class has no `requires`]
+
+        def execute
+          puts(Time.now)
+        end
+      end
+    end
+
+    context 'when instantiating the action without any params' do
+      let(:action_instance) { PrintCurrentTime.new }
+
+      it 'does not raise an error' do
+        expect { action_instance }.not_to raise_error
+      end
+
+      context 'when running the action' do
+        let(:run_action) { action_instance.run }
+
+        before do
+          expect(action_instance).to receive(:puts) # suppress `puts` from actually printing output
+        end
+
+        it 'does not raise an error' do
+          expect { run_action }.not_to raise_error
+        end
+      end
+    end
+  end
+
   context 'when an attempt is made to mutate a `result` outside of #execute' do
     def run_action_and_attempt_to_mutate_result
       result = DoubleNumber.new(number: 4).run
