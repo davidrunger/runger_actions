@@ -2,6 +2,9 @@
 ### Added
 - Prevent mutating a returned `result` from outside of the action
 
+### Maintenance
+- Don't install a specific `bundler` version in Travis
+
 ## 0.2.1 - 2020-06-15
 ### Added
 - Raise an explicit error if action class fails to implement #execute
