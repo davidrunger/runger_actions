@@ -9,4 +9,3 @@ notifications:
   email:
     on_success: never
     on_failure: always
-before_install: gem install bundler -v 2.1.4
