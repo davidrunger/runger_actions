@@ -1,4 +1,4 @@
-## Unreleased
+## 0.2.1 - 2020-06-15
 ### Added
 - Raise an explicit error if action class fails to implement #execute
 
