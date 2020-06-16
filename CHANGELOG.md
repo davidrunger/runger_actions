@@ -4,6 +4,9 @@
 - Add support for arrays of allowed classes (rather than only allowing a single allowed class type
   to be specified)
 
+### Maintenance
+- Only send Travis notifications when builds fail (not when they pass)
+
 ## 0.1.3 - 2020-06-14
 ### Fixed
 - Allow #result to return a result even w/o any returns or fails_with
