@@ -8,7 +8,7 @@ RSpec.describe ActiveActions::Base do
     stub_const('COST_PER_WIDGET', 1.5)
 
     ProcessOrder.class_eval do
-      requires :number_of_widgets, Integer # numericality: { greater_than: 0 }
+      requires :number_of_widgets, [Integer, BigDecimal] # numericality: { greater_than: 0 }
       requires :user, User do
         validates :email, presence: true, format: { with: /[a-z]+@[a-z]+\.[a-z]+/ }
         validates :phone, presence: true, format: { with: /[[:digit:]]{11}/ }
@@ -17,7 +17,7 @@ RSpec.describe ActiveActions::Base do
       returns :total_cost, Float # numericality: { greater_than: 0 }
       returns :incremented_phone_number, String # format: { with: /[[:digit]]{11}/ }
       returns :uppercased_email, String # format: { with: /[A-Z]+@[A-Z]+\.[A-Z]+/ }
-      returns :is_real_phone, [true, false]
+      returns :is_real_phone, [TrueClass, FalseClass]
 
       fails_with :bad_response_from_api
 
@@ -58,7 +58,10 @@ RSpec.describe ActiveActions::Base do
         let(:params) { { this_key_is_not_user: true, number_of_widgets: 2 } }
 
         it 'raises an error' do
-          expect { initialize_action(params) }.to raise_error(ActiveActions::MissingParam)
+          expect { initialize_action(params) }.to raise_error(
+            ActiveActions::MissingParam,
+            'Required param(s) `user` were not provided to the ProcessOrder action.',
+          )
         end
       end
 
@@ -67,7 +70,12 @@ RSpec.describe ActiveActions::Base do
           let(:params) { { user: 'This is not a `User`', number_of_widgets: 20 } }
 
           it 'raises an error' do
-            expect { initialize_action(params) }.to raise_error(ActiveActions::TypeMismatch)
+            expect { initialize_action(params) }.to raise_error(
+              ActiveActions::TypeMismatch,
+              <<~ERROR.squish)
+                One or more required params are of the wrong type: `user` is expected to be a User,
+                but was `"This is not a `User`"`, which is a String.
+              ERROR
           end
         end
 
@@ -133,9 +141,35 @@ RSpec.describe ActiveActions::Base do
 
   describe '::returns' do
     it "registers the specified return property with the class's registry" do
-      expect(ProcessOrder.promised_values).to include(total_cost: Float)
-      expect(ProcessOrder.promised_values).to include(incremented_phone_number: String)
-      expect(ProcessOrder.promised_values).to include(uppercased_email: String)
+      expect(ProcessOrder.promised_values).to include(total_cost: [Float])
+      expect(ProcessOrder.promised_values).to include(incremented_phone_number: [String])
+      expect(ProcessOrder.promised_values).to include(uppercased_email: [String])
+      expect(ProcessOrder.promised_values).to include(is_real_phone: [TrueClass, FalseClass])
+    end
+
+    describe 'Result writer methods' do
+      let(:result) { action_instance.result }
+      let(:new_phone_number) { '15551239877' }
+
+      it 'has writer methods to assign the `returns`ed values' do
+        expect {
+          result.incremented_phone_number = new_phone_number
+        }.to change {
+          result.instance_variable_get(:@incremented_phone_number)
+        }.from(nil).to(new_phone_number)
+      end
+
+      context 'when attempting to assign a return value of the wrong type' do
+        it 'has writer methods to assign the `returns`ed values' do
+          expect {
+            # this should raise, because `incremented_phone_number` is supposed to be a String
+            result.incremented_phone_number = Integer(new_phone_number)
+          }.to raise_error(ActiveActions::TypeMismatch, <<~ERROR.squish)
+            Attemted to assign `#{new_phone_number}` for `result.incremented_phone_number` ;
+            expected an instance of String but got an instance of Integer.
+          ERROR
+        end
+      end
     end
 
     describe 'Result reader methods' do

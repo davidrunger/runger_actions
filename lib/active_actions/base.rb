@@ -6,11 +6,12 @@ class ActiveActions::Base
   class << self
     extend Memoist
 
-    def requires(param_name, param_klass, &blk)
-      required_params[param_name] = param_klass
+    def requires(param_name, param_klasses, &blk)
+      param_klasses = Array(param_klasses)
+      required_params[param_name] = param_klasses
 
-      if (param_klass < ActiveRecord::Base) && blk.present?
-        register_validator_klass(param_name, param_klass, blk)
+      if (param_klasses.size == 1) && (param_klasses.first < ActiveRecord::Base) && blk.present?
+        register_validator_klass(param_name, param_klasses.first, blk)
       end
 
       define_reader_method(param_name)
@@ -30,10 +31,23 @@ class ActiveActions::Base
       validators[param_name] = validator_klass
     end
 
-    def returns(param_name, param_klass)
-      promised_values[param_name] = param_klass
+    def returns(param_name, param_klasses)
+      param_klasses = Array(param_klasses)
+      promised_values[param_name] = param_klasses
       result_klass.class_eval do
-        attr_accessor param_name
+        attr_reader param_name
+
+        define_method("#{param_name}=") do |value|
+          if param_klasses.none? { value.is_a?(_1) }
+            raise(ActiveActions::TypeMismatch, <<~ERROR.squish)
+              Attemted to assign `#{value.is_a?(String) ? value.inspect : value}` for
+              `result.#{param_name}` ; expected an instance of
+              #{param_klasses.map(&:name).join(' or ')} but got an instance of #{value.class}.
+            ERROR
+          end
+
+          instance_variable_set(:"@#{param_name}", value)
+        end
       end
     end
 
@@ -109,9 +123,33 @@ class ActiveActions::Base
   end
 
   def validate_required_params!
-    self.class.required_params.each do |param_name, param_klass|
-      raise(ActiveActions::MissingParam) unless @params.keys.include?(param_name)
-      raise(ActiveActions::TypeMismatch) unless @params[param_name].is_a?(param_klass)
+    missing_params = self.class.required_params.keys - @params.keys
+    if missing_params.any?
+      raise(ActiveActions::MissingParam, <<~ERROR.squish)
+        Required param(s) #{missing_params.map { "`#{_1}`" }.join(', ')} were not provided to
+        the #{self.class} action.
+      ERROR
+    end
+
+    type_mismatches = []
+    self.class.required_params.each do |param_name, param_klasses|
+      unless param_klasses.any? { @params[param_name].is_a?(_1) }
+        type_mismatches << [param_name, param_klasses, @params[param_name]]
+      end
+    end
+
+    if type_mismatches.any?
+      messages =
+        type_mismatches.map do |param_name, param_klasses, value|
+          <<~MESSAGE.squish
+            `#{param_name}` is expected to be a #{param_klasses.map(&:name).join(' or ')}, but was
+            `#{value.is_a?(String) ? value.inspect : value}`,
+            which is a #{value.class}
+          MESSAGE
+        end
+      raise(ActiveActions::TypeMismatch, <<~ERROR.squish)
+        One or more required params are of the wrong type: #{messages.join(' ; ')}.
+      ERROR
     end
   end
 end
