@@ -113,6 +113,14 @@ class ActiveActions::Base
     result
   end
 
+  def run!
+    if valid?
+      run
+    else
+      raise(ActiveActions::InvalidParam, @errors.full_messages.join(', '))
+    end
+  end
+
   def valid?
     run_custom_validations
     @errors.blank?
