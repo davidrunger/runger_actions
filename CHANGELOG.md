@@ -4,6 +4,7 @@
 
 ### Maintenance
 - Don't install a specific `bundler` version in Travis
+- Run tests on Travis via `bin/rspec` (rather than (implicitly) via `bundle exec rake`)
 
 ## 0.2.1 - 2020-06-15
 ### Added
