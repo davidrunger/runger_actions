@@ -1,4 +1,4 @@
-## Unreleased
+## 0.3.0 - 2020-06-15
 ### Added
 - Add `ActiveActions::Base#run!` method that will raise `ActiveActions::InvalidParam` if there are
   any ActiveRecord params provided to the action that fail any validation(s) specified for that
