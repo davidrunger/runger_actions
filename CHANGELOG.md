@@ -1,3 +1,7 @@
+## Unreleased
+### Added
+- Raise an explicit error if action class fails to implement #execute
+
 ## 0.2.0 - 2020-06-15
 ### Added
 - Add stricter type validations and better error messages for type validation failures

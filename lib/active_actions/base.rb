@@ -93,6 +93,13 @@ class ActiveActions::Base
   end
 
   def run
+    if !respond_to?(:execute)
+      raise(ActiveActions::ExecuteNotImplemented.new(<<~ERROR.squish))
+        All ActiveActions classes must implement an #execute instance method, but #{self.class}
+        fails to do so.
+      ERROR
+    end
+
     execute
     result
   end
