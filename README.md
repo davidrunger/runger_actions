@@ -1,3 +1,5 @@
+[![codecov](https://codecov.io/gh/davidrunger/active_actions/branch/master/graph/badge.svg)](https://codecov.io/gh/davidrunger/active_actions)
+
 # ActiveActions
 
 Organize and validate the business logic of your Rails application with this combined form object /
