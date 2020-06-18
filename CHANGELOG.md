@@ -1,3 +1,13 @@
+## Unreleased (0.6.0.alpha)
+### Breaking changes
+- Update `shaped` (which is used for param validation) from version 0.2.1 to 0.3.0, which has
+  breaking changes. For more details, see the [`shaped`
+  changelog](https://github.com/davidrunger/shaped/blob/master/CHANGELOG.md#030---2020-06-18).
+- For `requires`, _all_ type/shape descriptions (i.e. arguments `[1..]`) are now passed through the
+  `Shaped::Shape(...)` constructor method. (In most cases, this change will not have any effect,
+  because in most cases the type/shape description was a single class, and this change has no effect
+  in that case.)
+
 ## 0.5.1 - 2020-06-16
 ### Docs
 - Mention in README.md that `shaped` needs to be installed explicitly/manually as a dependency in the user's own

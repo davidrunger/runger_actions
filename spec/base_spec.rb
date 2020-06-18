@@ -19,7 +19,7 @@ RSpec.describe ActiveActions::Base do
     end
 
     ProcessOrder.class_eval do
-      requires :number_of_widgets, [Integer, BigDecimal] # numericality: { greater_than: 0 }
+      requires :number_of_widgets, Integer, BigDecimal # numericality: { greater_than: 0 }
       requires :user, User do
         validates :email, presence: true, format: { with: /[a-z]+@[a-z]+\.[a-z]+/ }
         validates :phone, presence: true, format: { with: /[[:digit:]]{11}/ }
@@ -84,8 +84,8 @@ RSpec.describe ActiveActions::Base do
             expect { initialize_action(params) }.to raise_error(
               ActiveActions::TypeMismatch,
               <<~ERROR.squish)
-                One or more required params are of the wrong type: `user` is expected to be a User,
-                but was `"This is not a `User`"`, which is a String.
+                One or more required params are of the wrong type: `user` is expected to be shaped
+                like User, but was `"This is not a `User`"`.
               ERROR
           end
         end
@@ -132,12 +132,12 @@ RSpec.describe ActiveActions::Base do
           end
         end
 
-        context 'when a required param is a Shaped::Hash' do
+        context 'when a required param is a hash shape description' do
           before do
             stub_const('ActionWithShapedHashParam', Class.new(ApplicationAction))
 
             ActionWithShapedHashParam.class_eval do
-              requires :message_params, Shaped::Hash('store_id' => Integer)
+              requires :message_params, 'store_id' => Integer
             end
           end
 
@@ -162,18 +162,18 @@ RSpec.describe ActiveActions::Base do
                 ActiveActions::TypeMismatch,
                 <<~ERROR.squish)
                   One or more required params are of the wrong type: `message_params` is expected to
-                  be a Hash shaped like { "store_id" => Integer }, but was `{:store_id=>20}`.
+                  be shaped like { "store_id" => Integer }, but was `{:store_id=>20}`.
                 ERROR
             end
           end
         end
 
-        context 'when a required param is a Shaped::Array' do
+        context 'when a required param is an array shape description' do
           before do
             stub_const('ActionWithShapedArrayParam', Class.new(ApplicationAction))
 
             ActionWithShapedArrayParam.class_eval do
-              requires :numbers, Shaped::Array([Numeric])
+              requires :numbers, [Numeric]
             end
           end
 
@@ -197,8 +197,8 @@ RSpec.describe ActiveActions::Base do
               expect { initialize_action(params) }.to raise_error(
                 ActiveActions::TypeMismatch,
                 <<~ERROR.squish)
-                  One or more required params are of the wrong type: `numbers` is expected to be a
-                  Array shaped like [Numeric], but was `["two", "four", "eight"]`.
+                  One or more required params are of the wrong type: `numbers` is expected to be
+                  shaped like [Numeric], but was `["two", "four", "eight"]`.
                 ERROR
             end
           end

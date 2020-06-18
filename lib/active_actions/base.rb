@@ -6,17 +6,16 @@ class ActiveActions::Base
   class << self
     extend Memoist
 
-    def requires(param_name, param_klasses, &blk)
-      param_klasses = Array(param_klasses)
-      required_params[param_name] = param_klasses
+    def requires(param_name, *shape_descriptions, &blk)
+      required_params[param_name] = Shaped::Shape(*shape_descriptions)
 
+      shape_description = shape_descriptions.first if shape_descriptions.size == 1
       if (
-        (param_klasses.size == 1) &&
-          param_klasses.first.is_a?(Class) &&
-          (param_klasses.first < ActiveRecord::Base) &&
-          blk.present?
+        shape_description.is_a?(Class) &&
+        (shape_description < ActiveRecord::Base) &&
+        blk.present?
       )
-        register_validator_klass(param_name, param_klasses.first, blk)
+        register_validator_klass(param_name, shape_description, blk)
       end
 
       define_reader_method(param_name)
@@ -176,7 +175,6 @@ class ActiveActions::Base
     end
   end
 
-  # rubocop:disable Metrics/CyclomaticComplexity, Metrics/MethodLength, Metrics/PerceivedComplexity
   def validate_required_params!
     missing_params = self.class.required_params.keys - @params.keys
     if missing_params.any?
@@ -187,25 +185,19 @@ class ActiveActions::Base
     end
 
     type_mismatches = []
-    self.class.required_params.each do |param_name, param_klasses|
+    self.class.required_params.each do |param_name, shape|
       value = @params[param_name]
-      if param_klasses.any? { _1.is_a?(Shaped::Shape) }
-        if param_klasses.none? { _1.matched_by?(value) }
-          type_mismatches << [param_name, param_klasses, value]
-        end
-      elsif !param_klasses.any? { value.is_a?(_1) }
-        type_mismatches << [param_name, param_klasses, value]
+      if !shape.matched_by?(value)
+        type_mismatches << [param_name, shape, value]
       end
     end
 
     if type_mismatches.any?
       messages =
-        type_mismatches.map do |param_name, param_klasses, value|
-          actual_klass_message =
-            param_klasses.none? { _1.is_a?(Shaped::Shape) } ? ", which is a #{value.class}" : ''
+        type_mismatches.map do |param_name, shape, value|
           <<~MESSAGE.squish
-            `#{param_name}` is expected to be a #{param_klasses.map(&:to_s).join(' or ')}, but was
-            `#{value.is_a?(String) ? value.inspect : value}`#{actual_klass_message}
+            `#{param_name}` is expected to be shaped like #{shape}, but was
+            `#{value.is_a?(String) ? value.inspect : value}`
           MESSAGE
         end
       raise(ActiveActions::TypeMismatch, <<~ERROR.squish)
@@ -213,5 +205,4 @@ class ActiveActions::Base
       ERROR
     end
   end
-  # rubocop:enable Metrics/CyclomaticComplexity, Metrics/MethodLength, Metrics/PerceivedComplexity
 end
