@@ -1,4 +1,4 @@
-## Unreleased (0.6.0.alpha)
+## v0.6.0 (2020-06-18)
 ### Breaking changes
 - Update `shaped` (which is used for param validation) from version 0.2.1 to 0.3.0, which has
   breaking changes. For more details, see the [`shaped`
