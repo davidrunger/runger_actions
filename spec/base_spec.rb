@@ -323,6 +323,12 @@ RSpec.describe ActiveActions::Base do
             to change { action_instance.result.bad_response_from_api? }.
             from(false).to(true)
         end
+
+        it 'causes the #success? method to return false' do
+          expect { execute_with_failure }.
+            to change { action_instance.result.success? }.
+            from(true).to(false)
+        end
       end
     end
   end
