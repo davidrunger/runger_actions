@@ -1,4 +1,4 @@
-## Unreleased
+## v0.6.1 (2020-06-18)
 ### Maintenance
 - Add test coverage reporting (via `codecov` and `simplecov`)
 
