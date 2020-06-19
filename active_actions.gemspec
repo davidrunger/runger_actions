@@ -29,5 +29,5 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency 'memoist', '~> 0.16'
   spec.add_runtime_dependency 'rails', '~> 6.0'
-  spec.add_runtime_dependency 'shaped', '~> 0.3.0'
+  spec.add_runtime_dependency 'shaped', '~> 0.4.0'
 end
