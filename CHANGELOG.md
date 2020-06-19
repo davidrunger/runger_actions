@@ -1,4 +1,4 @@
-## Unreleased (0.7.0.alpha)
+## v0.7.0 (2020-06-18)
 ### Added
 - Bump `shaped` from 0.3.2 to 0.4.0, which adds support for ActiveModel-style validations of
   `Shaped::Shape::Class` shapes. So now you can do something like this:
