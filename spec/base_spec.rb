@@ -217,6 +217,42 @@ RSpec.describe ActiveActions::Base do
             end
           end
         end
+
+        context 'when a required param is a Proc' do
+          before do
+            stub_const('ActionWithProcParamDescription', Class.new(ApplicationAction))
+
+            ActionWithProcParamDescription.class_eval do
+              requires :even_number, ->(number) { number.is_a?(Integer) && number.even? }
+            end
+          end
+
+          def initialize_action(params)
+            ActionWithProcParamDescription.new(params)
+          end
+
+          context 'when the action is initialized with an object that meets the proc test' do
+            let(:params) { { even_number: 808 } }
+
+            it 'does not raise an error' do
+              expect { initialize_action(params) }.not_to raise_error
+            end
+          end
+
+          context "when the action is initialized with an object that doesn't meet the proc test" do
+            let(:params) { { even_number: 809 } }
+
+            it 'raises an error' do
+              expect { initialize_action(params) }.to raise_error(
+                ActiveActions::TypeMismatch,
+                Regexp.new(<<~ERROR.squish))
+                  One or more required params are of the wrong type: `even_number` is expected to be
+                  shaped like Proc test defined at
+                  .*/active_actions/spec/base_spec\\.rb:\\d+, but was `809`.
+                ERROR
+            end
+          end
+        end
       end
     end
 
