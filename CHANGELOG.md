@@ -1,3 +1,16 @@
+## Unreleased (v0.8.0.alpha)
+### Added
+- Bump `shaped` from 0.4.0 to 0.5.0, which adds support for a new `Shaped::Shape::Callable` shape
+  description, so you can now do something like this:
+
+```rb
+class ProcessOrder < ApplicationAction
+  # allow ordering only 2, 4, or 6 widgets
+  requires :number_of_widgets, ->(num) { num.is_a?(Integer) && (2..6).cover?(num) && num.even? }
+  # [...]
+end
+```
+
 ## v0.7.0 (2020-06-18)
 ### Added
 - Bump `shaped` from 0.3.2 to 0.4.0, which adds support for ActiveModel-style validations of
