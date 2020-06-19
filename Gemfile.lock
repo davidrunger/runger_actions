@@ -9,18 +9,19 @@ GIT
 
 GIT
   remote: https://github.com/davidrunger/shaped.git
-  revision: c06e6f2a64787b15af174877686d61cd067bdbde
+  revision: 9ef4b187ce4b31fc6938e76d83d25a1affb2ce27
   specs:
-    shaped (0.3.0)
+    shaped (0.4.0)
+      activemodel (~> 6.0)
       activesupport (~> 6.0)
 
 PATH
   remote: .
   specs:
-    active_actions (0.6.1)
+    active_actions (0.7.0.alpha)
       memoist (~> 0.16)
       rails (~> 6.0)
-      shaped (~> 0.3.0)
+      shaped (~> 0.4.0)
 
 GEM
   remote: https://rubygems.org/

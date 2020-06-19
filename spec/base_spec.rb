@@ -19,7 +19,7 @@ RSpec.describe ActiveActions::Base do
     end
 
     ProcessOrder.class_eval do
-      requires :number_of_widgets, Integer, BigDecimal # numericality: { greater_than: 0 }
+      requires :number_of_widgets, Integer, BigDecimal, numericality: { greater_than: 0 }
       requires :user, User do
         validates :email, presence: true, format: { with: /[a-z]+@[a-z]+\.[a-z]+/ }
         validates :phone, presence: true, format: { with: /[[:digit:]]{11}/ }
@@ -93,6 +93,20 @@ RSpec.describe ActiveActions::Base do
         context "when the param's class is of the required class" do
           let(:params) { { user: user, number_of_widgets: 10 } }
           let(:user) { User.new(email: 'davidjrunger@gmail.com') }
+
+          context 'when a required param fails to meet one or more specified validations' do
+            let(:params) { { user: user, number_of_widgets: -20 } } # -20 violates `greater_than: 0`
+
+            it 'raises an error' do
+              expect { initialize_action(params) }.to raise_error(
+                ActiveActions::TypeMismatch,
+                <<~ERROR.squish)
+                  One or more required params are of the wrong type: `number_of_widgets` is expected
+                  to be shaped like Integer validating {:numericality=>{:greater_than=>0}} OR
+                  BigDecimal validating {:numericality=>{:greater_than=>0}}, but was `-20`.
+                ERROR
+            end
+          end
 
           context 'when the param has a custom validation block' do
             context 'when the provided ActiveRecord instance does not meet those validations' do

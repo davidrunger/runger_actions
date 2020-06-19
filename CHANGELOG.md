@@ -1,3 +1,15 @@
+## Unreleased (0.7.0.alpha)
+### Added
+- Bump `shaped` from 0.3.2 to 0.4.0, which adds support for ActiveModel-style validations of
+  `Shaped::Shape::Class` shapes. So now you can do something like this:
+
+```rb
+class ProcessOrder < ApplicationAction
+  requires :number_of_widgets, Integer, numericality: { greater_than: 0, less_than: 1_000 }
+  # [...]
+end
+```
+
 ## v0.6.1 (2020-06-18)
 ### Maintenance
 - Add test coverage reporting (via `codecov` and `simplecov`)
