@@ -1,3 +1,7 @@
+## Unreleased (0.10.1.alpha)
+### Docs
+- Add example of controller code using an action
+
 ## 0.10.0 (2020-06-19)
 ### Added
 - Validate (at the time of assignment to the `result`) the "shape" of all `returns`ed result values
