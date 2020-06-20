@@ -1,4 +1,4 @@
-## Unreleased (v0.10.2.alpha)
+## v0.10.2 (2020-06-20)
 ### Docs
 - Add Travis build status badge to README.md
 
