@@ -9,9 +9,9 @@ GIT
 
 GIT
   remote: https://github.com/davidrunger/shaped.git
-  revision: 8ce2c23759bc52d809940605681c1c051262f345
+  revision: 73a1ab3666b047e268d24ae189e941e389b2d62f
   specs:
-    shaped (0.5.0)
+    shaped (0.5.8)
       activemodel (~> 6.0)
       activesupport (~> 6.0)
 

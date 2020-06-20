@@ -1,3 +1,7 @@
+## Unreleased
+### Dependencies
+- Bump `shaped` from 0.5.0 to 0.5.8
+
 ## v0.8.0 (2020-06-19)
 ### Added
 - Bump `shaped` from 0.4.0 to 0.5.0, which adds support for a new `Shaped::Shape::Callable` shape
