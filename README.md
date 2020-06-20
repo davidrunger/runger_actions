@@ -70,11 +70,18 @@ class SendTextMessage < ApplicationAction
     validates :phone, presence: true, format: { with: /[[:digit:]]{11}/ }
   end
 
+  returns :cost, Float, numericality: { greater_than_or_equal_to: 0 }
+  returns :nexmo_id, String, presence: true
+
   fails_with :nexmo_request_failed
 
   def execute
     nexmo_response = NexmoClient.send_text!(number: user.phone, message: message_body)
-    if !nexmo_response.success?
+    if nexmo_response.success?
+      nexmo_response_data = nexmo_response.parsed_response
+      result.cost = nexmo_response_data['cost']
+      result.nexmo_id = nexmo_response_data['message-id']
+    else
       result.nexmo_request_failed!
     end
   end
@@ -106,6 +113,7 @@ class Api::TextMessagesController < ApplicationController
 
     result = send_message_action.run
     if result.success?
+      Rails.logger.info("Sent message with Nexmo id #{result.nexmo_id} at a cost of #{result.cost}")
       head :created
     elsif result.nexmo_request_failed?
       render json: { error: 'An error occurred when sending the text message' }, status: 500
