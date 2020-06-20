@@ -1,4 +1,5 @@
 [![codecov](https://codecov.io/gh/davidrunger/active_actions/branch/master/graph/badge.svg)](https://codecov.io/gh/davidrunger/active_actions)
+[![Build Status](https://travis-ci.com/davidrunger/active_actions.svg?branch=master)](https://travis-ci.com/davidrunger/active_actions)
 
 # ActiveActions
 
