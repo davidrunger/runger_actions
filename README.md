@@ -73,29 +73,10 @@ class SendTextMessage < ApplicationAction
   fails_with :nexmo_request_failed
 
   def execute
-    if ENV['NEXMO_API_KEY'].present?
-      send_via_nexmo!
-    else
-      log_message
-    end
-  end
-
-  private
-
-  def send_via_nexmo!
     nexmo_response = NexmoClient.send_text!(number: user.phone, message: message_body)
     if !nexmo_response.success?
       result.nexmo_request_failed!
     end
-  end
-
-  def log_message
-    puts(<<~LOG)
-      NEXMO_API_KEY is blank; message would have been:
-      ~~~~~~~~~~~~~~~~~~~~~
-      #{message_body}
-      =====================
-    LOG
   end
 end
 ```
