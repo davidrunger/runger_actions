@@ -1,4 +1,4 @@
-## Unreleased (0.10.1.alpha)
+## v0.10.1 (2020-06-20)
 ### Docs
 - Add example of controller code using an action
 - Add a table of contents to README.md
