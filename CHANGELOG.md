@@ -4,6 +4,7 @@
 - Add a table of contents to README.md
 - Simplify README.md action example by removing check for NEXMO_API_KEY
 - Illustrate `returns` in README.md example
+- Add more detailed documentation/examples to README.md
 
 ## 0.10.0 (2020-06-19)
 ### Added
