@@ -2,6 +2,7 @@
 ### Docs
 - Add example of controller code using an action
 - Add a table of contents to README.md
+- Simplify README.md action example by removing check for NEXMO_API_KEY
 
 ## 0.10.0 (2020-06-19)
 ### Added
