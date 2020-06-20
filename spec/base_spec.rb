@@ -25,10 +25,10 @@ RSpec.describe ActiveActions::Base do
         validates :phone, presence: true, format: { with: /[[:digit:]]{11}/ }
       end
 
-      returns :total_cost, Float # numericality: { greater_than: 0 }
-      returns :incremented_phone_number, String # format: { with: /[[:digit]]{11}/ }
-      returns :uppercased_email, String # format: { with: /[A-Z]+@[A-Z]+\.[A-Z]+/ }
-      returns :is_real_phone, [TrueClass, FalseClass]
+      returns :total_cost, Float, numericality: { greater_than: 0 }
+      returns :incremented_phone_number, String, format: { with: /[[:digit:]]{11}/ }
+      returns :uppercased_email, String, format: { with: /[A-Z]+@[A-Z.]+/, allow_blank: true }
+      returns :is_real_phone, true, false
 
       fails_with :bad_response_from_api
 
@@ -274,10 +274,13 @@ RSpec.describe ActiveActions::Base do
 
   describe '::returns' do
     it "registers the specified return property with the class's registry" do
-      expect(ProcessOrder.promised_values).to include(total_cost: [Float])
-      expect(ProcessOrder.promised_values).to include(incremented_phone_number: [String])
-      expect(ProcessOrder.promised_values).to include(uppercased_email: [String])
-      expect(ProcessOrder.promised_values).to include(is_real_phone: [TrueClass, FalseClass])
+      expect(ProcessOrder.promised_values.transform_values(&:to_s)).to eq(
+        incremented_phone_number: 'String validating {:format=>{:with=>/[[:digit:]]{11}/}}',
+        is_real_phone: 'true OR false',
+        total_cost: 'Float validating {:numericality=>{:greater_than=>0}}',
+        uppercased_email:
+          'String validating {:format=>{:with=>/[A-Z]+@[A-Z.]+/, :allow_blank=>true}}',
+      )
     end
 
     describe 'Result writer methods' do
@@ -293,13 +296,27 @@ RSpec.describe ActiveActions::Base do
       end
 
       context 'when attempting to assign a return value of the wrong type' do
-        it 'has writer methods to assign the `returns`ed values' do
+        it 'raises an error' do
           expect {
             # this should raise, because `incremented_phone_number` is supposed to be a String
             result.incremented_phone_number = Integer(new_phone_number)
           }.to raise_error(ActiveActions::TypeMismatch, <<~ERROR.squish)
-            Attemted to assign `#{new_phone_number}` for `result.incremented_phone_number` ;
-            expected an instance of String but got an instance of Integer.
+            Attemted to assign an invalid value for `result.incremented_phone_number` ; expected an
+            object shaped like String validating {:format=>{:with=>/[[:digit:]]{11}/}} but got
+            15551239877
+          ERROR
+        end
+      end
+
+      context 'when attempting to assign a return value that is of the wrong shape' do
+        it 'raises an error' do
+          expect {
+            # this should raise, because `uppercased_email` is validated to have uppercase letters
+            result.uppercased_email = 'a@b.c'
+          }.to raise_error(ActiveActions::TypeMismatch, <<~ERROR.squish)
+            Attemted to assign an invalid value for `result.uppercased_email` ; expected an object
+            shaped like String validating {:format=>{:with=>/[A-Z]+@[A-Z.]+/, :allow_blank=>true}}
+            but got "a@b.c"
           ERROR
         end
       end
@@ -323,7 +340,7 @@ RSpec.describe ActiveActions::Base do
           requires :number, Numeric
 
           returns :number_tripled, Numeric
-          returns :number_quadrupled, [Float, Integer]
+          returns :number_quadrupled, Float, Integer
           returns :number_quintupled, Numeric
 
           def execute
@@ -342,8 +359,8 @@ RSpec.describe ActiveActions::Base do
           ActiveActions::MissingResultValue,
           <<~ERROR.squish)
             BrokenMultiplyNumber failed to set all promised return values on its `result`. The
-            following were missing on the `result`: `number_quadrupled` (should be a Float or
-            Integer), `number_quintupled` (should be a Numeric).
+            following were missing on the `result`: `number_quadrupled` (should be shaped like
+            Float OR Integer), `number_quintupled` (should be shaped like Numeric).
           ERROR
       end
     end
