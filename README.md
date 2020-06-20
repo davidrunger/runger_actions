@@ -5,7 +5,24 @@
 Organize and validate the business logic of your Rails application with this combined form object /
 command object.
 
-## Installation
+# Table of Contents
+
+<!--ts-->
+   * [ActiveActions](#activeactions)
+   * [Table of Contents](#table-of-contents)
+   * [Installation](#installation)
+   * [Usage](#usage)
+      * [Setup](#setup)
+      * [Define your actions](#define-your-actions)
+      * [Invoke your actions](#invoke-your-actions)
+   * [Development](#development)
+   * [License](#license)
+
+<!-- Added by: david, at: Sat Jun 20 00:39:48 PDT 2020 -->
+
+<!--te-->
+
+# Installation
 
 Add the gem to your application's `Gemfile`. Because the gem is not released via RubyGems, you will
 need to install it from GitHub.
@@ -27,7 +44,9 @@ And then execute:
 $ bundle install
 ```
 
-## Usage
+# Usage
+
+## Setup
 
 Create a new subdirectory within the `app/` directory in your Rails app: `app/actions/`.
 
@@ -39,7 +58,9 @@ class ApplicationAction < ActiveActions::Base
 end
 ```
 
-Then, you can start creating actions. Here's an example:
+## Define your actions
+
+Then, you can start defining actions. Here's an example:
 ```rb
 # app/actions/send_text_message.rb
 
@@ -79,9 +100,10 @@ class SendTextMessage < ApplicationAction
 end
 ```
 
-Then, you can use that action anywhere in your code, such as in a controller, as illustrated below.
-(The most likely place to use an action is in a controller, but you can execute an action from
-anywhere in your codebase; you are not limited to invoking actions from controller actions.)
+## Invoke your actions
+
+Once you have defined one or more actions, you can invoke the action(s) anywhere in your code, such
+as in a controller, as illustrated below.
 
 ```rb
 # app/controllers/api/text_messages_controller.rb
@@ -111,7 +133,14 @@ class Api::TextMessagesController < ApplicationController
 end
 ```
 
-## Development
+You aren't limited to invoking actions from a controller action, though; you can invoke an action
+from anywhere in your code.
+
+One good place to invoke an action is from within *another* action. For a complex or multi-step
+process, you might want to break that process down into several "sub actions" that can be invoked
+from the `#execute` method of a coordinating "parent action".
+
+# Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `bin/rspec` to run
 the tests. You can also run `bin/console` for an interactive prompt that will allow you to
@@ -122,6 +151,6 @@ version, update the version number in `version.rb`, `bundle install`, update `CH
 the changes with a message like `Prepare to release v0.1.1`, and then run `bin/release`, which will
 create a git tag for the version and push git commits and tags.
 
-## License
+# License
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
