@@ -35,9 +35,9 @@ class ActiveActions::Base
       validators[param_name] = validator_klass
     end
 
-    def returns(param_name, param_klasses)
-      param_klasses = Array(param_klasses)
-      promised_values[param_name] = param_klasses
+    def returns(param_name, *shape_descriptions)
+      shape = Shaped::Shape(*shape_descriptions)
+      promised_values[param_name] = shape
       result_klass.class_eval do
         define_method(param_name) do
           @return_values[param_name]
@@ -52,11 +52,10 @@ class ActiveActions::Base
             ERROR
           end
 
-          if param_klasses.none? { value.is_a?(_1) }
+          if !shape.matched_by?(value)
             raise(ActiveActions::TypeMismatch, <<~ERROR.squish)
-              Attemted to assign `#{value.is_a?(String) ? value.inspect : value}` for
-              `result.#{param_name}` ; expected an instance of
-              #{param_klasses.map(&:name).join(' or ')} but got an instance of #{value.class}.
+              Attemted to assign an invalid value for `result.#{param_name}` ; expected an object
+              shaped like #{shape} but got #{value.inspect}
             ERROR
           end
 
@@ -150,9 +149,8 @@ class ActiveActions::Base
     if missing_return_values.any?
       violation_messages =
         missing_return_values.map do |missing_return_value|
-          expected_klasses = self.class.promised_values[missing_return_value]
-          expected_klasses_string = expected_klasses.map(&:name).join(' or ')
-          "`#{missing_return_value}` (should be a #{expected_klasses_string})"
+          expected_shape = self.class.promised_values[missing_return_value]
+          "`#{missing_return_value}` (should be shaped like #{expected_shape})"
         end
 
       raise(ActiveActions::MissingResultValue, <<~ERROR.squish)

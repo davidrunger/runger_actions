@@ -1,3 +1,10 @@
+## Unreleased (0.10.0.alpha)
+### Added
+- Validate (at the time of assignment to the `result`) the "shape" of all `returns`ed result values
+
+### Changed
+- Tweaked the wording/formatting of some validation failure error messages.
+
 ## v0.9.0 (2020-06-19)
 ### Dependencies
 - Bump `shaped` from 0.5.8 to 0.6.0
