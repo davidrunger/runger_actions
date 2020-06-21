@@ -1,3 +1,7 @@
+## Unreleased (v0.11.0.alpha)
+### Fixed
+- Only check for promised return values if the action is successful
+
 ## v0.10.2 (2020-06-20)
 ### Docs
 - Add Travis build status badge to README.md
