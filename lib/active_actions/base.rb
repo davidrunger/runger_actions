@@ -120,7 +120,7 @@ class ActiveActions::Base
 
     execute
     result.lock!
-    verify_promised_return_values!
+    verify_promised_return_values! if result.success?
     result
   end
 
