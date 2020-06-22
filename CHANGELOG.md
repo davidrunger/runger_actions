@@ -1,3 +1,7 @@
+## Unreleased
+### Changed
+- Source `shaped` from RubyGems
+
 ## v0.11.0 (2020-06-21)
 ### Fixed
 - Only check for promised return values if the action is successful
