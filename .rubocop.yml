@@ -41,6 +41,8 @@ Layout/SpaceBeforeSemicolon:
   Enabled: false
 Layout/SpaceInsideHashLiteralBraces:
   EnforcedStyle: space
+Lint/ConstantResolution:
+  Enabled: false
 Lint/RedundantSplatExpansion:
   Enabled: false
 Metrics/AbcSize:
