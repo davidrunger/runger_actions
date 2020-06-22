@@ -31,10 +31,12 @@ command object.
             * [All promised values must be returned](#all-promised-values-must-be-returned)
             * [Validating the "shape" of returned values](#validating-the-shape-of-returned-values)
          * [::fails_with](#fails_with)
+   * [Alternatives](#alternatives)
+   * [Status / Context](#status--context)
    * [Development](#development)
    * [License](#license)
 
-<!-- Added by: david, at: Sat Jun 20 05:54:08 PDT 2020 -->
+<!-- Added by: david, at: Mon Jun 22 09:02:48 PDT 2020 -->
 
 <!--te-->
 
@@ -523,6 +525,31 @@ In this case, we entered the `else` branch of the action's `#execute` method and
 `fails_with :number_was_too_small` declaration). Since we called the `result.number_was_too_small!`
 method, indicating that that failure mode occurred when executing the action, `#success?` returns
 `false` and `#number_was_too_small?` returns `true`.
+
+# Alternatives
+
+This project is not the first of its kind!
+
+Here are a few similar projects:
+* [`interactor`](https://github.com/collectiveidea/interactor)
+* [`active_interaction`](https://github.com/AaronLasseigne/active_interaction)
+* [`mutations`](https://github.com/cypriss/mutations)
+* [`service_actor`](https://github.com/sunny/actor)
+
+# Status / Context
+
+I wouldn't recommend using this gem in production. It's very new (i.e. probably rough around the
+edges, subject to significant changes at a relatively rapid rate, and arguably somewhat feature
+incomplete) and I am not committed to maintaing the gem.
+
+I mostly built this gem because I wasn't _quite_ satisfied with any of the above alternatives that I
+knew about at the time that I decided to start building it. I built this gem mostly to scratch my
+own itch and for the sake of exploring this problem space a little bit.
+
+I am actively using this gem in the small Rails application that hosts my personal website and apps;
+you can check out its [`app/actions/`
+directory](https://github.com/davidrunger/david_runger/tree/master/app/actions) if you are
+interested in seeing some real-world use cases.
 
 # Development
 
