@@ -1,4 +1,4 @@
-## Unreleased
+## v0.13.1 (2020-06-22)
 ### Docs
 - List some alternatives
 - Add detail about the project status/context
