@@ -1,4 +1,4 @@
-## Unreleased
+## v0.12.0 (2020-06-22)
 ### Changed
 - Source `shaped` from RubyGems
 
