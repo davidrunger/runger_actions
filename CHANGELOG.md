@@ -1,3 +1,7 @@
+## Unreleased
+### Dependencies
+- Bump `shaped` from 0.6.3 to 0.6.4
+
 ## v0.12.0 (2020-06-22)
 ### Changed
 - Source `shaped` from RubyGems
