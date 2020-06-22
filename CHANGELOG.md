@@ -2,6 +2,9 @@
 ### Changed
 - Source `shaped` from RubyGems
 
+### Docs
+- Add more badges to README.md (Dependabot; GitHub tag/version)
+
 ## v0.11.0 (2020-06-21)
 ### Fixed
 - Only check for promised return values if the action is successful
