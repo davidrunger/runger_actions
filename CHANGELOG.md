@@ -1,3 +1,7 @@
+## Unreleased
+### Dependencies
+- Bump `shaped` from 0.6.4 to 0.7.0
+
 ## v0.13.1 (2020-06-22)
 ### Docs
 - List some alternatives
