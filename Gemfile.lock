@@ -10,10 +10,10 @@ GIT
 PATH
   remote: .
   specs:
-    active_actions (0.13.1)
+    active_actions (0.13.2.alpha)
       memoist (~> 0.16)
       rails (~> 6.0)
-      shaped (~> 0.6.0)
+      shaped (~> 0.7.0)
 
 GEM
   remote: https://rubygems.org/
@@ -198,7 +198,7 @@ GEM
     rubocop-ast (0.0.3)
       parser (>= 2.7.0.1)
     ruby-progressbar (1.10.1)
-    shaped (0.6.4)
+    shaped (0.7.0)
       activemodel (~> 6.0)
       activesupport (~> 6.0)
     shellany (0.0.1)
