@@ -16,7 +16,7 @@ GIT
 PATH
   remote: .
   specs:
-    active_actions (0.13.3.alpha)
+    active_actions (0.13.3)
       memoist (~> 0.16)
       rails (~> 6.0)
       shaped (~> 0.7.0)
