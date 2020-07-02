@@ -16,7 +16,7 @@ GIT
 PATH
   remote: .
   specs:
-    active_actions (0.13.2)
+    active_actions (0.13.3.alpha)
       memoist (~> 0.16)
       rails (~> 6.0)
       shaped (~> 0.7.0)
@@ -233,7 +233,7 @@ GEM
     websocket-driver (0.7.2)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    zeitwerk (2.3.0)
+    zeitwerk (2.3.1)
 
 PLATFORMS
   ruby
