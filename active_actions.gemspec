@@ -27,7 +27,7 @@ Gem::Specification.new do |spec|
     end
   spec.require_paths = ['lib']
 
-  spec.add_runtime_dependency 'memoist', '~> 0.16'
-  spec.add_runtime_dependency 'rails', '~> 6.0'
-  spec.add_runtime_dependency 'shaped', '~> 0.7.0'
+  spec.add_runtime_dependency('memoist', '~> 0.16')
+  spec.add_runtime_dependency('rails', '~> 6.0')
+  spec.add_runtime_dependency('shaped', '~> 0.7.0')
 end
