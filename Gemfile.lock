@@ -209,7 +209,7 @@ GEM
     rubocop-rspec (1.42.0)
       rubocop (>= 0.87.0)
     ruby-progressbar (1.10.1)
-    shaped (0.7.1)
+    shaped (0.7.2)
       activemodel (~> 6.0)
       activesupport (~> 6.0)
     shellany (0.0.1)
