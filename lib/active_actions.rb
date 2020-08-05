@@ -9,7 +9,7 @@ require 'active_model'
 require 'active_record'
 require 'memoist'
 require 'shaped'
-Dir[File.dirname(__FILE__) + '/**/*.rb'].sort.each { |file| require file }
+Dir["#{File.dirname(__FILE__)}/**/*.rb"].sort.each { |file| require file }
 
 class ActiveActions::ExecuteNotImplemented < ActiveActions::Error ; end
 class ActiveActions::InvalidParam < ActiveActions::Error ; end
