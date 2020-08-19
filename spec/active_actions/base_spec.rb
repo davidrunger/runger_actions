@@ -285,7 +285,6 @@ RSpec.describe ActiveActions::Base do
       )
     end
 
-    # rubocop:disable RSpec/MultipleMemoizedHelpers
     describe 'Result writer methods' do
       let(:result) { action_instance.result }
       let(:new_phone_number) { '15551239877' }
@@ -324,7 +323,6 @@ RSpec.describe ActiveActions::Base do
         end
       end
     end
-    # rubocop:enable RSpec/MultipleMemoizedHelpers
 
     describe 'Result reader methods' do
       context 'when #execute completes successfully and assigns one or more values to the result' do
