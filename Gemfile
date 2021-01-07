@@ -18,6 +18,7 @@ group :development, :test do
   gem 'rake', '~> 13.0'
   gem 'rubocop', require: false
   gem 'rubocop-performance', require: false
+  gem 'rubocop-rake', require: false
   gem 'rubocop-rspec', require: false
   gem 'runger_style', github: 'davidrunger/runger_style', require: false
 end
