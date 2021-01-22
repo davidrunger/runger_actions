@@ -1,3 +1,7 @@
+## Unreleased
+### Added
+- Add Rails generator (e.g. `bin/rails g active_actions:action Users::Create`)
+
 ## v0.13.3 (2020-07-02)
 ### Internal
 - Source Rubocop rules/config from `runger_style` gem

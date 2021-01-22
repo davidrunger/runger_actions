@@ -3,3 +3,8 @@ inherit_gem:
     - rulesets/default.yml # gem 'rubocop'
     - rulesets/performance.yml # gem 'rubocop-performance'
     - rulesets/rspec.yml # gem 'rubocop-rspec'
+
+AllCops:
+  Exclude:
+    - lib/generators/active_actions/action/templates/action.rb
+    - vendor/**/*
