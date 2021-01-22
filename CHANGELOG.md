@@ -1,4 +1,4 @@
-## Unreleased
+## v0.14.0 (2021-01-21)
 ### Added
 - Add Rails generator (e.g. `bin/rails g active_actions:action Users::Create`)
 
