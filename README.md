@@ -16,6 +16,7 @@ command object.
    * [Installation](#installation)
    * [Usage in general](#usage-in-general)
       * [Setup](#setup)
+      * [Generate your actions](#generate-your-actions)
       * [Define your actions](#define-your-actions)
       * [Invoke your actions](#invoke-your-actions)
    * [Usage in specific](#usage-in-specific)
@@ -36,7 +37,7 @@ command object.
    * [Development](#development)
    * [License](#license)
 
-<!-- Added by: david, at: Mon Jun 22 09:02:48 PDT 2020 -->
+<!-- Added by: david, at: Thu Jan 21 20:53:08 PST 2021 -->
 
 <!--te-->
 
@@ -75,6 +76,16 @@ Create an `app/actions/application_action.rb` file with this content:
 class ApplicationAction < ActiveActions::Base
 end
 ```
+
+## Generate your actions
+
+This gem provides a Rails generator. For example, running:
+
+```
+bin/rails g active_actions:action Users::Create
+```
+
+will create an empty action in `app/actions/users/create.rb`.
 
 ## Define your actions
 

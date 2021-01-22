@@ -1,0 +1,8 @@
+Description:
+    Generates an action with the given name.
+
+Example:
+    bin/rails generate active_actions:action Users::Create
+
+    This will create:
+        app/actions/users/create.rb
