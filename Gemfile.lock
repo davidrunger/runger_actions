@@ -9,9 +9,9 @@ GIT
 
 GIT
   remote: https://github.com/davidrunger/release_assistant.git
-  revision: 75eff623f621d359fa40bb80fe08dfb211d65e49
+  revision: e94daaf5b3e4447bb1de70568b110e5bec7fbc5d
   specs:
-    release_assistant (0.0.3)
+    release_assistant (0.1.1.alpha)
       activesupport (~> 6.0)
       colorize (~> 0.8)
       memoist (~> 0.16)
@@ -26,7 +26,7 @@ GIT
 PATH
   remote: .
   specs:
-    active_actions (0.14.1)
+    active_actions (0.14.2.alpha)
       memoist (~> 0.16)
       rails (~> 6.0)
       shaped (~> 0.7.0)
@@ -137,10 +137,12 @@ GEM
     method_source (1.0.0)
     mimemagic (0.3.5)
     mini_mime (1.0.2)
+    mini_portile2 (2.5.0)
     minitest (5.14.3)
     nenv (0.3.0)
     nio4r (2.5.4)
-    nokogiri (1.11.1-x86_64-darwin)
+    nokogiri (1.11.1)
+      mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
     notiffany (0.1.3)
       nenv (~> 0.1)
