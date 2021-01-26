@@ -1,0 +1,25 @@
+name: Run Rspec Tests
+
+on:
+  pull_request:
+    branches:
+    - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: ruby/setup-ruby@v1
+      with:
+        bundler-cache: true
+    - name: Run Rubocop
+      run: bin/rubocop --format clang
+    - name: Run RSpec tests
+      run: bin/rspec --format progress
+    - name: Ensure alpha version
+      run: grep alpha $(find . -type f -name version.rb)
+    - name: Ensure no git diff
+      run: git diff --exit-code && git diff-index --quiet --cached HEAD
+    - name: Ensure "## Unreleased" is in CHANGELOG.md
+      run: grep "^## Unreleased" CHANGELOG.md
