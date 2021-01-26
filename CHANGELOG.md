@@ -1,4 +1,4 @@
-## Unreleased
+## v0.14.1 (2021-01-26)
 ### Internal
 - Move CI from Travis to GitHub Actions
 - Ensure in PR CI runs that the current version contains "alpha", that there's no git diff (e.g. due
