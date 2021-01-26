@@ -4,6 +4,7 @@
 - Ensure in PR CI runs that the current version contains "alpha", that there's no git diff (e.g. due
   to failing to run `bundle` after updating the version), and that there is an "Unreleased" section
   in `CHANGELOG.md`
+- Use `release_assistant` gem to manage the release process
 
 ## v0.14.0 (2021-01-21)
 ### Added
