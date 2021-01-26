@@ -1,3 +1,10 @@
+## Unreleased
+### Internal
+- Move CI from Travis to GitHub Actions
+- Ensure in PR CI runs that the current version contains "alpha", that there's no git diff (e.g. due
+  to failing to run `bundle` after updating the version), and that there is an "Unreleased" section
+  in `CHANGELOG.md`
+
 ## v0.14.0 (2021-01-21)
 ### Added
 - Add Rails generator (e.g. `bin/rails g active_actions:action Users::Create`)
