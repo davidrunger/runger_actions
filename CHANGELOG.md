@@ -1,4 +1,4 @@
-## Unreleased
+## v0.15.1 (2021-01-28)
 ### Fixed
 - Mention the correct class (the action class rather than the result class) in error messages when
   invoking a failure condition when executing via `run!`
