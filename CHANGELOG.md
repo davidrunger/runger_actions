@@ -1,3 +1,6 @@
+## Unreleased
+[no unreleased changes yet]
+
 ## v0.15.0 (2021-01-28)
 ### BREAKING CHANGES
 - Change the behavior of the `#run!` instance method to also raise an error if any failure
