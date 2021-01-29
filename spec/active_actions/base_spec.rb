@@ -61,6 +61,42 @@ RSpec.describe ActiveActions::Base do
   let(:params) { { user: user, number_of_widgets: 32 } }
   let(:user) { User.new(email: 'davidjrunger@gmail.com', phone: '15551239876') }
 
+  describe '::run!' do
+    subject(:run!) { DoubleNumber.run!(number: 8) }
+
+    let(:double_number_action_double) { instance_double(DoubleNumber) }
+
+    it 'calls the ::new! class method and the #run! instance method' do
+      expect(DoubleNumber).to receive(:new!).and_return(double_number_action_double)
+      expect(double_number_action_double).to receive(:run!)
+
+      run!
+    end
+  end
+
+  describe '::new!' do
+    subject(:new!) { ProcessOrder.new!(number_of_widgets: 2, user: user) }
+
+    it 'calls the ::new class method' do
+      expect(ProcessOrder).to receive(:new).and_call_original
+      new!
+    end
+
+    context 'when the provided params are valid' do
+      it 'returns an action instance' do
+        expect(new!).to be_a(ProcessOrder)
+      end
+    end
+
+    context 'when the provided params are not valid' do
+      before { user.email = 'not an email' }
+
+      it 'raises an ActiveActions::InvalidParam error' do
+        expect { new! }.to raise_error(ActiveActions::InvalidParam)
+      end
+    end
+  end
+
   describe '::requires' do
     def initialize_action(params)
       action_klass.new(params)
@@ -426,6 +462,24 @@ RSpec.describe ActiveActions::Base do
         expect { run }.not_to raise_error
       end
     end
+
+    context 'when called with `raise_on_failure: true`' do
+      subject(:run) { action_instance.run(raise_on_failure: true) }
+
+      context 'when a `fails_with` condition is set during execution' do
+        before do
+          expect(action_instance).to receive(:make_external_api_call).and_return(
+            # rubocop:disable Performance/OpenStruct
+            OpenStruct.new(success?: false, data: { errors: ['Our servers are down right now'] }),
+            # rubocop:enable Performance/OpenStruct
+          )
+        end
+
+        it 'raises an ActiveActions::RuntimeFailure error' do
+          expect { run }.to raise_error(ActiveActions::RuntimeFailure)
+        end
+      end
+    end
   end
 
   describe '#run!' do
@@ -435,7 +489,9 @@ RSpec.describe ActiveActions::Base do
       before { expect(action_instance).to be_valid }
 
       it 'invokes the #run method' do
-        expect(action_instance).to receive(:run).and_call_original
+        # don't `and_call_original` here because that prints a warning about "Using the last
+        # argument as keyword parameters is deprecate"
+        expect(action_instance).to receive(:run)
         run!
       end
 

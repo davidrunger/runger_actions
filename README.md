@@ -19,6 +19,12 @@ command object.
       * [Generate your actions](#generate-your-actions)
       * [Define your actions](#define-your-actions)
       * [Invoke your actions](#invoke-your-actions)
+         * [Available methods](#available-methods)
+            * [::run! class method](#run-class-method)
+            * [::new! class method](#new-class-method)
+            * [::new class method](#new-class-method-1)
+            * [#run! instance method](#run-instance-method)
+            * [#run instance method](#run-instance-method-1)
    * [Usage in specific](#usage-in-specific)
       * [An #execute instance method is required!](#an-execute-instance-method-is-required)
       * [Action class methods](#action-class-methods)
@@ -37,7 +43,7 @@ command object.
    * [Development](#development)
    * [License](#license)
 
-<!-- Added by: david, at: Thu Jan 21 20:53:08 PST 2021 -->
+<!-- Added by: david, at: Thu Jan 28 21:11:15 PST 2021 -->
 
 <!--te-->
 
@@ -157,6 +163,63 @@ from anywhere in your code.
 One good place to invoke an action is from within *another* action. For a complex or multi-step
 process, you might want to break that process down into several "sub actions" that can be invoked
 from the `#execute` method of a coordinating "parent action".
+
+### Available methods
+
+There are a few different methods that can be used to instantiate and/or run an action:
+1. `::run!` class method
+2. `::new!` class method
+3. `::new` class method
+4. `#run!` instance method
+5. `#run` instance method
+
+#### `::run!` class method
+
+This will attempt to instantiate an action (via `::new!`) and then attempt to run the action (via `#run!`). If there are any validation errors and/or if any `fails_with` conditions are invoked during execution, then an error will be raised.
+
+Example:
+```rb
+SendTextMessage.run!(user: current_user, message_body: 'Hello!')
+```
+
+#### `::new!` class method
+
+This will attempt to instantiate an action. If there are any validation errors, then an error will be raised.
+
+Example:
+```rb
+action = SendTextMessage.new!(user: current_user, message_body: 'Hi!')
+```
+
+#### `::new` class method
+
+This will instantiate an action. Even if there are ActiveModel validation errors, an error will **not** be raised.
+
+Example:
+```rb
+action = SendTextMessage.new(user: current_user, message_body: 'Hi!')
+```
+
+#### `#run!` instance method
+
+This will attempt to run an action. If any `fails_with` conditions are invoked during execution, then an error will be raised.
+
+Example:
+```rb
+action = SendTextMessage.new!(user: current_user, message_body: 'Hi!')
+action.run!
+```
+
+#### `#run` instance method
+
+This will run an action. If any `fails_with` conditions are invoked during execution, then an error will **not** be raised. The errors will be registered on the `result` object.
+
+Example:
+```rb
+action = SendTextMessage.new!(user: current_user, message_body: 'Hi!')
+result = action.run
+result.nexmo_request_failed? # check if a `fails_with` condition was invoked
+```
 
 # Usage in specific
 

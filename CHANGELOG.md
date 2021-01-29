@@ -1,5 +1,11 @@
 ## Unreleased
-[no unreleased changes yet]
+### BREAKING CHANGES
+- Change the behavior of the `#run!` instance method to also raise an error if any failure
+  conditions (i.e. failures set via a `fails_with` case) occur during the execution of the action.
+  (Previously, `#run!` would only raise if any of the initialization params were invalid.)
+
+### Added
+- Add `::new!` and `::run!` class methods for actions
 
 ## v0.14.2 (2021-01-26)
 ### Dependencies

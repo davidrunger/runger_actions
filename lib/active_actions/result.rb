@@ -3,7 +3,8 @@
 class ActiveActions::Result
   attr_reader :return_values
 
-  def initialize
+  def initialize(action:)
+    @action = action
     @return_values = {}
     @failure = nil
   end

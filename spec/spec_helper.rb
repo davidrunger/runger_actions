@@ -10,6 +10,7 @@ SimpleCov.start do
 end
 
 require 'bundler/setup'
+Bundler.require(:default, 'test')
 
 require 'active_actions'
 
