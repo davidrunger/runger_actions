@@ -82,7 +82,10 @@ class ActiveActions::Base
         define_method("#{error_type}!") do
           @failure = error_type
           if @action.raise_on_failure?
-            raise(ActiveActions::RuntimeFailure, "#{self.class} action failed with `#{error_type}`")
+            raise(
+              ActiveActions::RuntimeFailure,
+              "#{@action.class.name} action failed with `#{error_type}`",
+            )
           end
         end
 

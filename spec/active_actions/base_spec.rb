@@ -476,7 +476,10 @@ RSpec.describe ActiveActions::Base do
         end
 
         it 'raises an ActiveActions::RuntimeFailure error' do
-          expect { run }.to raise_error(ActiveActions::RuntimeFailure)
+          expect { run }.to raise_error(
+            ActiveActions::RuntimeFailure,
+            'ProcessOrder action failed with `bad_response_from_api`',
+          )
         end
       end
     end
