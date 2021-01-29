@@ -1,4 +1,4 @@
-## Unreleased
+## v0.15.0 (2021-01-28)
 ### BREAKING CHANGES
 - Change the behavior of the `#run!` instance method to also raise an error if any failure
   conditions (i.e. failures set via a `fails_with` case) occur during the execution of the action.

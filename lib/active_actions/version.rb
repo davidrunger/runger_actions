@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
 module ActiveActions
-  VERSION = '0.15.0.alpha'
+  VERSION = '0.15.0'
 end
