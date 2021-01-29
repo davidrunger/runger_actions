@@ -6,6 +6,19 @@ class ActiveActions::Base
   class << self
     extend Memoist
 
+    def run!(params)
+      new!(params).run!
+    end
+
+    def new!(params)
+      action = new(params)
+      if action.valid?
+        action
+      else
+        raise(ActiveActions::InvalidParam, action.errors.full_messages.join(', '))
+      end
+    end
+
     def requires(param_name, *shape_descriptions, &blk)
       required_params[param_name] = Shaped::Shape(*shape_descriptions)
 
@@ -68,6 +81,9 @@ class ActiveActions::Base
       result_klass.class_eval do
         define_method("#{error_type}!") do
           @failure = error_type
+          if @raise_on_failure
+            raise(ActiveActions::RuntimeFailure, "#{self.class} action failed with `#{error_type}`")
+          end
         end
 
         define_method("#{error_type}?") do
@@ -110,7 +126,8 @@ class ActiveActions::Base
   end
   # rubocop:enable Style/OptionHash
 
-  def run
+  def run(raise_on_failure: false)
+    @raise_on_failure = raise_on_failure
     if !respond_to?(:execute)
       raise(ActiveActions::ExecuteNotImplemented, <<~ERROR.squish)
         All ActiveActions classes must implement an #execute instance method, but #{self.class}
@@ -126,7 +143,7 @@ class ActiveActions::Base
 
   def run!
     if valid?
-      run
+      run(raise_on_failure: true)
     else
       raise(ActiveActions::InvalidParam, @errors.full_messages.join(', '))
     end

@@ -16,4 +16,5 @@ class ActiveActions::InvalidParam < ActiveActions::Error ; end
 class ActiveActions::MissingParam < ActiveActions::Error ; end
 class ActiveActions::MissingResultValue < ActiveActions::Error ; end
 class ActiveActions::MutatingLockedResult < ActiveActions::Error ; end
+class ActiveActions::RuntimeFailure < ActiveActions::Error ; end
 class ActiveActions::TypeMismatch < ActiveActions::Error ; end
