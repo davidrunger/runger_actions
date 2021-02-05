@@ -9,9 +9,9 @@ GIT
 
 GIT
   remote: https://github.com/davidrunger/release_assistant.git
-  revision: 3d9de131ece7d62c93b05de6f04a4c849bb363eb
+  revision: 7445a14801105ad3372738c7c2e39b6b94f7ce42
   specs:
-    release_assistant (0.2.1.alpha)
+    release_assistant (0.3.2.alpha)
       activesupport (~> 6.0)
       colorize (~> 0.8)
       memoist (~> 0.16)
@@ -120,7 +120,7 @@ GEM
       shellany (~> 0.0)
       thor (>= 0.18.1)
     guard-compat (1.2.1)
-    i18n (1.8.7)
+    i18n (1.8.8)
       concurrent-ruby (~> 1.0)
     listen (3.2.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
