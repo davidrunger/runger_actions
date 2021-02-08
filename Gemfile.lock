@@ -9,9 +9,9 @@ GIT
 
 GIT
   remote: https://github.com/davidrunger/release_assistant.git
-  revision: 7445a14801105ad3372738c7c2e39b6b94f7ce42
+  revision: 9b722d6559ed3d42514587001987dcbcf3fd0453
   specs:
-    release_assistant (0.3.2.alpha)
+    release_assistant (0.3.3.alpha)
       activesupport (~> 6.0)
       colorize (~> 0.8)
       memoist (~> 0.16)
