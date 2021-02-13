@@ -1,5 +1,6 @@
 ## Unreleased
-[no unreleased changes yet]
+### Docs
+- Fix README.md typo (change `requires` to `returns`)
 
 ## v0.16.0 (2021-02-01)
 ### Dependencies
