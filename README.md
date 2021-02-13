@@ -505,7 +505,7 @@ multiply_result = MultiplyNumber.new(input_number: 10).run
 #### Validating the "shape" of returned values
 
 As with the `requires` action class method, the "shape" of the promised return values declared via
-`returns` can be described via the arguments to `requires`, which are passed to the [`shaped`
+`returns` can be described via the arguments to `returns`, which are passed to the [`shaped`
 gem](https://github.com/davidrunger/shaped/). Leveraging this functionality allows you to ensure
 that your action is providing the expected type of return values.
 
