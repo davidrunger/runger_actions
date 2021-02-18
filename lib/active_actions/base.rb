@@ -79,8 +79,9 @@ class ActiveActions::Base
 
     def fails_with(error_type)
       result_klass.class_eval do
-        define_method("#{error_type}!") do
+        define_method("#{error_type}!") do |error_message = nil|
           @failure = error_type
+          @error_message = error_message
           if @action.raise_on_failure?
             raise(
               ActiveActions::RuntimeFailure,

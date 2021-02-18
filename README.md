@@ -38,12 +38,13 @@ command object.
             * [All promised values must be returned](#all-promised-values-must-be-returned)
             * [Validating the "shape" of returned values](#validating-the-shape-of-returned-values)
          * [::fails_with](#fails_with)
+            * [Setting an error_message](#setting-an-error_message)
    * [Alternatives](#alternatives)
    * [Status / Context](#status--context)
    * [Development](#development)
    * [License](#license)
 
-<!-- Added by: david, at: Thu Jan 28 21:11:15 PST 2021 -->
+<!-- Added by: david, at: Wed Feb 17 20:31:34 PST 2021 -->
 
 <!--te-->
 
@@ -599,6 +600,36 @@ In this case, we entered the `else` branch of the action's `#execute` method and
 `fails_with :number_was_too_small` declaration). Since we called the `result.number_was_too_small!`
 method, indicating that that failure mode occurred when executing the action, `#success?` returns
 `false` and `#number_was_too_small?` returns `true`.
+
+#### Setting an `error_message`
+
+When invoking a `fails_with` error case, the bang method can optionally take an error message as an
+argument, which will then be made available via a special `error_message` reader on the result
+object:
+
+```rb
+class SellAlcohol < ApplicationAction
+  requires :age, Numeric
+
+  fails_with :too_young
+
+  def execute
+    if age < 21
+      result.too_young!("Age #{age} is too young to buy alcohol.")
+    else
+      puts('Enjoy your alcohol responsibly!')
+    end
+  end
+end
+
+result = SellAlcohol.new!(age: 17).run
+result.success?
+# => false
+result.too_young?
+# => true
+result.error_message
+# => "Age 17 is too young to buy alcohol."
+```
 
 # Alternatives
 

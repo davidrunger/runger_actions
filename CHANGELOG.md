@@ -1,5 +1,9 @@
 ## Unreleased
-[no unreleased changes yet]
+### Added
+- Allow setting `error_message` on the result object when invoking a `fails_with` case
+
+### Maintenance
+- Specify Ruby 3.0.0 for gem development
 
 ## v0.16.1 (2021-02-13)
 ### Docs
