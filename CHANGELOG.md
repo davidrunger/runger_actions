@@ -1,3 +1,6 @@
+## Unreleased
+[no unreleased changes yet]
+
 ## v0.17.0 (2021-02-17)
 ### Added
 - Allow setting `error_message` on the result object when invoking a `fails_with` case
