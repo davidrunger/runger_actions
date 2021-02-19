@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: https://github.com/davidrunger/runger_style.git
-  revision: a3cdfe7ff271041121705e33a52f355937c1cbc0
+  revision: feaf17af21252d76037a845a4e6b1d829144322d
   specs:
     runger_style (0.2.17.alpha)
 
@@ -137,10 +137,12 @@ GEM
     method_source (1.0.0)
     mimemagic (0.3.5)
     mini_mime (1.0.2)
+    mini_portile2 (2.5.0)
     minitest (5.14.3)
     nenv (0.3.0)
     nio4r (2.5.5)
-    nokogiri (1.11.1-x86_64-darwin)
+    nokogiri (1.11.1)
+      mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
     notiffany (0.1.3)
       nenv (~> 0.1)
