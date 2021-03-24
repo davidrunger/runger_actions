@@ -1,4 +1,4 @@
-## Unreleased
+## v0.17.1 (2021-03-23)
 ### Fixed
 - Remove no-longe-accurate claim in README.md that `shaped` must be listed in apps' `Gemfile`s
 
