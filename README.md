@@ -57,13 +57,6 @@ need to install it from GitHub.
 gem 'active_actions', git: 'https://github.com/davidrunger/active_actions.git'
 ```
 
-You'll also need to list one of `active_actions`'s dependencies,
-[`shaped`](https://github.com/davidrunger/shaped/), in your `Gemfile`, too:
-
-```rb
-gem 'shaped', git: 'https://github.com/davidrunger/shaped.git'
-```
-
 And then execute:
 
 ```
