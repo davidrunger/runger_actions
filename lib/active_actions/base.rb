@@ -24,9 +24,7 @@ class ActiveActions::Base
 
       shape_description = shape_descriptions.first if shape_descriptions.size == 1
       if (
-        shape_description.is_a?(Class) &&
-        (shape_description < ActiveRecord::Base) &&
-        blk.present?
+        shape_description.is_a?(Class) && (shape_description < ActiveRecord::Base) && blk.present?
       )
         register_validator_klass(param_name, shape_description, blk)
       end
