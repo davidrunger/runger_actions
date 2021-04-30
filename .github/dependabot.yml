@@ -1,0 +1,13 @@
+version: 2
+updates:
+- package-ecosystem: bundler
+  directory: "/"
+  schedule:
+    interval: weekly
+    time: "13:52"
+    timezone: America/Los_Angeles
+  open-pull-requests-limit: 20
+  ignore:
+  - dependency-name: shaped
+    versions:
+    - 0.8.0
