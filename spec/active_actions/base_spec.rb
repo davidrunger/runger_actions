@@ -49,9 +49,9 @@ RSpec.describe ActiveActions::Base do
 
       def make_external_api_call
         # ... PhoneNumberVerificationService.post('/verify', data: { phone: user.phone }) ...
-        # rubocop:disable Performance/OpenStruct
+        # rubocop:disable Performance/OpenStruct, Style/OpenStructUse
         OpenStruct.new(success?: true, data: { is_real: true })
-        # rubocop:enable Performance/OpenStruct
+        # rubocop:enable Performance/OpenStruct, Style/OpenStructUse
       end
     end
   end
@@ -408,9 +408,9 @@ RSpec.describe ActiveActions::Base do
     context 'when something goes wrong while executing the action' do
       before do
         expect(action_instance).to receive(:make_external_api_call).and_return(
-          # rubocop:disable Performance/OpenStruct
+          # rubocop:disable Performance/OpenStruct, Style/OpenStructUse
           OpenStruct.new(success?: false, data: { errors: ['Our servers are down right now'] }),
-          # rubocop:enable Performance/OpenStruct
+          # rubocop:enable Performance/OpenStruct, Style/OpenStructUse
         )
       end
 
@@ -469,9 +469,9 @@ RSpec.describe ActiveActions::Base do
       context 'when a `fails_with` condition is set during execution' do
         before do
           expect(action_instance).to receive(:make_external_api_call).and_return(
-            # rubocop:disable Performance/OpenStruct
+            # rubocop:disable Performance/OpenStruct, Style/OpenStructUse
             OpenStruct.new(success?: false, data: { errors: ['Our servers are down right now'] }),
-            # rubocop:enable Performance/OpenStruct
+            # rubocop:enable Performance/OpenStruct, Style/OpenStructUse
           )
         end
 
