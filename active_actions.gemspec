@@ -14,6 +14,7 @@ Gem::Specification.new do |spec|
   spec.license       = 'MIT'
   spec.required_ruby_version = Gem::Requirement.new('>= 2.7.0')
 
+  spec.metadata['rubygems_mfa_required'] = 'true'
   spec.metadata['homepage_uri'] = spec.homepage
   spec.metadata['source_code_uri'] = 'https://github.com/davidrunger/active_actions'
   spec.metadata['changelog_uri'] =
