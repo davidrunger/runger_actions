@@ -96,7 +96,7 @@ class ActiveActions::Base
 
     memoize \
     def result_klass
-      const_set('Result', Class.new(ActiveActions::Result))
+      const_set(:Result, Class.new(ActiveActions::Result))
     end
 
     memoize \
