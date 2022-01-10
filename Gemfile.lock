@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: https://github.com/davidrunger/release_assistant.git
-  revision: 5152dcc7fb7e24a2abaa550ec7186f686bf2512d
+  revision: a1777ba5f266f5312dc962d80e19dbc2ac501b83
   specs:
     release_assistant (0.3.3.alpha)
       activesupport (>= 6, < 8)
@@ -249,7 +249,7 @@ GEM
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    zeitwerk (2.5.2)
+    zeitwerk (2.5.3)
 
 PLATFORMS
   ruby
