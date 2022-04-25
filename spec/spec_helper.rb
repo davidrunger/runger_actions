@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'simplecov'
-if ENV['CI'] == 'true'
+if ENV.fetch('CI', nil) == 'true'
   require 'codecov'
   SimpleCov.formatter = SimpleCov::Formatter::Codecov
 end
