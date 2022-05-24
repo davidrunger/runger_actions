@@ -4,8 +4,8 @@ updates:
   directory: "/"
   schedule:
     interval: weekly
-    time: "13:52"
-    timezone: America/Los_Angeles
+    time: "03:52"
+    timezone: America/Chicago
   open-pull-requests-limit: 20
   ignore:
   - dependency-name: shaped
