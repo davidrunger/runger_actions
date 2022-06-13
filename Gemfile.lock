@@ -29,7 +29,7 @@ PATH
     active_actions (0.17.2.alpha)
       memoist (~> 0.16)
       rails (>= 6, < 8)
-      shaped (~> 0.8.0)
+      shaped (~> 0.9.0)
 
 GEM
   remote: https://rubygems.org/
@@ -223,9 +223,9 @@ GEM
     rubocop-rspec (2.11.1)
       rubocop (~> 1.19)
     ruby-progressbar (1.11.0)
-    shaped (0.8.2)
-      activemodel (~> 6.0)
-      activesupport (~> 6.0)
+    shaped (0.9.0)
+      activemodel (>= 6, < 8)
+      activesupport (>= 6, < 8)
     shellany (0.0.1)
     simplecov (0.21.2)
       docile (~> 1.1)
@@ -249,7 +249,7 @@ GEM
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    zeitwerk (2.5.4)
+    zeitwerk (2.6.0)
 
 PLATFORMS
   ruby
