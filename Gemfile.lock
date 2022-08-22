@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: https://github.com/davidrunger/release_assistant.git
-  revision: 69eb4b1f55120faa73fca32ee9dc04a472071321
+  revision: 89c2dc82871b1fe0d0be915b4a70295989304b70
   specs:
     release_assistant (0.3.3.alpha)
       activesupport (>= 6, < 8)
@@ -144,7 +144,7 @@ GEM
     method_source (1.0.0)
     mini_mime (1.1.2)
     mini_portile2 (2.8.0)
-    minitest (5.16.2)
+    minitest (5.16.3)
     nenv (0.3.0)
     net-imap (0.2.3)
       digest
