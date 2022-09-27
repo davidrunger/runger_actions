@@ -2,8 +2,6 @@
 
 module ActiveActions ; end
 
-require 'bundler'
-Bundler.require
 require 'active_support/all'
 require 'active_model'
 require 'active_record'
