@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/davidrunger/release_assistant.git
-  revision: 43804f749357f0eec7b6b175626737319d403002
+  revision: 170b141ffef5a4ac0945897de6c8d52962a82ff5
   specs:
     release_assistant (0.3.3.alpha)
       activesupport (>= 6, < 8)
@@ -223,7 +223,7 @@ GEM
       simplecov_json_formatter (~> 0.1)
     simplecov-html (0.12.3)
     simplecov_json_formatter (0.1.3)
-    slop (4.9.2)
+    slop (4.9.3)
     sqlite3 (1.5.3)
       mini_portile2 (~> 2.8.0)
     strscan (3.0.4)
