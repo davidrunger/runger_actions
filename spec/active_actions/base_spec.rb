@@ -58,7 +58,7 @@ RSpec.describe ActiveActions::Base do
 
   let(:action_klass) { ProcessOrder }
   let(:action_instance) { ProcessOrder.new(params) }
-  let(:params) { { user: user, number_of_widgets: 32 } }
+  let(:params) { { user:, number_of_widgets: 32 } }
   let(:user) { User.new(email: 'davidjrunger@gmail.com', phone: '15551239876') }
 
   describe '::run!' do
@@ -75,7 +75,7 @@ RSpec.describe ActiveActions::Base do
   end
 
   describe '::new!' do
-    subject(:new!) { ProcessOrder.new!(number_of_widgets: 2, user: user) }
+    subject(:new!) { ProcessOrder.new!(number_of_widgets: 2, user:) }
 
     it 'calls the ::new class method' do
       expect(ProcessOrder).to receive(:new).and_call_original
@@ -129,11 +129,11 @@ RSpec.describe ActiveActions::Base do
         end
 
         context "when the param's class is of the required class" do
-          let(:params) { { user: user, number_of_widgets: 10 } }
+          let(:params) { { user:, number_of_widgets: 10 } }
           let(:user) { User.new(email: 'davidjrunger@gmail.com') }
 
           context 'when a required param fails to meet one or more specified validations' do
-            let(:params) { { user: user, number_of_widgets: -20 } } # -20 violates `greater_than: 0`
+            let(:params) { { user:, number_of_widgets: -20 } } # -20 violates `greater_than: 0`
 
             it 'raises an error' do
               expect { initialize_action(params) }.to raise_error(
@@ -542,7 +542,7 @@ RSpec.describe ActiveActions::Base do
       end
     end
 
-    let(:action_instance) { PrintUserEmail.new(user: user) }
+    let(:action_instance) { PrintUserEmail.new(user:) }
 
     it 'does not error when running the action' do
       expect(action_instance).to receive(:puts).with("The user's email is davidjrunger@gmail.com.")
