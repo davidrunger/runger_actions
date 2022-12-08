@@ -2,9 +2,9 @@
 
 module ActiveActions ; end
 
-require 'active_support/all'
 require 'active_model'
 require 'active_record'
+require 'active_support/all'
 require 'memoist'
 require 'shaped'
 Dir["#{File.dirname(__FILE__)}/active_actions/**/*.rb"].each { |file| require file }

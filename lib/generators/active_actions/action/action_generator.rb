@@ -4,7 +4,7 @@ require 'rails/generators'
 
 module ActiveActions::Generators ; end
 
-class ActiveActions::Generators::ActionGenerator < ::Rails::Generators::NamedBase
+class ActiveActions::Generators::ActionGenerator < Rails::Generators::NamedBase
   source_root File.expand_path('templates', __dir__)
 
   def create_policy
