@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.description   = 'Organize (and validate) the business logic of your Rails application.'
   spec.homepage      = 'https://github.com/davidrunger/active_actions'
   spec.license       = 'MIT'
-  spec.required_ruby_version = Gem::Requirement.new('>= 3.1.3')
+  spec.required_ruby_version = Gem::Requirement.new('>= 3.1.1')
 
   spec.metadata['rubygems_mfa_required'] = 'true'
   spec.metadata['homepage_uri'] = spec.homepage
