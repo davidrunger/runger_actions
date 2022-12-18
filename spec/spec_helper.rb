@@ -4,6 +4,9 @@ require 'simplecov'
 if ENV.fetch('CI', nil) == 'true'
   require 'codecov'
   SimpleCov.formatter = SimpleCov::Formatter::Codecov
+elsif RSpec.configuration.files_to_run.one?
+  require 'simple_cov/formatter/terminal'
+  SimpleCov.formatter = SimpleCov::Formatter::Terminal
 end
 SimpleCov.start do
   add_filter(%r{\A/spec/})

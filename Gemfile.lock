@@ -15,6 +15,17 @@ GIT
     runger_style (0.2.22.alpha)
       rubocop (>= 1.38.0, < 2)
 
+GIT
+  remote: https://github.com/davidrunger/simple_cov-formatter-terminal.git
+  revision: 1cb2997cf04dfd624054abf1d932649886d83f00
+  specs:
+    simple_cov-formatter-terminal (0.1.0)
+      activesupport (>= 7.0.4, < 8)
+      memoist (>= 0.16.2, < 1)
+      rouge (>= 4.0.0, < 5)
+      rspec-core (>= 3.11.0, < 4)
+      simplecov (>= 0.21.2, < 1)
+
 PATH
   remote: .
   specs:
@@ -180,6 +191,7 @@ GEM
     rake (13.0.6)
     regexp_parser (2.6.1)
     rexml (3.2.5)
+    rouge (4.0.1)
     rspec (3.12.0)
       rspec-core (~> 3.12.0)
       rspec-expectations (~> 3.12.0)
@@ -251,6 +263,7 @@ DEPENDENCIES
   rubocop-rake
   rubocop-rspec
   runger_style!
+  simple_cov-formatter-terminal!
   sqlite3
 
 RUBY VERSION
