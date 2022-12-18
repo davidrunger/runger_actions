@@ -463,6 +463,21 @@ RSpec.describe ActiveActions::Base do
       end
     end
 
+    context 'when a `fails_with` condition is set during execution' do
+      before do
+        expect(action_instance).to receive(:make_external_api_call).and_return(
+          # rubocop:disable Performance/OpenStruct, Style/OpenStructUse
+          OpenStruct.new(success?: false, data: { errors: ['Our servers are down right now'] }),
+          # rubocop:enable Performance/OpenStruct, Style/OpenStructUse
+        )
+      end
+
+      it 'does not call #verify_promised_return_values!' do
+        expect(action_instance).not_to receive(:verify_promised_return_values!)
+        run
+      end
+    end
+
     context 'when called with `raise_on_failure: true`' do
       subject(:run) { action_instance.run(raise_on_failure: true) }
 
