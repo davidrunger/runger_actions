@@ -10,6 +10,7 @@ elsif RSpec.configuration.files_to_run.one?
 end
 SimpleCov.start do
   add_filter(%r{\A/spec/})
+  enable_coverage(:branch)
 end
 
 require 'bundler/setup'
