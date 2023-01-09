@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/davidrunger/release_assistant.git
-  revision: 1e8f75458487663bf6f563fd31c8a0bea56fbdba
+  revision: 4a6db008f26327bbee9758ddd2bad070b14d2e88
   specs:
     release_assistant (0.3.3.alpha)
       activesupport (>= 6, < 8)
