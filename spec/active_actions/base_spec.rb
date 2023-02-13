@@ -365,7 +365,7 @@ RSpec.describe ActiveActions::Base do
         let(:result) { action_instance.run }
 
         it 'has reader methods on the returned Result to access those values' do
-          expect(result.total_cost).to eq(COST_PER_WIDGET * params[:number_of_widgets])
+          expect(result.total_cost).to eq(params[:number_of_widgets] * COST_PER_WIDGET)
         end
       end
     end
