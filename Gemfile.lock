@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/davidrunger/release_assistant.git
-  revision: 8178e5521e33fbc488d1f9eb02bf2543ffb65058
+  revision: 41359ecf11258b6a669b0d12a5ed3e1628b2f045
   specs:
     release_assistant (0.3.3.alpha)
       activesupport (>= 6, < 8)
@@ -10,16 +10,16 @@ GIT
 
 GIT
   remote: https://github.com/davidrunger/runger_style.git
-  revision: 70a51d91a324c23a0dcd206f2d4ef6008b66beca
+  revision: bd04e6ef65edd9cdde074196e96e8c53ab39c2e6
   specs:
     runger_style (0.2.22.alpha)
       rubocop (>= 1.38.0, < 2)
 
 GIT
   remote: https://github.com/davidrunger/simple_cov-formatter-terminal.git
-  revision: 1cb2997cf04dfd624054abf1d932649886d83f00
+  revision: 42f85eb4366caf0474426fb7c27dd2eae52efb87
   specs:
-    simple_cov-formatter-terminal (0.1.0)
+    simple_cov-formatter-terminal (0.2.2.alpha)
       activesupport (>= 7.0.4, < 8)
       memoist (>= 0.16.2, < 1)
       rouge (>= 4.0.0, < 5)
@@ -124,7 +124,7 @@ GEM
     loofah (2.19.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
-    mail (2.8.0.1)
+    mail (2.8.1)
       mini_mime (>= 0.1.1)
       net-imap
       net-pop
@@ -145,13 +145,13 @@ GEM
     net-smtp (0.3.3)
       net-protocol
     nio4r (2.5.8)
-    nokogiri (1.14.0)
+    nokogiri (1.14.2)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
     parallel (1.22.1)
     parser (3.2.1.0)
       ast (~> 2.4.1)
-    pry (0.14.1)
+    pry (0.14.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
     pry-byebug (3.10.1)
@@ -191,17 +191,17 @@ GEM
     rake (13.0.6)
     regexp_parser (2.7.0)
     rexml (3.2.5)
-    rouge (4.0.1)
+    rouge (4.1.0)
     rspec (3.12.0)
       rspec-core (~> 3.12.0)
       rspec-expectations (~> 3.12.0)
       rspec-mocks (~> 3.12.0)
-    rspec-core (3.12.0)
+    rspec-core (3.12.1)
       rspec-support (~> 3.12.0)
-    rspec-expectations (3.12.0)
+    rspec-expectations (3.12.2)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.12.0)
-    rspec-mocks (3.12.1)
+    rspec-mocks (3.12.3)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.12.0)
     rspec-support (3.12.0)
@@ -217,7 +217,7 @@ GEM
       unicode-display_width (>= 2.4.0, < 3.0)
     rubocop-ast (1.26.0)
       parser (>= 3.2.1.0)
-    rubocop-capybara (2.17.0)
+    rubocop-capybara (2.17.1)
       rubocop (~> 1.41)
     rubocop-performance (1.16.0)
       rubocop (>= 1.7.0, < 2.0)
@@ -238,17 +238,17 @@ GEM
     simplecov-html (0.12.3)
     simplecov_json_formatter (0.1.4)
     slop (4.10.1)
-    sqlite3 (1.6.0)
+    sqlite3 (1.6.1)
       mini_portile2 (~> 2.8.0)
     thor (1.2.1)
-    timeout (0.3.1)
+    timeout (0.3.2)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.4.2)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    zeitwerk (2.6.6)
+    zeitwerk (2.6.7)
 
 PLATFORMS
   ruby
