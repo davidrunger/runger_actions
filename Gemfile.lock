@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/davidrunger/release_assistant.git
-  revision: 41359ecf11258b6a669b0d12a5ed3e1628b2f045
+  revision: 61e059d03b932c21ef9c63a73f874467661fe6b8
   specs:
     release_assistant (0.3.3.alpha)
       activesupport (>= 6, < 8)
@@ -134,7 +134,7 @@ GEM
     method_source (1.0.0)
     mini_mime (1.1.2)
     mini_portile2 (2.8.1)
-    minitest (5.17.0)
+    minitest (5.18.0)
     net-imap (0.3.4)
       date
       net-protocol
