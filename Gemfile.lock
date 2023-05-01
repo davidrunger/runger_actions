@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: https://github.com/davidrunger/runger_style.git
-  revision: ab02a74c5969a5df3a091661b4f2f7881fbe6ce2
+  revision: fe2012e1ad83ec2d1485878f4447994fb699371d
   specs:
     runger_style (0.2.22.alpha)
       rubocop (>= 1.38.0, < 2)
@@ -149,7 +149,7 @@ GEM
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
     parallel (1.23.0)
-    parser (3.2.2.0)
+    parser (3.2.2.1)
       ast (~> 2.4.1)
     pry (0.14.2)
       coderay (~> 1.1)
