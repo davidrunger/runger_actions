@@ -32,7 +32,7 @@ PATH
     active_actions (0.17.2.alpha)
       memoist (~> 0.16)
       rails (>= 6, < 8)
-      shaped (~> 0.9.0)
+      shaped (>= 0.9, < 0.11)
 
 GEM
   remote: https://rubygems.org/
@@ -228,7 +228,7 @@ GEM
       rubocop (~> 1.33)
       rubocop-capybara (~> 2.17)
     ruby-progressbar (1.13.0)
-    shaped (0.9.0)
+    shaped (0.10.0)
       activemodel (>= 6, < 8)
       activesupport (>= 6, < 8)
     simplecov (0.21.2)
