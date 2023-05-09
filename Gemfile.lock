@@ -9,13 +9,6 @@ GIT
       slop (~> 4.8)
 
 GIT
-  remote: https://github.com/davidrunger/runger_style.git
-  revision: 61b0b4923c2e478d50f6d4a580a1c0842aa0d1c6
-  specs:
-    runger_style (0.2.23.alpha)
-      rubocop (>= 1.38.0, < 2)
-
-GIT
   remote: https://github.com/davidrunger/simple_cov-formatter-terminal.git
   revision: 395bdd6394abc36fcb25f3a90000c57c446d147e
   specs:
@@ -231,6 +224,8 @@ GEM
       rubocop-capybara (~> 2.17)
       rubocop-factory_bot (~> 2.22)
     ruby-progressbar (1.13.0)
+    runger_style (0.2.22)
+      rubocop (>= 1.38.0, < 2)
     shaped (0.10.0)
       activemodel (>= 6, < 8)
       activesupport (>= 6, < 8)
@@ -268,7 +263,7 @@ DEPENDENCIES
   rubocop-performance
   rubocop-rake
   rubocop-rspec
-  runger_style!
+  runger_style
   simple_cov-formatter-terminal!
   sqlite3
 
