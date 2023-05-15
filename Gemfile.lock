@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: https://github.com/davidrunger/simple_cov-formatter-terminal.git
-  revision: 6592f733ec281c87c8276bc03bae28c52b8883f3
+  revision: be0d93e00fb1af24a7371df96fbf0fedeebcbd59
   specs:
     simple_cov-formatter-terminal (0.2.3.alpha)
       activesupport (>= 7.0.4, < 8)
@@ -184,7 +184,7 @@ GEM
     rake (13.0.6)
     regexp_parser (2.8.0)
     rexml (3.2.5)
-    rouge (4.1.0)
+    rouge (4.1.1)
     rspec (3.12.0)
       rspec-core (~> 3.12.0)
       rspec-expectations (~> 3.12.0)
