@@ -24,6 +24,6 @@ end
 group :test do
   gem 'codecov', require: false
   gem 'rspec', '~> 3.12'
-  gem 'simple_cov-formatter-terminal', github: 'davidrunger/simple_cov-formatter-terminal'
+  gem 'simple_cov-formatter-terminal'
   gem 'sqlite3'
 end
