@@ -1,6 +1,4 @@
 [![codecov](https://codecov.io/gh/davidrunger/runger_actions/branch/master/graph/badge.svg)](https://codecov.io/gh/davidrunger/runger_actions)
-[![Build Status](https://travis-ci.com/davidrunger/runger_actions.svg?branch=master)](https://travis-ci.com/davidrunger/runger_actions)
-[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=davidrunger/runger_actions)](https://dependabot.com)
 ![GitHub tag (latest SemVer pre-release)](https://img.shields.io/github/v/tag/davidrunger/runger_actions?include_prereleases)
 
 # RungerActions
@@ -165,7 +163,9 @@ There are a few different methods that can be used to instantiate and/or run an 
 
 #### `::run!` class method
 
-This will attempt to instantiate an action (via `::new!`) and then attempt to run the action (via `#run!`). If there are any validation errors and/or if any `fails_with` conditions are invoked during execution, then an error will be raised.
+This will attempt to instantiate an action (via `::new!`) and then attempt to run the action (via
+`#run!`). If there are any validation errors and/or if any `fails_with` conditions are invoked
+during execution, then an error will be raised.
 
 Example:
 ```rb
@@ -174,7 +174,8 @@ SendTextMessage.run!(user: current_user, message_body: 'Hello!')
 
 #### `::new!` class method
 
-This will attempt to instantiate an action. If there are any validation errors, then an error will be raised.
+This will attempt to instantiate an action. If there are any validation errors, then an error will
+be raised.
 
 Example:
 ```rb
@@ -183,7 +184,8 @@ action = SendTextMessage.new!(user: current_user, message_body: 'Hi!')
 
 #### `::new` class method
 
-This will instantiate an action. Even if there are ActiveModel validation errors, an error will **not** be raised.
+This will instantiate an action. Even if there are ActiveModel validation errors, an error will
+**not** be raised.
 
 Example:
 ```rb
@@ -192,7 +194,8 @@ action = SendTextMessage.new(user: current_user, message_body: 'Hi!')
 
 #### `#run!` instance method
 
-This will attempt to run an action. If any `fails_with` conditions are invoked during execution, then an error will be raised.
+This will attempt to run an action. If any `fails_with` conditions are invoked during execution,
+then an error will be raised.
 
 Example:
 ```rb
@@ -202,7 +205,8 @@ action.run!
 
 #### `#run` instance method
 
-This will run an action. If any `fails_with` conditions are invoked during execution, then an error will **not** be raised. The errors will be registered on the `result` object.
+This will run an action. If any `fails_with` conditions are invoked during execution, then an error
+will **not** be raised. The errors will be registered on the `result` object.
 
 Example:
 ```rb
