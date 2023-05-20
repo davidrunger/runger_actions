@@ -11,7 +11,7 @@ GIT
 PATH
   remote: .
   specs:
-    runger_actions (0.17.2.alpha)
+    runger_actions (0.18.0)
       memoist (~> 0.16)
       rails (>= 6, < 8)
       shaped (>= 0.9, < 0.11)
@@ -127,8 +127,7 @@ GEM
     net-smtp (0.3.3)
       net-protocol
     nio4r (2.5.9)
-    nokogiri (1.15.1)
-      mini_portile2 (~> 2.8.2)
+    nokogiri (1.15.1-x86_64-darwin)
       racc (~> 1.4)
     parallel (1.23.0)
     parser (3.2.2.1)
