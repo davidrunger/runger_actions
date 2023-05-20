@@ -11,7 +11,7 @@ GIT
 PATH
   remote: .
   specs:
-    active_actions (0.17.2.alpha)
+    runger_actions (0.17.2.alpha)
       memoist (~> 0.16)
       rails (>= 6, < 8)
       shaped (>= 0.9, < 0.11)
@@ -103,9 +103,9 @@ GEM
     i18n (1.13.0)
       concurrent-ruby (~> 1.0)
     json (2.6.3)
-    loofah (2.19.1)
+    loofah (2.21.3)
       crass (~> 1.0.2)
-      nokogiri (>= 1.5.9)
+      nokogiri (>= 1.12.0)
     mail (2.8.1)
       mini_mime (>= 0.1.1)
       net-imap
@@ -126,9 +126,9 @@ GEM
       timeout
     net-smtp (0.3.3)
       net-protocol
-    nio4r (2.5.8)
-    nokogiri (1.14.3)
-      mini_portile2 (~> 2.8.0)
+    nio4r (2.5.9)
+    nokogiri (1.15.1)
+      mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     parallel (1.23.0)
     parser (3.2.2.1)
@@ -140,8 +140,8 @@ GEM
       byebug (~> 11.0)
       pry (>= 0.13, < 0.15)
     racc (1.6.2)
-    rack (2.2.6.4)
-    rack-test (2.0.2)
+    rack (2.2.7)
+    rack-test (2.1.0)
       rack (>= 1.3)
     rails (7.0.4.3)
       actioncable (= 7.0.4.3)
@@ -233,7 +233,7 @@ GEM
     slop (4.10.1)
     sqlite3 (1.6.3)
       mini_portile2 (~> 2.8.0)
-    thor (1.2.1)
+    thor (1.2.2)
     timeout (0.3.2)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
@@ -241,13 +241,12 @@ GEM
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    zeitwerk (2.6.7)
+    zeitwerk (2.6.8)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  active_actions!
   amazing_print
   codecov
   pry-byebug
@@ -258,6 +257,7 @@ DEPENDENCIES
   rubocop-performance
   rubocop-rake
   rubocop-rspec
+  runger_actions!
   runger_style
   simple_cov-formatter-terminal
   sqlite3

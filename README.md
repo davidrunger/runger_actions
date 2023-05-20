@@ -1,9 +1,9 @@
-[![codecov](https://codecov.io/gh/davidrunger/active_actions/branch/master/graph/badge.svg)](https://codecov.io/gh/davidrunger/active_actions)
-[![Build Status](https://travis-ci.com/davidrunger/active_actions.svg?branch=master)](https://travis-ci.com/davidrunger/active_actions)
-[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=davidrunger/active_actions)](https://dependabot.com)
-![GitHub tag (latest SemVer pre-release)](https://img.shields.io/github/v/tag/davidrunger/active_actions?include_prereleases)
+[![codecov](https://codecov.io/gh/davidrunger/runger_actions/branch/master/graph/badge.svg)](https://codecov.io/gh/davidrunger/runger_actions)
+[![Build Status](https://travis-ci.com/davidrunger/runger_actions.svg?branch=master)](https://travis-ci.com/davidrunger/runger_actions)
+[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=davidrunger/runger_actions)](https://dependabot.com)
+![GitHub tag (latest SemVer pre-release)](https://img.shields.io/github/v/tag/davidrunger/runger_actions?include_prereleases)
 
-# ActiveActions
+# RungerActions
 
 Organize and validate the business logic of your Rails application with this combined form object /
 command object.
@@ -11,40 +11,36 @@ command object.
 # Table of Contents
 
 <!--ts-->
-   * [ActiveActions](#activeactions)
-   * [Table of Contents](#table-of-contents)
-   * [Installation](#installation)
-   * [Usage in general](#usage-in-general)
-      * [Setup](#setup)
-      * [Generate your actions](#generate-your-actions)
-      * [Define your actions](#define-your-actions)
-      * [Invoke your actions](#invoke-your-actions)
-         * [Available methods](#available-methods)
-            * [::run! class method](#run-class-method)
-            * [::new! class method](#new-class-method)
-            * [::new class method](#new-class-method-1)
-            * [#run! instance method](#run-instance-method)
-            * [#run instance method](#run-instance-method-1)
-   * [Usage in specific](#usage-in-specific)
-      * [An #execute instance method is required!](#an-execute-instance-method-is-required)
-      * [Action class methods](#action-class-methods)
-         * [::requires](#requires)
-            * [Specifying the expected shape of a Hash input](#specifying-the-expected-shape-of-a-hash-input)
-            * [Specifying ActiveModel-style validations](#specifying-activemodel-style-validations)
-            * [Specifying arbitrary input "shapes" by providing a callable object](#specifying-arbitrary-input-shapes-by-providing-a-callable-object)
-            * [Specifying validations for ActiveRecord inputs](#specifying-validations-for-activerecord-inputs)
-         * [::returns](#returns)
-            * [The result object](#the-result-object)
-            * [All promised values must be returned](#all-promised-values-must-be-returned)
-            * [Validating the "shape" of returned values](#validating-the-shape-of-returned-values)
-         * [::fails_with](#fails_with)
-            * [Setting an error_message](#setting-an-error_message)
-   * [Alternatives](#alternatives)
-   * [Status / Context](#status--context)
-   * [Development](#development)
-   * [License](#license)
+* [RungerActions](#rungeractions)
+* [Table of Contents](#table-of-contents)
+* [Installation](#installation)
+* [Usage in general](#usage-in-general)
+   * [Setup](#setup)
+   * [Generate your actions](#generate-your-actions)
+   * [Define your actions](#define-your-actions)
+   * [Invoke your actions](#invoke-your-actions)
+      * [Available methods](#available-methods)
+* [Usage in specific](#usage-in-specific)
+   * [An #execute instance method is required!](#an-execute-instance-method-is-required)
+   * [Action class methods](#action-class-methods)
+      * [::requires](#requires)
+         * [Specifying the expected shape of a Hash input](#specifying-the-expected-shape-of-a-hash-input)
+         * [Specifying ActiveModel-style validations](#specifying-activemodel-style-validations)
+         * [Specifying arbitrary input "shapes" by providing a callable object](#specifying-arbitrary-input-shapes-by-providing-a-callable-object)
+         * [Specifying validations for ActiveRecord inputs](#specifying-validations-for-activerecord-inputs)
+      * [::returns](#returns)
+         * [The result object](#the-result-object)
+         * [All promised values must be returned](#all-promised-values-must-be-returned)
+         * [Validating the "shape" of returned values](#validating-the-shape-of-returned-values)
+      * [::fails_with](#fails_with)
+         * [Setting an error_message](#setting-an-error_message)
+* [Alternatives](#alternatives)
+* [Status / Context](#status--context)
+* [Development](#development)
+* [License](#license)
 
-<!-- Added by: david, at: Wed Feb 17 20:31:34 PST 2021 -->
+<!-- Created by https://github.com/ekalinin/github-markdown-toc -->
+<!-- Added by: david, at: Sat May 20 12:56:10 CDT 2023 -->
 
 <!--te-->
 
@@ -54,7 +50,7 @@ Add the gem to your application's `Gemfile`. Because the gem is not released via
 need to install it from GitHub.
 
 ```rb
-gem 'active_actions', git: 'https://github.com/davidrunger/active_actions.git'
+gem 'runger_actions', git: 'https://github.com/davidrunger/runger_actions.git'
 ```
 
 And then execute:
@@ -73,7 +69,7 @@ Create an `app/actions/application_action.rb` file with this content:
 ```rb
 # app/actions/application_action.rb
 
-class ApplicationAction < ActiveActions::Base
+class ApplicationAction < RungerActions::Base
 end
 ```
 
@@ -82,7 +78,7 @@ end
 This gem provides a Rails generator. For example, running:
 
 ```
-bin/rails g active_actions:action Users::Create
+bin/rails g runger_actions:action Users::Create
 ```
 
 will create an empty action in `app/actions/users/create.rb`.
@@ -312,11 +308,11 @@ PrintNameAndEmail.new(user_data: { name: 'Tom', email: 'tommy@example.com' }).ru
 
 # The name and email keys are strings; they are supposed to be symbols.
 PrintNameAndEmail.new(user_data: { 'name' => 'Thomas', 'email' => 'tommy@example.com' })
-# => raises ActiveActions::TypeMismatch
+# => raises RungerActions::TypeMismatch
 
 # The `:name` key is missing in the `user_data` hash.
 PrintNameAndEmail.new(user_data: { email: 'tommy@example.com' })
-# => raises ActiveActions::TypeMismatch
+# => raises RungerActions::TypeMismatch
 ```
 
 #### Specifying ActiveModel-style validations
@@ -335,11 +331,11 @@ PrintEmail.new(email: 'jefferson@example.com').run
 
 # This email doesn't match the specified regex
 PrintEmail.new(email: 'Thomas Jefferson')
-# => raises ActiveActions::TypeMismatch
+# => raises RungerActions::TypeMismatch
 
 # This email is too short
 PrintEmail.new(email: 'a@b.c')
-# => raises ActiveActions::TypeMismatch
+# => raises RungerActions::TypeMismatch
 ```
 
 #### Specifying arbitrary input "shapes" by providing a callable object
@@ -363,11 +359,11 @@ PrintSmallEvenNumber.new(small_even_number: 2).run
 
 # This number is not even
 PrintSmallEvenNumber.new(small_even_number: 3).run
-# => raises ActiveActions::TypeMismatch
+# => raises RungerActions::TypeMismatch
 
 # This number is not small
 PrintSmallEvenNumber.new(small_even_number: 200).run
-# => raises ActiveActions::TypeMismatch
+# => raises RungerActions::TypeMismatch
 ```
 
 #### Specifying validations for ActiveRecord inputs
@@ -418,7 +414,7 @@ action.valid?
 action.errors.to_hash
 # => {:name=>["is invalid"]}
 action.run!
-# => raises ActiveActions::InvalidParam
+# => raises RungerActions::InvalidParam
 ```
 
 ### `::returns`
@@ -493,7 +489,7 @@ class MultiplyNumber < ApplicationAction
 end
 
 multiply_result = MultiplyNumber.new(input_number: 10).run
-# => raises ActiveActions::MissingResultValue
+# => raises RungerActions::MissingResultValue
 ```
 
 #### Validating the "shape" of returned values
@@ -519,7 +515,7 @@ UppercaseEmail.new(email: 'david@protonmail.com').run.uppercased_email
 ```
 
 If an action attempts to set a return value that doesn't match the specified "shape" for that return
-value, then an `ActiveActions::TypeMismatch` error will be raised:
+value, then an `RungerActions::TypeMismatch` error will be raised:
 
 ```rb
 class UppercaseEmail < ApplicationAction
@@ -534,7 +530,7 @@ class UppercaseEmail < ApplicationAction
 end
 
 UppercaseEmail.new(email: 'david@protonmail.com').run
-# => raises ActiveActions::TypeMismatch
+# => raises RungerActions::TypeMismatch
 ```
 
 ### `::fails_with`

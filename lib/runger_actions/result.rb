@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class ActiveActions::Result
+class RungerActions::Result
   attr_reader :error_message, :return_values
 
   def initialize(action:)

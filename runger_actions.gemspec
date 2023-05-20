@@ -1,24 +1,24 @@
 # frozen_string_literal: true
 
-require_relative 'lib/active_actions/version'
+require_relative 'lib/runger_actions/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'active_actions'
-  spec.version       = ActiveActions::VERSION
+  spec.name          = 'runger_actions'
+  spec.version       = RungerActions::VERSION
   spec.authors       = ['David Runger']
   spec.email         = ['davidjrunger@gmail.com']
 
   spec.summary       = 'Organize (and validate) the business logic of your Rails application.'
   spec.description   = 'Organize (and validate) the business logic of your Rails application.'
-  spec.homepage      = 'https://github.com/davidrunger/active_actions'
+  spec.homepage      = 'https://github.com/davidrunger/runger_actions'
   spec.license       = 'MIT'
   spec.required_ruby_version = Gem::Requirement.new('>= 3.2.0')
 
   spec.metadata['rubygems_mfa_required'] = 'true'
   spec.metadata['homepage_uri'] = spec.homepage
-  spec.metadata['source_code_uri'] = 'https://github.com/davidrunger/active_actions'
+  spec.metadata['source_code_uri'] = 'https://github.com/davidrunger/runger_actions'
   spec.metadata['changelog_uri'] =
-    'https://github.com/davidrunger/active_actions/blob/master/CHANGELOG.md'
+    'https://github.com/davidrunger/runger_actions/blob/master/CHANGELOG.md'
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.

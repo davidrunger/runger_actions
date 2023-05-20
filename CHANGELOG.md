@@ -1,5 +1,6 @@
 ## Unreleased
-[no unreleased changes yet]
+### Breaking Changes
+- Change project name from "ActiveActions" to "RungerActions"
 
 ## v0.17.1 (2021-03-23)
 ### Fixed
@@ -48,7 +49,7 @@
 
 ## v0.14.0 (2021-01-21)
 ### Added
-- Add Rails generator (e.g. `bin/rails g active_actions:action Users::Create`)
+- Add Rails generator (e.g. `bin/rails g runger_actions:action Users::Create`)
 
 ## v0.13.3 (2020-07-02)
 ### Internal
@@ -159,7 +160,7 @@ end
 
 ## 0.4.0 - 2020-06-16
 ### Added
-- Raise an `ActiveActions::MissingResultValue` error if a promised return value (as declared via the
+- Raise an `RungerActions::MissingResultValue` error if a promised return value (as declared via the
   `returns` class method on the action) has not been set by the action's `#execute` method.
 
 ## 0.3.1 - 2020-06-16
@@ -168,7 +169,7 @@ end
 
 ## 0.3.0 - 2020-06-15
 ### Added
-- Add `ActiveActions::Base#run!` method that will raise `ActiveActions::InvalidParam` if there are
+- Add `RungerActions::Base#run!` method that will raise `RungerActions::InvalidParam` if there are
   any ActiveRecord params provided to the action that fail any validation(s) specified for that
   param. This can be used as an (error-raising) alternative to manually checking `action.valid?`.
 
@@ -216,5 +217,5 @@ end
 - Autocorrect all autocorrectable rubocop violations
 
 ## 0.1.0 - 2020-06-14
-- Initial release of ActiveActions! Organize and validate the business logic of your Rails
+- Initial release of RungerActions! Organize and validate the business logic of your Rails
   application with this combined form object / command object.

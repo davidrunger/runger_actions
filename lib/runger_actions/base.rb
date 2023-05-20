@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class ActiveActions::Base
+class RungerActions::Base
   extend Memoist
 
   class << self
@@ -15,7 +15,7 @@ class ActiveActions::Base
       if action.valid?
         action
       else
-        raise(ActiveActions::InvalidParam, action.errors.full_messages.join(', '))
+        raise(RungerActions::InvalidParam, action.errors.full_messages.join(', '))
       end
     end
 
@@ -56,7 +56,7 @@ class ActiveActions::Base
 
         define_method("#{param_name}=") do |value|
           if locked?
-            raise(ActiveActions::MutatingLockedResult, <<~ERROR.squish)
+            raise(RungerActions::MutatingLockedResult, <<~ERROR.squish)
               You are attempting to assign a value to an instance of #{self.class} outside of the
               #{self.class.module_parent}#execute method. This is not allowed; you may only assign
               values to the `result` within the #execute method.
@@ -64,7 +64,7 @@ class ActiveActions::Base
           end
 
           if !shape.matched_by?(value)
-            raise(ActiveActions::TypeMismatch, <<~ERROR.squish)
+            raise(RungerActions::TypeMismatch, <<~ERROR.squish)
               Attemted to assign an invalid value for `result.#{param_name}` ; expected an object
               shaped like #{shape} but got #{value.inspect}
             ERROR
@@ -82,7 +82,7 @@ class ActiveActions::Base
           @error_message = error_message
           if @action.raise_on_failure?
             raise(
-              ActiveActions::RuntimeFailure,
+              RungerActions::RuntimeFailure,
               "#{@action.class.name} action failed with `#{error_type}`",
             )
           end
@@ -96,7 +96,7 @@ class ActiveActions::Base
 
     memoize \
     def result_klass
-      const_set(:Result, Class.new(ActiveActions::Result))
+      const_set(:Result, Class.new(RungerActions::Result))
     end
 
     memoize \
@@ -131,8 +131,8 @@ class ActiveActions::Base
   def run(raise_on_failure: false)
     @raise_on_failure = raise_on_failure
     if !respond_to?(:execute)
-      raise(ActiveActions::ExecuteNotImplemented, <<~ERROR.squish)
-        All ActiveActions classes must implement an #execute instance method, but #{self.class}
+      raise(RungerActions::ExecuteNotImplemented, <<~ERROR.squish)
+        All RungerActions classes must implement an #execute instance method, but #{self.class}
         fails to do so.
       ERROR
     end
@@ -147,7 +147,7 @@ class ActiveActions::Base
     if valid?
       run(raise_on_failure: true)
     else
-      raise(ActiveActions::InvalidParam, @errors.full_messages.join(', '))
+      raise(RungerActions::InvalidParam, @errors.full_messages.join(', '))
     end
   end
 
@@ -176,7 +176,7 @@ class ActiveActions::Base
           "`#{missing_return_value}` (should be shaped like #{expected_shape})"
         end
 
-      raise(ActiveActions::MissingResultValue, <<~ERROR.squish)
+      raise(RungerActions::MissingResultValue, <<~ERROR.squish)
         #{self.class.name} failed to set all promised return values on its `result`. The
         following were missing on the `result`: #{violation_messages.join(', ')}.
       ERROR
@@ -199,7 +199,7 @@ class ActiveActions::Base
   def validate_required_params!
     missing_params = self.class.required_params.keys - @params.keys
     if missing_params.any?
-      raise(ActiveActions::MissingParam, <<~ERROR.squish)
+      raise(RungerActions::MissingParam, <<~ERROR.squish)
         Required param(s) #{missing_params.map { "`#{_1}`" }.join(', ')} were not provided to
         the #{self.class} action.
       ERROR
@@ -221,7 +221,7 @@ class ActiveActions::Base
             `#{value.is_a?(String) ? value.inspect : value}`
           MESSAGE
         end
-      raise(ActiveActions::TypeMismatch, <<~ERROR.squish)
+      raise(RungerActions::TypeMismatch, <<~ERROR.squish)
         One or more required params are of the wrong type: #{messages.join(' ; ')}.
       ERROR
     end
