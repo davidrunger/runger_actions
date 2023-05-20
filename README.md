@@ -44,11 +44,10 @@ command object.
 
 # Installation
 
-Add the gem to your application's `Gemfile`. Because the gem is not released via RubyGems, you will
-need to install it from GitHub.
+Add the gem to your application's `Gemfile`.
 
 ```rb
-gem 'runger_actions', git: 'https://github.com/davidrunger/runger_actions.git'
+gem 'runger_actions'
 ```
 
 And then execute:

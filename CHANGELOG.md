@@ -1,5 +1,6 @@
 ## Unreleased
-[no unreleased changes yet]
+### Added
+- Release gem via RubyGems.
 
 ## v0.18.0 (2023-05-20)
 ### Breaking Changes
