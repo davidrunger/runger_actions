@@ -6,5 +6,5 @@ inherit_gem:
 
 AllCops:
   Exclude:
-    - lib/generators/active_actions/action/templates/action.rb
+    - lib/generators/runger_actions/action/templates/action.rb
     - vendor/**/*

@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-RSpec.describe ActiveActions::Base do
+RSpec.describe RungerActions::Base do
   before do
-    stub_const('ApplicationAction', Class.new(ActiveActions::Base))
+    stub_const('ApplicationAction', Class.new(RungerActions::Base))
     stub_const('User', Class.new(ActiveRecord::Base))
     stub_const('COST_PER_WIDGET', 1.5)
     stub_const('DoubleNumber', Class.new(ApplicationAction))
@@ -91,8 +91,8 @@ RSpec.describe ActiveActions::Base do
     context 'when the provided params are not valid' do
       before { user.email = 'not an email' }
 
-      it 'raises an ActiveActions::InvalidParam error' do
-        expect { new! }.to raise_error(ActiveActions::InvalidParam)
+      it 'raises an RungerActions::InvalidParam error' do
+        expect { new! }.to raise_error(RungerActions::InvalidParam)
       end
     end
   end
@@ -108,7 +108,7 @@ RSpec.describe ActiveActions::Base do
 
         it 'raises an error' do
           expect { initialize_action(params) }.to raise_error(
-            ActiveActions::MissingParam,
+            RungerActions::MissingParam,
             'Required param(s) `user` were not provided to the ProcessOrder action.',
           )
         end
@@ -120,7 +120,7 @@ RSpec.describe ActiveActions::Base do
 
           it 'raises an error' do
             expect { initialize_action(params) }.to raise_error(
-              ActiveActions::TypeMismatch,
+              RungerActions::TypeMismatch,
               <<~ERROR.squish)
                 One or more required params are of the wrong type: `user` is expected to be shaped
                 like User, but was `"This is not a `User`"`.
@@ -137,7 +137,7 @@ RSpec.describe ActiveActions::Base do
 
             it 'raises an error' do
               expect { initialize_action(params) }.to raise_error(
-                ActiveActions::TypeMismatch,
+                RungerActions::TypeMismatch,
                 <<~ERROR.squish)
                   One or more required params are of the wrong type: `number_of_widgets` is expected
                   to be shaped like Integer validating {:numericality=>{:greater_than=>0}} OR
@@ -211,7 +211,7 @@ RSpec.describe ActiveActions::Base do
 
             it 'raises an error' do
               expect { initialize_action(params) }.to raise_error(
-                ActiveActions::TypeMismatch,
+                RungerActions::TypeMismatch,
                 <<~ERROR.squish)
                   One or more required params are of the wrong type: `message_params` is expected to
                   be shaped like { "store_id" => Integer }, but was `{:store_id=>20}`.
@@ -247,7 +247,7 @@ RSpec.describe ActiveActions::Base do
 
             it 'raises an error' do
               expect { initialize_action(params) }.to raise_error(
-                ActiveActions::TypeMismatch,
+                RungerActions::TypeMismatch,
                 <<~ERROR.squish)
                   One or more required params are of the wrong type: `numbers` is expected to be
                   shaped like [Numeric], but was `["two", "four", "eight"]`.
@@ -282,11 +282,11 @@ RSpec.describe ActiveActions::Base do
 
             it 'raises an error' do
               expect { initialize_action(params) }.to raise_error(
-                ActiveActions::TypeMismatch,
+                RungerActions::TypeMismatch,
                 Regexp.new(<<~ERROR.squish))
                   One or more required params are of the wrong type: `even_number` is expected to be
                   shaped like Proc test defined at
-                  .*/spec/active_actions/base_spec\\.rb:\\d+, but was `809`.
+                  .*/spec/runger_actions/base_spec\\.rb:\\d+, but was `809`.
                 ERROR
             end
           end
@@ -338,7 +338,7 @@ RSpec.describe ActiveActions::Base do
           expect {
             # this should raise, because `incremented_phone_number` is supposed to be a String
             result.incremented_phone_number = Integer(new_phone_number)
-          }.to raise_error(ActiveActions::TypeMismatch, <<~ERROR.squish)
+          }.to raise_error(RungerActions::TypeMismatch, <<~ERROR.squish)
             Attemted to assign an invalid value for `result.incremented_phone_number` ; expected an
             object shaped like String validating {:format=>{:with=>/[[:digit:]]{11}/}} but got
             15551239877
@@ -351,7 +351,7 @@ RSpec.describe ActiveActions::Base do
           expect {
             # this should raise, because `uppercased_email` is validated to have uppercase letters
             result.uppercased_email = 'a@b.c'
-          }.to raise_error(ActiveActions::TypeMismatch, <<~ERROR.squish)
+          }.to raise_error(RungerActions::TypeMismatch, <<~ERROR.squish)
             Attemted to assign an invalid value for `result.uppercased_email` ; expected an object
             shaped like String validating {:format=>{:with=>/[A-Z]+@[A-Z.]+/, :allow_blank=>true}}
             but got "a@b.c"
@@ -394,7 +394,7 @@ RSpec.describe ActiveActions::Base do
 
       it 'raises an error' do
         expect { action_instance.run }.to raise_error(
-          ActiveActions::MissingResultValue,
+          RungerActions::MissingResultValue,
           <<~ERROR.squish)
             BrokenMultiplyNumber failed to set all promised return values on its `result`. The
             following were missing on the `result`: `number_quadrupled` (should be shaped like
@@ -490,9 +490,9 @@ RSpec.describe ActiveActions::Base do
           )
         end
 
-        it 'raises an ActiveActions::RuntimeFailure error' do
+        it 'raises an RungerActions::RuntimeFailure error' do
           expect { run }.to raise_error(
-            ActiveActions::RuntimeFailure,
+            RungerActions::RuntimeFailure,
             'ProcessOrder action failed with `bad_response_from_api`',
           )
         end
@@ -527,7 +527,7 @@ RSpec.describe ActiveActions::Base do
 
       it 'raises an error' do
         expect { run! }.to raise_error(
-          ActiveActions::InvalidParam,
+          RungerActions::InvalidParam,
           <<~ERROR.squish)
             Email can't be blank, Email is invalid, Phone can't be blank, Phone is invalid
           ERROR
@@ -537,7 +537,7 @@ RSpec.describe ActiveActions::Base do
         expect(action_instance).not_to receive(:execute)
         expect(action_instance).not_to receive(:run)
 
-        expect { run! }.to raise_error(ActiveActions::InvalidParam)
+        expect { run! }.to raise_error(RungerActions::InvalidParam)
       end
     end
   end
@@ -583,9 +583,9 @@ RSpec.describe ActiveActions::Base do
 
       it 'raises an error about the failure to implement #execute' do
         expect { run_action }.to raise_error(
-          ActiveActions::ExecuteNotImplemented,
+          RungerActions::ExecuteNotImplemented,
           <<~ERROR.squish)
-            All ActiveActions classes must implement an #execute instance method, but
+            All RungerActions classes must implement an #execute instance method, but
             AccidentallyDoNothing fails to do so.
           ERROR
       end
@@ -634,7 +634,7 @@ RSpec.describe ActiveActions::Base do
 
     it 'raises an error' do
       expect { run_action_and_attempt_to_mutate_result }.to raise_error(
-        ActiveActions::MutatingLockedResult,
+        RungerActions::MutatingLockedResult,
         <<~ERROR.squish)
           You are attempting to assign a value to an instance of DoubleNumber::Result outside of the
           DoubleNumber#execute method. This is not allowed; you may only assign values to the

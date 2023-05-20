@@ -16,7 +16,7 @@ end
 require 'bundler/setup'
 Bundler.require(:default, 'test')
 
-require 'active_actions'
+require 'runger_actions'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
