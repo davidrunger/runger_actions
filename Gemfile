@@ -18,7 +18,7 @@ group :development, :test do
 end
 
 group :development do
-  gem 'release_assistant', require: false, github: 'davidrunger/release_assistant'
+  gem 'runger_release_assistant', require: false
 end
 
 group :test do
