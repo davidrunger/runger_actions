@@ -23,3 +23,7 @@ jobs:
       run: git diff --exit-code && git diff-index --quiet --cached HEAD
     - name: Ensure "## Unreleased" is in CHANGELOG.md
       run: grep "^## Unreleased" CHANGELOG.md
+    - name: Upload Code Coverage
+      uses: codecov/codecov-action@v3
+      with:
+        directory: tmp/simple_cov
