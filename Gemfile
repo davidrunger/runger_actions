@@ -22,8 +22,8 @@ group :development do
 end
 
 group :test do
-  gem 'codecov', require: false
   gem 'rspec', '~> 3.12'
+  gem 'simplecov-cobertura', require: false
   gem 'simple_cov-formatter-terminal'
   gem 'sqlite3'
 end
