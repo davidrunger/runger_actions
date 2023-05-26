@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 source 'https://rubygems.org'
-ruby '3.2.0'
+ruby File.read('.ruby-version').rstrip
 
 # Specify your gem's dependencies in runger_actions.gemspec
 gemspec
