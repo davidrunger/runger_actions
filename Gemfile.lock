@@ -206,7 +206,7 @@ GEM
       colorize (~> 0.8)
       memoist (~> 0.16)
       slop (~> 4.8)
-    runger_style (0.2.23)
+    runger_style (0.3.0)
       rubocop (>= 1.38.0, < 2)
     shaped (0.10.0)
       activemodel (>= 6, < 8)
