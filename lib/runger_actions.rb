@@ -5,7 +5,7 @@ module RungerActions ; end
 require 'active_model'
 require 'active_record'
 require 'active_support/all'
-require 'memoist'
+require 'memo_wise'
 require 'shaped'
 Dir["#{File.dirname(__FILE__)}/runger_actions/**/*.rb"].each { |file| require file }
 
