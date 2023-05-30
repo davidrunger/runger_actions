@@ -30,7 +30,7 @@ Gem::Specification.new do |spec|
     end
   spec.require_paths = ['lib']
 
-  spec.add_runtime_dependency('memoist', '~> 0.16')
+  spec.add_runtime_dependency('memo_wise', '>= 1.7', '< 2')
   spec.add_runtime_dependency('rails', '>= 6', '< 8')
   spec.add_runtime_dependency('shaped', '>= 0.9', '< 0.11')
 end

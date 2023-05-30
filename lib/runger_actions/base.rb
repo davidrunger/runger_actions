@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 class RungerActions::Base
-  extend Memoist
+  prepend MemoWise
 
   class << self
-    extend Memoist
+    prepend MemoWise
 
     def run!(params)
       new!(params).run!
@@ -94,22 +94,22 @@ class RungerActions::Base
       end
     end
 
-    memoize \
+    memo_wise \
     def result_klass
       const_set(:Result, Class.new(RungerActions::Result))
     end
 
-    memoize \
+    memo_wise \
     def required_params
       {}
     end
 
-    memoize \
+    memo_wise \
     def promised_values
       {}
     end
 
-    memoize \
+    memo_wise \
     def validators
       {}
     end
@@ -160,7 +160,7 @@ class RungerActions::Base
     !!@raise_on_failure
   end
 
-  memoize \
+  memo_wise \
   def result
     self.class.result_klass.new(action: self)
   end
