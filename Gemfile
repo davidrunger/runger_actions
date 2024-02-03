@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
+ruby file: '.ruby-version'
+
 source 'https://rubygems.org'
-ruby File.read('.ruby-version').rstrip
 
 # Specify your gem's dependencies in runger_actions.gemspec
 gemspec
