@@ -7,7 +7,3 @@ updates:
     time: "04:04"
     timezone: America/Chicago
   open-pull-requests-limit: 20
-  ignore:
-  - dependency-name: shaped
-    versions:
-    - 0.8.0
