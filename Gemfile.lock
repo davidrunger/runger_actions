@@ -100,7 +100,7 @@ GEM
       net-pop
       net-smtp
     marcel (1.0.2)
-    memo_wise (1.7.0)
+    memo_wise (1.8.0)
     method_source (1.0.0)
     mini_mime (1.1.5)
     mini_portile2 (2.8.4)
