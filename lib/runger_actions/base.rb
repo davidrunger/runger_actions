@@ -39,7 +39,7 @@ class RungerActions::Base
     end
 
     def register_validator_klass(param_name, param_klass, blk)
-      validator_klass = const_set("#{param_name.to_s.camelize}Validator", Class.new)
+      validator_klass = const_set(:"#{param_name.to_s.camelize}Validator", Class.new)
       validator_klass.include(ActiveModel::Model)
       validator_klass.attr_accessor(*param_klass.column_names)
       validator_klass.class_eval(&blk)
@@ -54,7 +54,7 @@ class RungerActions::Base
           @return_values[param_name]
         end
 
-        define_method("#{param_name}=") do |value|
+        define_method(:"#{param_name}=") do |value|
           if locked?
             raise(RungerActions::MutatingLockedResult, <<~ERROR.squish)
               You are attempting to assign a value to an instance of #{self.class} outside of the
@@ -77,7 +77,7 @@ class RungerActions::Base
 
     def fails_with(error_type)
       result_klass.class_eval do
-        define_method("#{error_type}!") do |error_message = nil|
+        define_method(:"#{error_type}!") do |error_message = nil|
           @failure = error_type
           @error_message = error_message
           if @action.raise_on_failure?
@@ -88,7 +88,7 @@ class RungerActions::Base
           end
         end
 
-        define_method("#{error_type}?") do
+        define_method(:"#{error_type}?") do
           @failure == error_type
         end
       end
