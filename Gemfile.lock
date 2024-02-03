@@ -187,7 +187,7 @@ GEM
       thor (~> 1.0, >= 1.2.2)
       zeitwerk (~> 2.6)
     rainbow (3.1.1)
-    rake (13.0.6)
+    rake (13.1.0)
     rdoc (6.6.2)
       psych (>= 4.0.0)
     regexp_parser (2.8.0)
@@ -284,7 +284,7 @@ PLATFORMS
 DEPENDENCIES
   amazing_print
   pry-byebug
-  rake (~> 13.0)
+  rake (~> 13.1)
   rspec (~> 3.12)
   rubocop
   rubocop-performance
