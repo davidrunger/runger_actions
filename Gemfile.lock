@@ -94,7 +94,7 @@ GEM
     connection_pool (2.4.1)
     crass (1.0.6)
     date (3.3.3)
-    diff-lcs (1.5.0)
+    diff-lcs (1.5.1)
     docile (1.4.0)
     drb (2.2.0)
       ruby2_keywords
@@ -196,19 +196,19 @@ GEM
       io-console (~> 0.5)
     rexml (3.2.6)
     rouge (4.2.0)
-    rspec (3.12.0)
-      rspec-core (~> 3.12.0)
-      rspec-expectations (~> 3.12.0)
-      rspec-mocks (~> 3.12.0)
-    rspec-core (3.12.3)
-      rspec-support (~> 3.12.0)
-    rspec-expectations (3.12.3)
+    rspec (3.13.0)
+      rspec-core (~> 3.13.0)
+      rspec-expectations (~> 3.13.0)
+      rspec-mocks (~> 3.13.0)
+    rspec-core (3.13.0)
+      rspec-support (~> 3.13.0)
+    rspec-expectations (3.13.0)
       diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.12.0)
-    rspec-mocks (3.12.5)
+      rspec-support (~> 3.13.0)
+    rspec-mocks (3.13.0)
       diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.12.0)
-    rspec-support (3.12.2)
+      rspec-support (~> 3.13.0)
+    rspec-support (3.13.0)
     rubocop (1.60.2)
       json (~> 2.3)
       language_server-protocol (>= 3.17.0)
@@ -287,7 +287,7 @@ DEPENDENCIES
   amazing_print
   pry-byebug
   rake (~> 13.1)
-  rspec (~> 3.12)
+  rspec (~> 3.13)
   rubocop
   rubocop-performance
   rubocop-rake

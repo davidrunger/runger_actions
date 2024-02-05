@@ -23,7 +23,7 @@ group :development do
 end
 
 group :test do
-  gem 'rspec', '~> 3.12'
+  gem 'rspec', '~> 3.13'
   gem 'simplecov-cobertura', require: false
   gem 'simple_cov-formatter-terminal'
   gem 'sqlite3'
