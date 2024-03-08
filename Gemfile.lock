@@ -4,7 +4,7 @@ PATH
     runger_actions (0.19.3.alpha)
       memo_wise (>= 1.7, < 2)
       rails (>= 6, < 8)
-      shaped (>= 0.9, < 0.11)
+      shaped (>= 0.9, < 0.12)
 
 GEM
   remote: https://rubygems.org/
@@ -96,12 +96,11 @@ GEM
     date (3.3.4)
     diff-lcs (1.5.1)
     docile (1.4.0)
-    drb (2.2.0)
-      ruby2_keywords
+    drb (2.2.1)
     erubi (1.12.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
-    i18n (1.14.1)
+    i18n (1.14.4)
       concurrent-ruby (~> 1.0)
     io-console (0.7.2)
     irb (1.11.2)
@@ -237,7 +236,6 @@ GEM
       rubocop-capybara (~> 2.17)
       rubocop-factory_bot (~> 2.22)
     ruby-progressbar (1.13.0)
-    ruby2_keywords (0.0.5)
     runger_config (5.0.0)
       activesupport (>= 7.1.2)
     runger_release_assistant (0.6.0)
@@ -248,7 +246,7 @@ GEM
     runger_style (2.0.0)
       prism (>= 0.24.0)
       rubocop (>= 1.38.0, < 2)
-    shaped (0.10.0)
+    shaped (0.11.0)
       activemodel (>= 6, < 8)
       activesupport (>= 6, < 8)
     simple_cov-formatter-terminal (1.1.0)
