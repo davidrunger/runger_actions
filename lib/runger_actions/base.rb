@@ -176,10 +176,11 @@ class RungerActions::Base
           "`#{missing_return_value}` (should be shaped like #{expected_shape})"
         end
 
-      raise(RungerActions::MissingResultValue, <<~ERROR.squish)
-        #{self.class.name} failed to set all promised return values on its `result`. The
-        following were missing on the `result`: #{violation_messages.join(', ')}.
-      ERROR
+      raise(
+        RungerActions::MissingResultValue,
+        "#{self.class.name} failed to set all promised return values on its `result`. The " \
+        "following were missing on the `result`: #{violation_messages.join(', ')}.",
+      )
     end
   end
 
