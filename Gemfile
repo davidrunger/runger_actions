@@ -10,7 +10,7 @@ gemspec
 group :development, :test do
   gem 'amazing_print'
   gem 'pry-byebug'
-  gem 'rake', '~> 13.1', require: false
+  gem 'rake', '~> 13.2', require: false
   gem 'rubocop', require: false
   gem 'rubocop-performance', require: false
   gem 'rubocop-rake', require: false
