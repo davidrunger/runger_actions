@@ -1,4 +1,4 @@
-name: Run Rspec Tests
+name: Run RuboCop and RSpec
 
 on:
   pull_request:
@@ -16,7 +16,7 @@ jobs:
     - uses: ruby/setup-ruby@v1
       with:
         bundler-cache: true
-    - name: Run Rubocop
+    - name: Run RuboCop
       run: bin/rubocop --format clang
     - name: Run RSpec tests
       run: bin/rspec --format progress
