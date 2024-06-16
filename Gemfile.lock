@@ -238,7 +238,7 @@ GEM
       memo_wise (>= 1.7, < 2)
       rainbow (>= 3.0, < 4)
       slop (~> 4.8)
-    runger_style (2.6.0)
+    runger_style (2.8.0)
       prism (>= 0.24.0)
       rubocop (>= 1.38.0, < 2)
     shaped (0.11.0)
