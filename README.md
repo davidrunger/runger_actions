@@ -1,4 +1,4 @@
-[![codecov](https://codecov.io/gh/davidrunger/runger_actions/branch/master/graph/badge.svg)](https://codecov.io/gh/davidrunger/runger_actions)
+[![codecov](https://codecov.io/gh/davidrunger/runger_actions/branch/main/graph/badge.svg)](https://codecov.io/gh/davidrunger/runger_actions)
 ![GitHub tag (latest SemVer pre-release)](https://img.shields.io/github/v/tag/davidrunger/runger_actions?include_prereleases)
 
 # RungerActions
@@ -645,7 +645,7 @@ own itch and for the sake of exploring this problem space a little bit.
 
 I am actively using this gem in the small Rails application that hosts my personal website and apps;
 you can check out its [`app/actions/`
-directory](https://github.com/davidrunger/david_runger/tree/master/app/actions) if you are
+directory](https://github.com/davidrunger/david_runger/tree/main/app/actions) if you are
 interested in seeing some real-world use cases.
 
 # Development

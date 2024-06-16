@@ -1,5 +1,5 @@
 ## Unreleased
-[no unreleased changes yet]
+- Rename primary branch from `master` to `main`
 
 ## v0.19.2 (2023-05-30)
 ### Changed
@@ -157,7 +157,7 @@ end
 ### Breaking changes
 - Update `shaped` (which is used for param validation) from version 0.2.1 to 0.3.0, which has
   breaking changes. For more details, see the [`shaped`
-  changelog](https://github.com/davidrunger/shaped/blob/master/CHANGELOG.md#030---2020-06-18).
+  changelog](https://github.com/davidrunger/shaped/blob/main/CHANGELOG.md#030---2020-06-18).
 - For `requires`, _all_ type/shape descriptions (i.e. arguments `[1..]`) are now passed through the
   `Shaped::Shape(...)` constructor method. (In most cases, this change will not have any effect,
   because in most cases the type/shape description was a single class, and this change has no effect
