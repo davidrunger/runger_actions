@@ -1,5 +1,5 @@
 ## Unreleased
-[no unreleased changes yet]
+- Update shaped requirement from >= 0.9, < 0.12 to >= 0.9, < 0.13
 
 ## v0.20.0 (2024-06-15)
 - Rename primary branch from `master` to `main`
