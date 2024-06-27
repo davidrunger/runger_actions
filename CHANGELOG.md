@@ -1,3 +1,6 @@
+## Unreleased
+[no unreleased changes yet]
+
 ## v0.21.0 (2024-06-27)
 - Update shaped requirement from >= 0.9, < 0.12 to >= 0.9, < 0.13
 
