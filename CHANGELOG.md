@@ -1,5 +1,5 @@
 ## Unreleased
-[no unreleased changes yet]
+- Enforce only major and minor parts of required Ruby version (loosening the required Ruby version from 3.3.3 to 3.3.0)
 
 ## v0.21.0 (2024-06-27)
 - Update shaped requirement from >= 0.9, < 0.12 to >= 0.9, < 0.13
