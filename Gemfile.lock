@@ -231,7 +231,7 @@ GEM
     rubocop-rspec (3.0.1)
       rubocop (~> 1.61)
     ruby-progressbar (1.13.0)
-    runger_config (5.1.0)
+    runger_config (5.2.0)
       activesupport (>= 7.1.2)
     runger_release_assistant (0.8.0)
       activesupport (>= 6, < 8)
