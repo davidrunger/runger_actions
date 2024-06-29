@@ -32,5 +32,5 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency('memo_wise', '>= 1.7', '< 2')
   spec.add_runtime_dependency('rails', '>= 6', '< 8')
-  spec.add_runtime_dependency('shaped', '>= 0.9', '< 0.13')
+  spec.add_runtime_dependency('shaped', '>= 0.9', '< 0.14')
 end
