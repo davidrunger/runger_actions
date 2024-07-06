@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+set -euo pipefail # exit on any error, don't allow undefined variables, pipes don't swallow errors
+
+lint gitleaks
+
+background-and-notify lint rubocop
+background-and-notify lint shellcheck
