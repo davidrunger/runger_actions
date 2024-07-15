@@ -233,7 +233,7 @@ GEM
     ruby-progressbar (1.13.0)
     runger_config (5.2.0)
       activesupport (>= 7.1.2)
-    runger_release_assistant (0.9.0)
+    runger_release_assistant (0.10.0)
       activesupport (>= 6, < 8)
       memo_wise (>= 1.7, < 2)
       rainbow (>= 3.0, < 4)
