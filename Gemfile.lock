@@ -244,7 +244,7 @@ GEM
     shaped (0.13.0)
       activemodel (>= 6, < 8)
       activesupport (>= 6, < 8)
-    simple_cov-formatter-terminal (1.4.0)
+    simple_cov-formatter-terminal (1.5.0)
       activesupport (>= 7.0.4, < 8)
       memo_wise (>= 1.7.0, < 2)
       rouge (>= 4.0.0, < 5)
