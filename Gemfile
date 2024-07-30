@@ -26,5 +26,5 @@ group :test do
   gem 'rspec', '~> 3.13'
   gem 'simplecov-cobertura', require: false
   gem 'simple_cov-formatter-terminal'
-  gem 'sqlite3', '< 2.0.0'
+  gem 'sqlite3', '< 3.0.0'
 end
