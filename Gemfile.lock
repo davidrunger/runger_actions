@@ -136,7 +136,7 @@ GEM
     nokogiri (1.16.7)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
-    parallel (1.25.1)
+    parallel (1.26.1)
     parser (3.3.4.2)
       ast (~> 2.4.1)
       racc
@@ -238,7 +238,7 @@ GEM
       memo_wise (>= 1.7, < 2)
       rainbow (>= 3.0, < 4)
       slop (~> 4.8)
-    runger_style (2.15.0)
+    runger_style (2.16.0)
       prism (>= 0.24.0)
       rubocop (>= 1.38.0, < 2)
     shaped (0.13.0)
