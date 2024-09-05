@@ -1,3 +1,6 @@
+## Unreleased
+[no unreleased changes yet]
+
 ## v0.23.0 (2024-09-05)
 - Relaxed `shaped` gemspec requirement to `< 1.0`.
 
