@@ -1,5 +1,5 @@
 ## Unreleased
-[no unreleased changes yet]
+- Remove upper bounds on versions for all dependencies
 
 ## v0.23.0 (2024-09-05)
 - Relaxed `shaped` gemspec requirement to `< 1.0`.

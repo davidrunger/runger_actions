@@ -30,7 +30,7 @@ Gem::Specification.new do |spec|
     end
   spec.require_paths = ['lib']
 
-  spec.add_dependency('memo_wise', '>= 1.7', '< 2')
-  spec.add_dependency('rails', '>= 6', '< 8')
-  spec.add_dependency('shaped', '>= 0.9', '< 1.0')
+  spec.add_dependency('memo_wise', '>= 1.7')
+  spec.add_dependency('rails', '>= 6')
+  spec.add_dependency('shaped', '>= 0.9')
 end
