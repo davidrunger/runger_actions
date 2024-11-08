@@ -1,4 +1,4 @@
-## Unreleased
+## v0.24.0 (2024-11-08)
 - Remove upper bounds on versions for all dependencies
 
 ## v0.23.0 (2024-09-05)

@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    runger_actions (0.23.1.alpha)
+    runger_actions (0.24.0)
       memo_wise (>= 1.7)
       rails (>= 6)
       shaped (>= 0.9)
