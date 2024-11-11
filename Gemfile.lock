@@ -236,7 +236,7 @@ GEM
     runger_style (2.17.0)
       prism (>= 0.24.0)
       rubocop (>= 1.38.0, < 2)
-    securerandom (0.3.1)
+    securerandom (0.3.2)
     shaped (0.13.0)
       activemodel (>= 6, < 8)
       activesupport (>= 6, < 8)
