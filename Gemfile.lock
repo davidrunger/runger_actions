@@ -192,7 +192,7 @@ GEM
     regexp_parser (2.9.3)
     reline (0.5.12)
       io-console (~> 0.5)
-    rexml (3.3.9)
+    rexml (3.4.0)
     rouge (4.5.1)
     rspec (3.13.0)
       rspec-core (~> 3.13.0)
