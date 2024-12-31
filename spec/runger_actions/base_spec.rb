@@ -140,8 +140,8 @@ RSpec.describe RungerActions::Base do
                 RungerActions::TypeMismatch,
                 <<~ERROR.squish)
                   One or more required params are of the wrong type: `number_of_widgets` is expected
-                  to be shaped like Integer validating {:numericality=>{:greater_than=>0}} OR
-                  BigDecimal validating {:numericality=>{:greater_than=>0}}, but was `-20`.
+                  to be shaped like Integer validating {numericality: {greater_than: 0}} OR
+                  BigDecimal validating {numericality: {greater_than: 0}}, but was `-20`.
                 ERROR
             end
           end
@@ -214,7 +214,7 @@ RSpec.describe RungerActions::Base do
                 RungerActions::TypeMismatch,
                 <<~ERROR.squish)
                   One or more required params are of the wrong type: `message_params` is expected to
-                  be shaped like { "store_id" => Integer }, but was `{:store_id=>20}`.
+                  be shaped like { "store_id" => Integer }, but was `{store_id: 20}`.
                 ERROR
             end
           end
@@ -313,11 +313,11 @@ RSpec.describe RungerActions::Base do
   describe '::returns' do
     it "registers the specified return property with the class's registry" do
       expect(ProcessOrder.promised_values.transform_values(&:to_s)).to eq(
-        incremented_phone_number: 'String validating {:format=>{:with=>/[[:digit:]]{11}/}}',
+        incremented_phone_number: 'String validating {format: {with: /[[:digit:]]{11}/}}',
         is_real_phone: 'true OR false',
-        total_cost: 'Float validating {:numericality=>{:greater_than=>0}}',
+        total_cost: 'Float validating {numericality: {greater_than: 0}}',
         uppercased_email:
-          'String validating {:format=>{:with=>/[A-Z]+@[A-Z.]+/, :allow_blank=>true}}',
+          'String validating {format: {with: /[A-Z]+@[A-Z.]+/, allow_blank: true}}',
       )
     end
 
@@ -340,7 +340,7 @@ RSpec.describe RungerActions::Base do
             result.incremented_phone_number = Integer(new_phone_number)
           }.to raise_error(RungerActions::TypeMismatch, <<~ERROR.squish)
             Attemted to assign an invalid value for `result.incremented_phone_number` ; expected an
-            object shaped like String validating {:format=>{:with=>/[[:digit:]]{11}/}} but got
+            object shaped like String validating {format: {with: /[[:digit:]]{11}/}} but got
             15551239877
           ERROR
         end
@@ -353,7 +353,7 @@ RSpec.describe RungerActions::Base do
             result.uppercased_email = 'a@b.c'
           }.to raise_error(RungerActions::TypeMismatch, <<~ERROR.squish)
             Attemted to assign an invalid value for `result.uppercased_email` ; expected an object
-            shaped like String validating {:format=>{:with=>/[A-Z]+@[A-Z.]+/, :allow_blank=>true}}
+            shaped like String validating {format: {with: /[A-Z]+@[A-Z.]+/, allow_blank: true}}
             but got "a@b.c"
           ERROR
         end
