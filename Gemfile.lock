@@ -235,7 +235,7 @@ GEM
       memo_wise (>= 1.7)
       rainbow (>= 3.0)
       slop (~> 4.8)
-    runger_style (4.0.1)
+    runger_style (4.1.0)
       prism (>= 0.24.0)
       rubocop (>= 1.68.0)
     securerandom (0.4.1)
