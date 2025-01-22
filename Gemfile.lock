@@ -101,7 +101,8 @@ GEM
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
     io-console (0.8.0)
-    irb (1.14.3)
+    irb (1.15.1)
+      pp (>= 0.6.0)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
     json (2.9.1)
@@ -154,6 +155,9 @@ GEM
     parser (3.3.7.0)
       ast (~> 2.4.1)
       racc
+    pp (0.6.2)
+      prettyprint
+    prettyprint (0.2.0)
     prism (1.3.0)
     pry (0.14.2)
       coderay (~> 1.1)
@@ -363,7 +367,7 @@ CHECKSUMS
   globalid (1.2.1) sha256=70bf76711871f843dbba72beb8613229a49429d1866828476f9c9d6ccc327ce9
   i18n (1.14.7) sha256=ceba573f8138ff2c0915427f1fc5bdf4aa3ab8ae88c8ce255eb3ecf0a11a5d0f
   io-console (0.8.0) sha256=cd6a9facbc69871d69b2cb8b926fc6ea7ef06f06e505e81a64f14a470fddefa2
-  irb (1.14.3) sha256=c457f1f2f1438ae9ce5c5be3981ae2138dec7fb894c7d73777eeeb0a6c0d0752
+  irb (1.15.1) sha256=d9bca745ac4207a8b728a52b98b766ca909b86ff1a504bcde3d6f8c84faae890
   json (2.9.1) sha256=d2bdef4644052fad91c1785d48263756fe32fcac08b96a20bb15840e96550d11
   language_server-protocol (3.17.0.3) sha256=3d5c58c02f44a20d972957a9febe386d7e7468ab3900ce6bd2b563dd910c6b3f
   logger (1.6.5) sha256=c3cfe56d01656490ddd103d38b8993d73d86296adebc5f58cefc9ec03741e56b
@@ -391,6 +395,8 @@ CHECKSUMS
   nokogiri (1.18.2-x86_64-linux-musl) sha256=1cd7786ed15c76958d6a8f9a864df6208fecd624c340eb4ed211fbea60328f02
   parallel (1.26.3) sha256=d86babb7a2b814be9f4b81587bf0b6ce2da7d45969fab24d8ae4bf2bb4d4c7ef
   parser (3.3.7.0) sha256=7449011771e3e7881297859b849de26a6f4fccd515bece9520a87e7d2116119b
+  pp (0.6.2) sha256=947ec3120c6f92195f8ee8aa25a7b2c5297bb106d83b41baa02983686577b6ff
+  prettyprint (0.2.0) sha256=2bc9e15581a94742064a3cc8b0fb9d45aae3d03a1baa6ef80922627a0766f193
   prism (1.3.0) sha256=b11620829831b1cb7e6c9b46c81ff8a6e36ccb3f888f164485eb7351f386273a
   pry (0.14.2) sha256=c4fe54efedaca1d351280b45b8849af363184696fcac1c72e0415f9bdac4334d
   pry-byebug (3.10.1) sha256=c8f975c32255bfdb29e151f5532130be64ff3d0042dc858d0907e849125581f8
