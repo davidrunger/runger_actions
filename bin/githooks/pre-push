@@ -4,5 +4,6 @@ set -euo pipefail # exit on any error, don't allow undefined variables, pipes do
 
 lint gitleaks
 
+background-and-notify lint newlines
 background-and-notify lint rubocop
 background-and-notify lint shellcheck
