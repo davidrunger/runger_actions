@@ -9,7 +9,9 @@ gemspec
 
 group :development, :test do
   gem 'amazing_print'
-  gem 'pry-byebug'
+  gem 'ostruct'
+  # Go back to upstream if/when https://github.com/deivid-rodriguez/pry-byebug/pull/ 428 is merged.
+  gem 'pry-byebug', github: 'davidrunger/pry-byebug'
   gem 'rake', '~> 13.2', require: false
   gem 'rubocop', require: false
   gem 'rubocop-performance', require: false
