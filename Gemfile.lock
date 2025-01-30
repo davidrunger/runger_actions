@@ -256,7 +256,7 @@ GEM
     ruby-progressbar (1.13.0)
     runger_config (5.2.0)
       activesupport (>= 7.1.2)
-    runger_release_assistant (0.14.0)
+    runger_release_assistant (1.0.0)
       activesupport (>= 6)
       memo_wise (>= 1.7)
       rainbow (>= 3.0)
@@ -400,7 +400,7 @@ CHECKSUMS
   nokogiri (1.18.2-x86_64-darwin) sha256=7fca165e5ee87e9b6b3f1377180376afc0c8652ed2a3d761f472f0e3d3a1c651
   nokogiri (1.18.2-x86_64-linux-gnu) sha256=9330ced4a976604865c2a76ce158e2bc608fa83999552e85a32ec06f85f427db
   nokogiri (1.18.2-x86_64-linux-musl) sha256=1cd7786ed15c76958d6a8f9a864df6208fecd624c340eb4ed211fbea60328f02
-  ostruct (0.6.1)
+  ostruct (0.6.1) sha256=09a3fb7ecc1fa4039f25418cc05ae9c82bd520472c5c6a6f515f03e4988cb817
   parallel (1.26.3) sha256=d86babb7a2b814be9f4b81587bf0b6ce2da7d45969fab24d8ae4bf2bb4d4c7ef
   parser (3.3.7.0) sha256=7449011771e3e7881297859b849de26a6f4fccd515bece9520a87e7d2116119b
   pp (0.6.2) sha256=947ec3120c6f92195f8ee8aa25a7b2c5297bb106d83b41baa02983686577b6ff
@@ -438,7 +438,7 @@ CHECKSUMS
   ruby-progressbar (1.13.0) sha256=80fc9c47a9b640d6834e0dc7b3c94c9df37f08cb072b7761e4a71e22cff29b33
   runger_actions (0.24.1.alpha)
   runger_config (5.2.0) sha256=9b76d767a2daa63f6f8f2c52a8183f3f09a877cd35bcaee692d25377f4dd4558
-  runger_release_assistant (0.14.0) sha256=7abc5eb1e0f63d8d611691bc21698d2b3b8f148a5f47cacd8dd32c21d16ee9be
+  runger_release_assistant (1.0.0) sha256=03b7a57db1907765a443d321ad1805705067012046f78f87e18260a379565286
   runger_style (4.2.2) sha256=23bb4c2b8875d79113f72179a7e4ad96bd5ecde8d7a54bd18f4e60c2ab65dd64
   securerandom (0.4.1) sha256=cc5193d414a4341b6e225f0cb4446aceca8e50d5e1888743fac16987638ea0b1
   shaped (0.14.0) sha256=c976615a8c1b129e61c153f1b60f03d2350627cf4a4ad0ecd3f88610e09df426
