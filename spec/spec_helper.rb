@@ -15,7 +15,7 @@ SimpleCov.start do
 end
 
 require 'bundler/setup'
-Bundler.require(:default, 'test')
+Bundler.require(:default, :test)
 
 require 'runger_actions'
 
