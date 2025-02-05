@@ -253,7 +253,7 @@ GEM
     rubocop-rspec (3.4.0)
       rubocop (~> 1.61)
     ruby-progressbar (1.13.0)
-    runger_byebug (11.3.0)
+    runger_byebug (11.4.0)
       irb
       reline
     runger_config (5.2.0)
@@ -438,7 +438,7 @@ CHECKSUMS
   rubocop-rspec (3.4.0) sha256=8721c13b6a8c9530a7ac481cea9423022f946fcf72428bda8289f8b57e4d4885
   ruby-progressbar (1.13.0) sha256=80fc9c47a9b640d6834e0dc7b3c94c9df37f08cb072b7761e4a71e22cff29b33
   runger_actions (0.24.1.alpha)
-  runger_byebug (11.3.0) sha256=5728ac0a94daa88e36de256976d59e9308f67bbb8c73b3e42de7cf52de53b9aa
+  runger_byebug (11.4.0) sha256=569e22ba2215f57e7f69e145fcb63be401e29fcd312f7936d813e12d0c7bbee6
   runger_config (5.2.0) sha256=9b76d767a2daa63f6f8f2c52a8183f3f09a877cd35bcaee692d25377f4dd4558
   runger_release_assistant (2.0.0) sha256=f4f5708291eaeef1b881208f87a494877fe768739d6e96b7293fc335b28a3865
   runger_style (4.3.0) sha256=543c2414626d9084fef8fd057bf561c702e395f35e7af4ee6ee403276cf60614
