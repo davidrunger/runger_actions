@@ -112,7 +112,7 @@ GEM
       pp (>= 0.6.0)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
-    json (2.9.1)
+    json (2.10.0)
     language_server-protocol (3.17.0.4)
     logger (1.6.5)
     loofah (2.24.0)
@@ -263,7 +263,7 @@ GEM
       memo_wise (>= 1.7)
       rainbow (>= 3.0)
       slop (~> 4.8)
-    runger_style (4.3.0)
+    runger_style (4.4.0)
       prism (>= 0.24.0)
       rubocop (>= 1.68.0)
     securerandom (0.4.1)
@@ -376,7 +376,7 @@ CHECKSUMS
   i18n (1.14.7) sha256=ceba573f8138ff2c0915427f1fc5bdf4aa3ab8ae88c8ce255eb3ecf0a11a5d0f
   io-console (0.8.0) sha256=cd6a9facbc69871d69b2cb8b926fc6ea7ef06f06e505e81a64f14a470fddefa2
   irb (1.15.1) sha256=d9bca745ac4207a8b728a52b98b766ca909b86ff1a504bcde3d6f8c84faae890
-  json (2.9.1) sha256=d2bdef4644052fad91c1785d48263756fe32fcac08b96a20bb15840e96550d11
+  json (2.10.0) sha256=d5d52493a501f899644e067eebaef45944428a0a9adc59a8c10ebec2351d42c3
   language_server-protocol (3.17.0.4) sha256=c484626478664fd13482d8180947c50a8590484b1258b99b7aedb3b69df89669
   logger (1.6.5) sha256=c3cfe56d01656490ddd103d38b8993d73d86296adebc5f58cefc9ec03741e56b
   loofah (2.24.0) sha256=61e6a710883abb8210887f3dc868cf3ed66594c509d9ff6987621efa6651ee1e
@@ -441,7 +441,7 @@ CHECKSUMS
   runger_byebug (11.4.0) sha256=569e22ba2215f57e7f69e145fcb63be401e29fcd312f7936d813e12d0c7bbee6
   runger_config (5.2.0) sha256=9b76d767a2daa63f6f8f2c52a8183f3f09a877cd35bcaee692d25377f4dd4558
   runger_release_assistant (2.0.0) sha256=f4f5708291eaeef1b881208f87a494877fe768739d6e96b7293fc335b28a3865
-  runger_style (4.3.0) sha256=543c2414626d9084fef8fd057bf561c702e395f35e7af4ee6ee403276cf60614
+  runger_style (4.4.0) sha256=7ec29ccc4e718804c72c817059b91340c2bd8cd7ed1bb3dc34732e0df43c5aa5
   securerandom (0.4.1) sha256=cc5193d414a4341b6e225f0cb4446aceca8e50d5e1888743fac16987638ea0b1
   shaped (0.14.0) sha256=c976615a8c1b129e61c153f1b60f03d2350627cf4a4ad0ecd3f88610e09df426
   simple_cov-formatter-terminal (1.7.0) sha256=40fb956c9462172b1220ce70c9a80fee0a678d4d83347b59cffd1e61f69b575c
