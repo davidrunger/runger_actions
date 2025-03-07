@@ -268,7 +268,7 @@ GEM
       memo_wise (>= 1.7)
       rainbow (>= 3.0)
       slop (~> 4.8)
-    runger_style (5.4.0)
+    runger_style (5.5.0)
       prism (>= 0.24.0)
       rubocop (>= 1.72.0)
     securerandom (0.4.1)
@@ -447,7 +447,7 @@ CHECKSUMS
   runger_byebug (11.4.0) sha256=569e22ba2215f57e7f69e145fcb63be401e29fcd312f7936d813e12d0c7bbee6
   runger_config (5.2.0) sha256=9b76d767a2daa63f6f8f2c52a8183f3f09a877cd35bcaee692d25377f4dd4558
   runger_release_assistant (2.0.0) sha256=f4f5708291eaeef1b881208f87a494877fe768739d6e96b7293fc335b28a3865
-  runger_style (5.4.0) sha256=96a575ff2ca8d4ee61d52bc135e1893e67bab7ea7f850e262781aa1a5849eee3
+  runger_style (5.5.0) sha256=7ff3ca0acd9dc2b9ca904c3a18a365214466921eb0f0b25ff72818b05474c576
   securerandom (0.4.1) sha256=cc5193d414a4341b6e225f0cb4446aceca8e50d5e1888743fac16987638ea0b1
   shaped (0.14.0) sha256=c976615a8c1b129e61c153f1b60f03d2350627cf4a4ad0ecd3f88610e09df426
   simple_cov-formatter-terminal (1.7.1) sha256=50d36c4067133676574f72d36db532dda2bd144efaeb2c46f1bf4f06ce140a26
