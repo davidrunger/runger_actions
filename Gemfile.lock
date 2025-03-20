@@ -89,7 +89,7 @@ GEM
       tzinfo (~> 2.0, >= 2.0.5)
       uri (>= 0.13.1)
     amazing_print (1.7.2)
-    ast (2.4.2)
+    ast (2.4.3)
     base64 (0.2.0)
     benchmark (0.4.0)
     bigdecimal (3.1.9)
@@ -161,7 +161,7 @@ GEM
       racc (~> 1.4)
     ostruct (0.6.1)
     parallel (1.26.3)
-    parser (3.3.7.1)
+    parser (3.3.7.2)
       ast (~> 2.4.1)
       racc
     pp (0.6.2)
@@ -363,7 +363,7 @@ CHECKSUMS
   activestorage (8.0.2) sha256=f83d221e0f06ae38f2200e55490bd155c76d0add330f6e300e8646048d672977
   activesupport (8.0.2) sha256=8565cddba31b900cdc17682fd66ecd020441e3eef320a9930285394e8c07a45e
   amazing_print (1.7.2) sha256=c89a1dfe4f8508c1e780871d51b8786efd100f625201f6e1d18a0d4dedaac702
-  ast (2.4.2) sha256=1e280232e6a33754cde542bc5ef85520b74db2aac73ec14acef453784447cc12
+  ast (2.4.3) sha256=954615157c1d6a382bc27d690d973195e79db7f55e9765ac7c481c60bdb4d383
   base64 (0.2.0) sha256=0f25e9b21a02a0cc0cea8ef92b2041035d39350946e8789c562b2d1a3da01507
   benchmark (0.4.0) sha256=0f12f8c495545e3710c3e4f0480f63f06b4c842cc94cec7f33a956f5180e874a
   bigdecimal (3.1.9) sha256=2ffc742031521ad69c2dfc815a98e426a230a3d22aeac1995826a75dabfad8cc
@@ -409,7 +409,7 @@ CHECKSUMS
   nokogiri (1.18.4-x86_64-linux-musl) sha256=ea7c0356a70f3d2d0d76315b533877013d20368d5c9f437c38e0bd462c4844dc
   ostruct (0.6.1) sha256=09a3fb7ecc1fa4039f25418cc05ae9c82bd520472c5c6a6f515f03e4988cb817
   parallel (1.26.3) sha256=d86babb7a2b814be9f4b81587bf0b6ce2da7d45969fab24d8ae4bf2bb4d4c7ef
-  parser (3.3.7.1) sha256=7dbe61618025519024ac72402a6677ead02099587a5538e84371b76659e6aca1
+  parser (3.3.7.2) sha256=c71de9076be0b84459a268581b5aa75e5eeaac892b564430371d1f8eb55fb65f
   pp (0.6.2) sha256=947ec3120c6f92195f8ee8aa25a7b2c5297bb106d83b41baa02983686577b6ff
   prettyprint (0.2.0) sha256=2bc9e15581a94742064a3cc8b0fb9d45aae3d03a1baa6ef80922627a0766f193
   prism (1.4.0) sha256=dc0e3e00e93160213dc2a65519d9002a4a1e7b962db57d444cf1a71565bb703e
