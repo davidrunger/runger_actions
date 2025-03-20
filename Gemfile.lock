@@ -263,7 +263,7 @@ GEM
       reline
     runger_config (5.2.0)
       activesupport (>= 7.1.2)
-    runger_release_assistant (2.0.1)
+    runger_release_assistant (4.2.1)
       activesupport (>= 6)
       memo_wise (>= 1.7)
       rainbow (>= 3.0)
@@ -447,7 +447,7 @@ CHECKSUMS
   runger_actions (0.24.1.alpha)
   runger_byebug (11.4.0) sha256=569e22ba2215f57e7f69e145fcb63be401e29fcd312f7936d813e12d0c7bbee6
   runger_config (5.2.0) sha256=9b76d767a2daa63f6f8f2c52a8183f3f09a877cd35bcaee692d25377f4dd4558
-  runger_release_assistant (2.0.1) sha256=fd3d2599a42e6863b76d766aff03665842abe04e8f0e7fadba1b5c982b9c08e3
+  runger_release_assistant (4.2.1) sha256=beecd73684910327b7d7b01bf0b6ba6ce49a2cc743c641ca92d25ada8cd40e46
   runger_style (5.7.0) sha256=200790f3998e0b924df17efc9d440ddec99508bae983ba2a63f42b80624762f0
   securerandom (0.4.1) sha256=cc5193d414a4341b6e225f0cb4446aceca8e50d5e1888743fac16987638ea0b1
   shaped (0.14.0) sha256=c976615a8c1b129e61c153f1b60f03d2350627cf4a4ad0ecd3f88610e09df426
