@@ -201,7 +201,7 @@ class RungerActions::Base
     missing_params = self.class.required_params.keys - @params.keys
     if missing_params.any?
       raise(RungerActions::MissingParam, <<~ERROR.squish)
-        Required param(s) #{missing_params.map { "`#{_1}`" }.join(', ')} were not provided to
+        Required param(s) #{missing_params.map { "`#{it}`" }.join(', ')} were not provided to
         the #{self.class} action.
       ERROR
     end
