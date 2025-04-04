@@ -108,7 +108,7 @@ GEM
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
     io-console (0.8.0)
-    irb (1.15.1)
+    irb (1.15.2)
       pp (>= 0.6.0)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
@@ -382,7 +382,7 @@ CHECKSUMS
   globalid (1.2.1) sha256=70bf76711871f843dbba72beb8613229a49429d1866828476f9c9d6ccc327ce9
   i18n (1.14.7) sha256=ceba573f8138ff2c0915427f1fc5bdf4aa3ab8ae88c8ce255eb3ecf0a11a5d0f
   io-console (0.8.0) sha256=cd6a9facbc69871d69b2cb8b926fc6ea7ef06f06e505e81a64f14a470fddefa2
-  irb (1.15.1) sha256=d9bca745ac4207a8b728a52b98b766ca909b86ff1a504bcde3d6f8c84faae890
+  irb (1.15.2) sha256=222f32952e278da34b58ffe45e8634bf4afc2dc7aa9da23fed67e581aa50fdba
   json (2.10.2) sha256=34e0eada93022b2a0a3345bb0b5efddb6e9ff5be7c48e409cfb54ff8a36a8b06
   language_server-protocol (3.17.0.4) sha256=c484626478664fd13482d8180947c50a8590484b1258b99b7aedb3b69df89669
   lint_roller (1.1.0) sha256=2c0c845b632a7d172cb849cc90c1bce937a28c5c8ccccb50dfd46a485003cc87
