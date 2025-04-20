@@ -4,8 +4,8 @@ updates:
   - package-ecosystem: bundler
     directory: "/"
     schedule:
-      interval: daily
-      time: "04:04"
+      interval: cron
+      cronjob: "4 4 * * *"
       timezone: America/Chicago
     open-pull-requests-limit: 20
     allow:
