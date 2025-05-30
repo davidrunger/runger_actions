@@ -11,7 +11,7 @@ group :development, :test do
   gem 'amazing_print'
   gem 'ostruct'
   gem 'pry-byebug', github: 'davidrunger/pry-byebug'
-  gem 'rake', '~> 13.2', require: false
+  gem 'rake', '~> 13.3', require: false
   gem 'rubocop', require: false
   gem 'rubocop-performance', require: false
   gem 'rubocop-rake', require: false
