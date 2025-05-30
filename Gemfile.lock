@@ -90,7 +90,7 @@ GEM
       uri (>= 0.13.1)
     amazing_print (1.8.1)
     ast (2.4.3)
-    base64 (0.2.0)
+    base64 (0.3.0)
     benchmark (0.4.1)
     bigdecimal (3.2.0)
     builder (3.3.0)
@@ -368,7 +368,7 @@ CHECKSUMS
   activesupport (8.0.2) sha256=8565cddba31b900cdc17682fd66ecd020441e3eef320a9930285394e8c07a45e
   amazing_print (1.8.1) sha256=f53b4e1881f53f9663cb222840c7a027d0e61d46cc908366965739559c0d6d68
   ast (2.4.3) sha256=954615157c1d6a382bc27d690d973195e79db7f55e9765ac7c481c60bdb4d383
-  base64 (0.2.0) sha256=0f25e9b21a02a0cc0cea8ef92b2041035d39350946e8789c562b2d1a3da01507
+  base64 (0.3.0) sha256=27337aeabad6ffae05c265c450490628ef3ebd4b67be58257393227588f5a97b
   benchmark (0.4.1) sha256=d4ef40037bba27f03b28013e219b950b82bace296549ec15a78016552f8d2cce
   bigdecimal (3.2.0) sha256=f220c34e07d98b04e02eb23193bee436fab9afcd551f43dce8837a1b4aa80762
   builder (3.3.0) sha256=497918d2f9dca528fdca4b88d84e4ef4387256d984b8154e9d5d3fe5a9c8835f
