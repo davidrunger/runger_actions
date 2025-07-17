@@ -293,7 +293,7 @@ GEM
     simplecov-cobertura (3.0.0)
       rexml
       simplecov (~> 0.19)
-    simplecov-html (0.13.1)
+    simplecov-html (0.13.2)
     simplecov_json_formatter (0.1.4)
     slop (4.10.1)
     sqlite3 (2.7.2)
@@ -458,7 +458,7 @@ CHECKSUMS
   simple_cov-formatter-terminal (1.9.0) sha256=d150330d6b772254ed271b4d04dd3dc6c062b15c5ff11605506ef6ba4f892316
   simplecov (0.22.0) sha256=fe2622c7834ff23b98066bb0a854284b2729a569ac659f82621fc22ef36213a5
   simplecov-cobertura (3.0.0) sha256=ba158d232c58045da5c4d5d9d03cc4ecadbf456792b4d0ff7e76373fdb2ef25a
-  simplecov-html (0.13.1) sha256=5dab0b7ee612e60e9887ad57693832fdf4695b4c0c859eaea5f95c18791ef10b
+  simplecov-html (0.13.2) sha256=bd0b8e54e7c2d7685927e8d6286466359b6f16b18cb0df47b508e8d73c777246
   simplecov_json_formatter (0.1.4) sha256=529418fbe8de1713ac2b2d612aa3daa56d316975d307244399fa4838c601b428
   slop (4.10.1) sha256=844322b5ffcf17ed4815fdb173b04a20dd82b4fd93e3744c88c8fafea696d9c7
   sqlite3 (2.7.2) sha256=446376dfc5ffa0c6dd39dabf748b8c7c8a7f294cfa780dfc22dee67d43bdc9f5
