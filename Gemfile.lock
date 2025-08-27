@@ -221,7 +221,7 @@ GEM
     regexp_parser (2.11.2)
     reline (0.6.2)
       io-console (~> 0.5)
-    rexml (3.4.1)
+    rexml (3.4.2)
     rouge (4.6.0)
     rspec (3.13.1)
       rspec-core (~> 3.13.0)
@@ -290,7 +290,7 @@ GEM
       docile (~> 1.1)
       simplecov-html (~> 0.11)
       simplecov_json_formatter (~> 0.1)
-    simplecov-cobertura (3.0.0)
+    simplecov-cobertura (3.1.0)
       rexml
       simplecov (~> 0.19)
     simplecov-html (0.13.2)
@@ -435,7 +435,7 @@ CHECKSUMS
   rdoc (6.14.2) sha256=9fdd44df130f856ae70cc9a264dfd659b9b40de369b16581f4ab746e42439226
   regexp_parser (2.11.2) sha256=5e5e9c1485ffd8de53ab1d2807affd81f617f72967dfc64fc75a69e2cbf0ff98
   reline (0.6.2) sha256=1dad26a6008872d59c8e05244b119347c9f2ddaf4a53dce97856cd5f30a02846
-  rexml (3.4.1) sha256=c74527a9a0a04b4ec31dbe0dc4ed6004b960af943d8db42e539edde3a871abca
+  rexml (3.4.2) sha256=1384268554a37af5da5279431ca3f2f37d46f09ffdd6c95e17cc84c83ea7c417
   rouge (4.6.0) sha256=10198622df0ef919796da5686a9cc116a49280805e1ed4b851c97ef677eddd7a
   rspec (3.13.1) sha256=b9f9a58fa915b8d94a1d6b3195fe6dd28c4c34836a6097015142c4a9ace72140
   rspec-core (3.13.5) sha256=ab3f682897c6131c67f9a17cfee5022a597f283aebe654d329a565f9937a4fa3
@@ -457,7 +457,7 @@ CHECKSUMS
   shaped (0.14.0) sha256=c976615a8c1b129e61c153f1b60f03d2350627cf4a4ad0ecd3f88610e09df426
   simple_cov-formatter-terminal (1.9.0) sha256=d150330d6b772254ed271b4d04dd3dc6c062b15c5ff11605506ef6ba4f892316
   simplecov (0.22.0) sha256=fe2622c7834ff23b98066bb0a854284b2729a569ac659f82621fc22ef36213a5
-  simplecov-cobertura (3.0.0) sha256=ba158d232c58045da5c4d5d9d03cc4ecadbf456792b4d0ff7e76373fdb2ef25a
+  simplecov-cobertura (3.1.0) sha256=6d7f38aa32c965ca2174b2e5bd88cb17138eaf629518854976ac50e628925dc5
   simplecov-html (0.13.2) sha256=bd0b8e54e7c2d7685927e8d6286466359b6f16b18cb0df47b508e8d73c777246
   simplecov_json_formatter (0.1.4) sha256=529418fbe8de1713ac2b2d612aa3daa56d316975d307244399fa4838c601b428
   slop (4.10.1) sha256=844322b5ffcf17ed4815fdb173b04a20dd82b4fd93e3744c88c8fafea696d9c7
