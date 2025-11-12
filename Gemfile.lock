@@ -313,7 +313,7 @@ GEM
     sqlite3 (2.8.0-x86_64-darwin)
     sqlite3 (2.8.0-x86_64-linux-gnu)
     sqlite3 (2.8.0-x86_64-linux-musl)
-    stringio (3.1.7)
+    stringio (3.1.8)
     thor (1.4.0)
     timeout (0.4.4)
     tsort (0.2.0)
@@ -478,7 +478,7 @@ CHECKSUMS
   sqlite3 (2.8.0-x86_64-darwin) sha256=ae26021cbfc7c9c819e2bad50789ab7732dc29c7c00c043ee4b6073a10b1baa2
   sqlite3 (2.8.0-x86_64-linux-gnu) sha256=b754409b06e447712198d59e37da0dab6fce326115657db034a94b77f67802a3
   sqlite3 (2.8.0-x86_64-linux-musl) sha256=9ea480326f09abfeb2001cf8d08077feaac2253baaf5ac06aa530377f4a87ddc
-  stringio (3.1.7) sha256=5b78b7cb242a315fb4fca61a8255d62ec438f58da2b90be66048546ade4507fa
+  stringio (3.1.8) sha256=99c43c3a9302843cca223fd985bfc503dd50a4b1723d3e4a9eb1d9c37d99e4ec
   thor (1.4.0) sha256=8763e822ccb0f1d7bee88cde131b19a65606657b847cc7b7b4b82e772bcd8a3d
   timeout (0.4.4) sha256=f0f6f970104b82427cd990680f539b6bbb8b1e55efa913a55c6492935e4e0edb
   tsort (0.2.0) sha256=9650a793f6859a43b6641671278f79cfead60ac714148aabe4e3f0060480089f
