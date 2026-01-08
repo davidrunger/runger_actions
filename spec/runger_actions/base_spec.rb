@@ -552,7 +552,7 @@ RSpec.describe RungerActions::Base do
         end
 
         def execute
-          puts("The user's email is #{user.email}.")
+          puts("The user's email is #{user.email}.") # rubocop:disable RSpec/Output
         end
       end
     end
@@ -600,7 +600,7 @@ RSpec.describe RungerActions::Base do
         # [note that this action class has no `requires`]
 
         def execute
-          puts(Time.now)
+          puts(Time.now) # rubocop:disable RSpec/Output
         end
       end
     end
