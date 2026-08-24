@@ -15,8 +15,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-    - uses: ruby/setup-ruby@v1
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+    - uses: ruby/setup-ruby@95ef2b042f9d7a56d8268cba8559e2842e2ad01b # v1.321.0
       with:
         bundler-cache: true
     - name: Run RuboCop
@@ -28,7 +28,7 @@ jobs:
     - name: Ensure "## Unreleased" is in CHANGELOG.md
       run: grep "^## Unreleased" CHANGELOG.md
     - name: Upload Code Coverage
-      uses: codecov/codecov-action@v4
+      uses: codecov/codecov-action@fb8b3582c8e4def4969c97caa2f19720cb33a72f # v7.0.0
       with:
         directory: tmp/simple_cov
         token: ${{ secrets.CODECOV_TOKEN }}
