@@ -22,7 +22,9 @@ class RungerActions::Base
     def requires(param_name, *shape_descriptions, &blk)
       required_params[param_name] = Shaped::Shape(*shape_descriptions)
 
-      shape_description = shape_descriptions.first if shape_descriptions.size == 1
+      if shape_descriptions.size == 1
+        shape_description = shape_descriptions.first
+      end
       if (
         shape_description.is_a?(Class) && (shape_description < ActiveRecord::Base) && blk.present?
       )
@@ -139,7 +141,9 @@ class RungerActions::Base
 
     execute
     result.lock!
-    verify_promised_return_values! if result.success?
+    if result.success?
+      verify_promised_return_values!
+    end
     result
   end
 
@@ -187,7 +191,9 @@ class RungerActions::Base
   def run_custom_validations
     self.class.required_params.each_key do |param_name|
       validator_klass = self.class.validators[param_name]
-      next if validator_klass.nil?
+      if validator_klass.nil?
+        next
+      end
 
       model_instance = @params[param_name]
       validator_instance = validator_klass.new(model_instance.attributes)
