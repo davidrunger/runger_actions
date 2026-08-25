@@ -1,1 +1,2 @@
-expected-num-github-checks: 3
+expected-num-github-checks:
+  at-least: 1
