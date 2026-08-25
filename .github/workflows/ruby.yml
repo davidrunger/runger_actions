@@ -32,3 +32,5 @@ jobs:
       with:
         directory: tmp/simple_cov
         token: ${{ secrets.CODECOV_TOKEN }}
+    - name: Check Ruby Coverage
+      uses: davidrunger/check-ruby-coverage@d4a24ec6ee57cb7d202bb14a29e7f60dfe43be23 # v1.0.0
