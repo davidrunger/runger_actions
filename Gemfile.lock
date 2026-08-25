@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/davidrunger/pry-byebug.git
-  revision: 51186eb9f662417e3a76f7c2b60cc2c2a05f182a
+  revision: a02f6ab4317cade079f3d9b3455e803acd6fccbe
   specs:
     pry-byebug (3.10.1)
       pry (>= 0.13)
