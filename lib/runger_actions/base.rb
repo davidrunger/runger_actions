@@ -122,13 +122,12 @@ class RungerActions::Base
   # We can't specify keyword arguments for this method because we don't know which keywords/params
   # the method will need to accept; that's defined by the user.
   #
-  # rubocop:disable Style/OptionHash
+  # rubocop:disable-next Style/OptionHash
   def initialize(params = {})
     @params = params
     @errors = ActiveModel::Errors.new(self)
     validate_required_params!
   end
-  # rubocop:enable Style/OptionHash
 
   def run(raise_on_failure: false)
     @raise_on_failure = raise_on_failure
