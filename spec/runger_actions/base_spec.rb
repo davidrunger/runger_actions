@@ -66,10 +66,13 @@ RSpec.describe RungerActions::Base do
     let(:double_number_action_double) { instance_double(DoubleNumber) }
 
     it 'calls the ::new! class method and the #run! instance method' do
-      expect(DoubleNumber).to receive(:new!).and_return(double_number_action_double)
-      expect(double_number_action_double).to receive(:run!)
+      allow(DoubleNumber).to receive(:new!).and_return(double_number_action_double)
+      allow(double_number_action_double).to receive(:run!)
 
       run!
+
+      expect(DoubleNumber).to have_received(:new!)
+      expect(double_number_action_double).to have_received(:run!)
     end
   end
 
@@ -77,8 +80,10 @@ RSpec.describe RungerActions::Base do
     subject(:new!) { ProcessOrder.new!(number_of_widgets: 2, user:) }
 
     it 'calls the ::new class method' do
-      expect(ProcessOrder).to receive(:new).and_call_original
+      allow(ProcessOrder).to receive(:new).and_call_original
       new!
+
+      expect(ProcessOrder).to have_received(:new)
     end
 
     context 'when the provided params are valid' do
@@ -406,20 +411,22 @@ RSpec.describe RungerActions::Base do
   describe '::fails_with' do
     context 'when something goes wrong while executing the action' do
       before do
-        expect(action_instance).to receive(:make_external_api_call).and_return(
+        allow(action_instance).to receive(:make_external_api_call).and_return(
           # rubocop:disable-next Performance/OpenStruct, Style/OpenStructUse
           OpenStruct.new(success?: false, data: { errors: ['Our servers are down right now'] }),
         )
       end
 
       it 'can invoke a failure-bang method on the result object' do
-        expect(action_instance.result).to receive(:bad_response_from_api!).and_call_original
+        allow(action_instance.result).to receive(:bad_response_from_api!).and_call_original
         action_instance.execute
+
+        expect(action_instance.result).to have_received(:bad_response_from_api!)
       end
 
       context 'when a failure-bang method has been invoked' do
         def execute_with_failure
-          expect(action_instance.result).to receive(:bad_response_from_api!).and_call_original
+          allow(action_instance.result).to receive(:bad_response_from_api!).and_call_original
           action_instance.execute
         end
 
@@ -442,8 +449,10 @@ RSpec.describe RungerActions::Base do
     subject(:run) { action_instance.run }
 
     it 'invokes the #execute method' do
-      expect(action_instance).to receive(:execute).and_call_original
+      allow(action_instance).to receive(:execute).and_call_original
       run
+
+      expect(action_instance).to have_received(:execute)
     end
 
     it 'returns an instance of ProcessOrder::Result' do
@@ -463,15 +472,17 @@ RSpec.describe RungerActions::Base do
 
     context 'when a `fails_with` condition is set during execution' do
       before do
-        expect(action_instance).to receive(:make_external_api_call).and_return(
+        allow(action_instance).to receive(:make_external_api_call).and_return(
           # rubocop:disable-next Performance/OpenStruct, Style/OpenStructUse
           OpenStruct.new(success?: false, data: { errors: ['Our servers are down right now'] }),
         )
       end
 
       it 'does not call #verify_promised_return_values!' do
-        expect(action_instance).not_to receive(:verify_promised_return_values!)
+        allow(action_instance).to receive(:verify_promised_return_values!)
         run
+
+        expect(action_instance).not_to have_received(:verify_promised_return_values!)
       end
     end
 
@@ -480,7 +491,7 @@ RSpec.describe RungerActions::Base do
 
       context 'when a `fails_with` condition is set during execution' do
         before do
-          expect(action_instance).to receive(:make_external_api_call).and_return(
+          allow(action_instance).to receive(:make_external_api_call).and_return(
             # rubocop:disable-next Performance/OpenStruct, Style/OpenStructUse
             OpenStruct.new(success?: false, data: { errors: ['Our servers are down right now'] }),
           )
@@ -505,8 +516,10 @@ RSpec.describe RungerActions::Base do
       it 'invokes the #run method' do
         # don't `and_call_original` here because that prints a warning about "Using the last
         # argument as keyword parameters is deprecate"
-        expect(action_instance).to receive(:run)
+        allow(action_instance).to receive(:run)
         run!
+
+        expect(action_instance).to have_received(:run)
       end
 
       it 'returns an instance of ProcessOrder::Result' do
@@ -530,10 +543,13 @@ RSpec.describe RungerActions::Base do
       end
 
       it "does not execute #run or the action's #execute method" do
-        expect(action_instance).not_to receive(:execute)
-        expect(action_instance).not_to receive(:run)
+        allow(action_instance).to receive(:execute)
+        allow(action_instance).to receive(:run)
 
         expect { run! }.to raise_error(RungerActions::InvalidParam)
+
+        expect(action_instance).not_to have_received(:execute)
+        expect(action_instance).not_to have_received(:run)
       end
     end
   end
@@ -556,8 +572,11 @@ RSpec.describe RungerActions::Base do
     let(:action_instance) { PrintUserEmail.new(user:) }
 
     it 'does not error when running the action' do
-      expect(action_instance).to receive(:puts).with("The user's email is davidjrunger@gmail.com.")
+      allow(action_instance).to receive(:puts)
       expect { action_instance.run }.not_to raise_error
+
+      expect(action_instance).to have_received(:puts).
+        with("The user's email is davidjrunger@gmail.com.")
     end
   end
 
@@ -612,7 +631,7 @@ RSpec.describe RungerActions::Base do
         let(:run_action) { action_instance.run }
 
         before do
-          expect(action_instance).to receive(:puts) # suppress `puts` from actually printing output
+          allow(action_instance).to receive(:puts) # suppress `puts` from actually printing output
         end
 
         it 'does not raise an error' do
