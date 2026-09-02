@@ -10,7 +10,6 @@ elsif RSpec.configuration.files_to_run.one?
   SimpleCov.formatter = SimpleCov::Formatter::Terminal
 end
 SimpleCov.start do
-  add_filter(%r{\A/spec/})
   enable_coverage(:branch)
 end
 
